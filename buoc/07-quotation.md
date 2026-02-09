@@ -16,54 +16,105 @@ Tạo và gửi báo giá theo module với nền giá cố định + ưu đãi 
 
 ```
 PHASE 6: QUOTATION (Báo giá)
-├── Tạo Estimate/Báo giá trong hệ thống
-├── Cập nhật file tracking (số báo giá, ngày tạo...)
-├── Báo giá theo MODULE + Nền giá cố định + Ưu đãi có deadline
-├── Gửi báo giá (tối đa 5-7 ngày sau meeting)
+├── Tạo Estimate trong Bitrix24 (từ Deal)
+├── Thêm Products vào Estimate (theo module, nền giá cố định)
+├── Lấy QUOTE_NUMBER + info KH → tạo file Excel báo giá
+├── Gửi báo giá cho KH (Email + Zalo)
 ├── Follow-up giữ độ nóng (2-3 kịch bản nhắc nhở)
-└── ◇ Khách phản hồi báo giá?
+├── ◇ Khách phản hồi báo giá?
+│   ├── Từ chối / cần sửa → Close Estimate (Declined) → Tạo Estimate MỚI
+│   └── Đồng ý → Estimate → Approved → Auto copy products vào Deal
+└── Lặp lại nếu cần (B2B thường có nhiều vòng đàm phán)
 ```
 
 ---
 
 ## ✅ Checklist hành động
 
-### A. Tạo báo giá
+### A. Tạo Estimate trong Bitrix24
 
-- [ ] Tạo Estimate trong Bitrix24 CRM (từ Deal)
-- [ ] Báo giá theo **MODULE** (từng module rõ ràng, không gộp chung)
-- [ ] Áp dụng **nền giá cố định** (có bảng giá chuẩn)
+- [ ] Tạo **Estimate** từ Deal (CRM → Deal → tạo Estimate)
+- [ ] Hệ thống tự động sinh `QUOTE_NUMBER` (VD: `EST.94.25`)
+- [ ] Thêm **Products** vào Estimate:
+  - Từng module rõ ràng, không gộp chung
+  - Áp dụng **nền giá cố định** từ Product Catalog
+  - Thiết lập discount nếu có ưu đãi
+  - VAT 8% (cấu hình sẵn)
+- [ ] Điền thêm UF fields nếu cần:
+  - `UF_CRM_QUOTE_NUMBER_OF_PAYMENTS` — Số đợt thanh toán
+  - `UF_CRM_QUOTE_PAYMENT_CYCLE` — Chu kỳ thanh toán
 - [ ] Thêm **ưu đãi có deadline** rõ ràng (VD: giảm 10% nếu ký trước [ngày])
-- [ ] Ghi rõ thời hạn hiệu lực báo giá: **7 ngày**
-- [ ] Review báo giá với Chinh trước khi gửi
+- [ ] Ghi rõ thời hạn hiệu lực báo giá: **7 ngày** (trường `CLOSEDATE`)
+- [ ] Review Estimate với Chinh trước khi gửi
 
-### B. Gửi báo giá
+### B. Tạo file Excel báo giá (ngoài Bitrix)
 
-- [ ] Gửi báo giá cho KH (Email + Zalo group)
-- [ ] Cập nhật file tracking (số báo giá, ngày tạo, ngày hết hạn)
-- [ ] Cập nhật Deal stage = QUOTATION
-- [ ] Ghi chú CRM: ngày gửi, ngày hết hạn ưu đãi
-- [ ] **Nếu KH từ đối tác giới thiệu:** Gửi email thông báo cho đối tác (xem Deal → Lead gốc → UF Referer)
+- [ ] Lấy `QUOTE_NUMBER` từ Estimate vừa tạo
+- [ ] Kết hợp thông tin KH từ Deal + Contact + Company:
+  - Tên công ty, địa chỉ, MST (Company)
+  - Tên người liên hệ, chức vụ, email (Contact)
+  - Products + giá (Estimate)
+- [ ] Tạo file Excel báo giá theo **template chuẩn** (Drive)
+- [ ] Ghi `QUOTE_NUMBER` lên file báo giá
+
+### C. Gửi báo giá
+
+- [ ] Chuyển Estimate stage → **Sent** (`SENT`)
+- [ ] Gửi file Excel báo giá cho KH (Email + Zalo group)
+- [ ] Cập nhật Deal stage → `PREPAYMENT_INVOICE` (Quotation)
+- [ ] Ghi chú CRM: ngày gửi, `QUOTE_NUMBER`, ngày hết hạn ưu đãi
+- [ ] **Nếu KH từ đối tác giới thiệu:** Gửi email thông báo cho đối tác (xem Deal → UF Referer)
   - Nội dung: *(Sẽ bổ sung sau)*
 
-### C. Follow-up giữ độ nóng
+### D. Follow-up giữ độ nóng
 
 - [ ] **Ngày 3:** Gửi tin nhắn follow-up lần 1 (dùng template)
 - [ ] **Ngày 5:** Gọi điện hỏi thăm (nếu chưa phản hồi)
 - [ ] **Ngày 7 (hết hạn):** Gửi thông báo hết hạn + đề xuất voucher bảo lưu
 
-### D. Xử lý phản hồi
+### E. Xử lý phản hồi — Vòng đàm phán
 
-- [ ] KH đồng ý → chuyển Bước 08 (Contract)
-- [ ] KH cần điều chỉnh → sửa báo giá, gửi lại
-- [ ] KH không phản hồi sau deadline → chuyển voucher bảo lưu
-- [ ] KH từ chối / Deal Lost → xem section E
+> **B2B:** Quá trình đàm phán giá thường phức tạp, có thể tạo nhiều báo giá. Mỗi Estimate = 1 phiên bản báo giá.
 
-### E. Deal Lost (áp dụng ở bất kỳ bước nào trong Deal pipeline)
+- [ ] **KH đồng ý báo giá:**
+  1. Chuyển Estimate → **Approved** (`APPROVED`)
+  2. Automation tự động copy Products từ Estimate → Deal Products
+  3. Cập nhật `OPPORTUNITY` trên Deal khớp với Estimate đã Approved
+  4. Chuyển sang Bước 08 (Contract)
 
-- [ ] Chuyển Deal stage → **LOST**
-- [ ] Ghi chú lý do Lost vào Deal
-- [ ] **Nếu KH từ đối tác giới thiệu:** Gửi email thông báo cho đối tác (xem Deal → Lead gốc → UF Referer)
+- [ ] **KH từ chối / yêu cầu sửa báo giá:**
+  1. Chuyển Estimate hiện tại → **Declined** (`DECLAINED`)
+  2. Tạo **Estimate MỚI** từ Deal
+  3. Điều chỉnh Products / giá / scope theo đàm phán
+  4. Lặp lại từ bước A (tạo file Excel mới, gửi lại)
+
+- [ ] **KH không phản hồi sau deadline:**
+  1. Chuyển Estimate → **Declined** (`DECLAINED`)
+  2. Đề xuất voucher bảo lưu cho KH
+
+- [ ] **KH từ chối hoàn toàn / Deal Lost** → xem section F
+
+```
+Estimate Flow (có thể lặp nhiều vòng):
+
+  Tạo Estimate ──► Sent ──► Negotiation ──┐
+       ▲                                   │
+       │              KH từ chối / sửa     │
+       └── Tạo Estimate MỚI ◄── Declined ◄┘
+                                           │
+                         KH đồng ý         │
+                    Approved ◄─────────────┘
+                        │
+                        ▼
+              Auto copy Products → Deal
+```
+
+### F. Deal Lost (áp dụng ở bất kỳ bước nào trong Deal pipeline)
+
+- [ ] Close tất cả Estimate đang mở → **Declined**
+- [ ] Chuyển Deal stage → **LOST** (`LOSE`)
+- [ ] Ghi chú lý do Lost vào Deal (`UF_CRM_LOST_REASON`)
+- [ ] **Nếu KH từ đối tác giới thiệu:** Gửi email thông báo cho đối tác (xem Deal → UF Referer)
   - Nội dung: *(Sẽ bổ sung sau)*
 - [ ] Tổng kết bài học kinh nghiệm (nội bộ)
 
@@ -75,24 +126,34 @@ PHASE 6: QUOTATION (Báo giá)
 
 | Thao tác | Chi tiết |
 |----------|----------|
-| Tạo Estimate | Từ Deal, theo template chuẩn |
-| Cập nhật Deal stage | → QUOTATION |
-| Ghi chú Deal | Ngày gửi BG, Ngày hết hạn, Ưu đãi áp dụng |
+| Tạo Estimate | Từ Deal, thêm Products theo module |
+| Estimate stage | DRAFT → SENT → Negotiation → APPROVED / DECLINED |
+| Tạo file Excel | Lấy QUOTE_NUMBER + info KH → file báo giá ngoài Bitrix |
+| Cập nhật Deal stage | → `PREPAYMENT_INVOICE` (Quotation) |
+| Ghi chú Deal | QUOTE_NUMBER, ngày gửi, ngày hết hạn, ưu đãi |
 | Tạo Activity | "Follow-up báo giá lần [1/2/3]" |
+| Estimate Approved | Auto copy Products → Deal Products |
+| Estimate Declined | Close Estimate cũ → tạo Estimate MỚI (nếu tiếp tục đàm phán) |
 | Email đối tác | Thông báo đã gửi báo giá cho Referer (nếu có) |
-| Deal Lost | Stage → LOST + lý do + email đối tác Referer (nếu có) |
+| Deal Lost | Close Estimates + Stage → LOST + lý do + email đối tác |
 
 ### Deal fields — Cập nhật tại Bước 07
 
-> **Chi tiết trường thông tin:** Xem [Deal Fields — Bước 07](../crm/deal-fields.md#bước-07--quotation-prepayment_invoice)
+> **Chi tiết trường thông tin:**
+> - [Deal Fields — Bước 07](../crm/deal-fields.md#bước-07--quotation-prepayment_invoice)
+> - [Estimate Fields](../crm/estimate-fields.md) — Trường thông tin Estimate
 >
 > **Mẫu ghi chú COMMENTS:** Xem [Deal Fields — Mẫu ghi chú Bước 07](../crm/deal-fields.md#mẫu-ghi-chú-comments-bước-07)
 >
 > **Deal Lost:** Xem [Deal Fields — Deal Lost](../crm/deal-fields.md#deal-lost-áp-dụng-ở-bất-kỳ-bước-nào)
 
-**Cập nhật:** `STAGE_ID` → `PREPAYMENT_INVOICE`, `OPPORTUNITY` (khớp báo giá), `UF_CRM_ESTIMATE` (link Estimate), `COMMENTS` (ngày gửi, hạn, ưu đãi).
+**Cập nhật Deal:** `STAGE_ID` → `PREPAYMENT_INVOICE`, `OPPORTUNITY` (khớp Estimate đã Approved), `COMMENTS` (QUOTE_NUMBER, ngày gửi, hạn, ưu đãi).
 
-**Deal Lost:** `STAGE_ID` → `LOSE`, `UF_CRM_LOST_REASON` (bắt buộc), kiểm tra `UF_CRM_REFERRER` để thông báo đối tác.
+**Estimate Approved:** Khi KH đồng ý → Estimate `STATUS_ID` = `APPROVED` → automation copy Products vào Deal. `OPPORTUNITY` trên Deal phải khớp tổng Estimate.
+
+**Estimate Declined:** Khi KH từ chối → Estimate `STATUS_ID` = `DECLAINED` → tạo Estimate mới nếu tiếp tục đàm phán.
+
+**Deal Lost:** `STAGE_ID` → `LOSE`, `UF_CRM_LOST_REASON` (bắt buộc), close tất cả Estimate đang mở → `DECLAINED`, kiểm tra `UF_CRM_REFERRER` để thông báo đối tác.
 
 > **Contact Lifecycle — Deal Lost:** Khi Deal → Lost, cập nhật Contact `UF_CRM_CONTACT_LIFECYCLE_STAGE` = `1026` (**Closed Lost**). Ngoại trừ Contact đã có Deal WON khác (giữ nguyên **Customer**). Xem [Contact Lifecycle Flow](../crm/contact-fields.md#lifecycle-flow).
 
@@ -112,9 +173,11 @@ PHASE 6: QUOTATION (Báo giá)
 
 | Output | Lưu ở đâu | Người nhận |
 |--------|-----------|------------|
-| Báo giá đã gửi | CRM (Estimate) + Email | KH |
-| File tracking cập nhật | Google Sheets | Team |
+| Estimate (Products + giá) | CRM | Team |
+| File Excel báo giá | Email + Zalo | KH |
 | Deal stage = QUOTATION | CRM | Team |
+| Estimate → Approved (khi KH đồng ý) | CRM | Team |
+| Deal Products (auto copy từ Estimate) | CRM | Team |
 
 ---
 
@@ -181,6 +244,17 @@ Anh/chị có muốn em tạo voucher bảo lưu không ạ?
 > "Dạ em hiểu. Tuy nhiên anh/chị cần xem tổng giá trị nhận được: bên em không chỉ bán phần mềm mà còn triển khai, training, và đồng hành đến khi team dùng được. Nếu chỉ so giá license thì sẽ thiếu phần quan trọng nhất là triển khai."
 
 Giữ vị thế chuyên gia (Bác sĩ – Bệnh nhân).
+</details>
+
+<details>
+<summary><strong>Nhiều vòng đàm phán, tạo nhiều Estimate</strong></summary>
+
+**Quy tắc:**
+1. Mỗi Estimate = 1 phiên bản báo giá. KHÔNG sửa Estimate đã gửi.
+2. Khi cần báo giá mới → Close Estimate cũ (`DECLAINED`) → Tạo Estimate MỚI
+3. Chỉ 1 Estimate được `APPROVED` cho 1 Deal (Estimate cuối cùng KH đồng ý)
+4. Products tự động copy vào Deal khi Estimate → Approved
+5. Ghi chú Deal: liệt kê lịch sử tất cả QUOTE_NUMBER (VD: "EST.90 → Declined, EST.94 → Approved")
 </details>
 
 ---

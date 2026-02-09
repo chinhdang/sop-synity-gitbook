@@ -35,6 +35,7 @@
 * [Deal Fields](crm/deal-fields.md)
 * [Contact Fields](crm/contact-fields.md)
 * [Company Fields](crm/company-fields.md)
+* [Estimate Fields](crm/estimate-fields.md)
 
 ## Templates
 
