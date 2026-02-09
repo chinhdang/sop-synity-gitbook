@@ -19,7 +19,7 @@
 
 > 💡 **Đây là bản đồ toàn cảnh hành trình khách hàng SYNITY** — từ lúc KH biết đến SYNITY cho đến khi nghiệm thu xong.
 
-📂 **[Mở CJM Blueprint trong draw.io](https://app.diagrams.net/?url=https://raw.githubusercontent.com/chinhdang/sop-synity-gitbook/main/assets/flowchart-tong-quan.drawio)** — xem & chỉnh sửa trực tiếp
+📂 **[Mở CJM Blueprint trong draw.io](https://app.diagrams.net/#Uhttps://raw.githubusercontent.com/chinhdang/sop-synity-gitbook/main/assets/flowchart-tong-quan.drawio)** — xem & chỉnh sửa trực tiếp
 
 <details>
 <summary><strong>Xem bản text tóm tắt CJM Blueprint</strong></summary>
