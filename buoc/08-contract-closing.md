@@ -83,6 +83,42 @@ PHASE 7: CONTRACT (Hợp đồng)
 | eSign | Xác nhận email & tên miền |
 | Ghi chú Deal | Ngày ký, Người ký, Điều khoản đặc biệt |
 
+### Deal fields — Cập nhật tại Bước 08
+
+| Bitrix Field | Tên hiển thị | Bắt buộc | Cách điền | Ví dụ |
+|-------------|-------------|----------|-----------|-------|
+| `STAGE_ID` | Stage | **YES** | `EXECUTING` | Contract & Closing |
+| `UF_CRM_CONTRACT_NO` | Số hợp đồng | **YES** | Số HĐ chính thức | "HĐ-2026-001" |
+| `UF_CRM_CONTRACT_DATE` | Ngày ký HĐ | **YES** | Ngày ký chính thức | "2026-02-15" |
+| `UF_CRM_B24_PORTAL` | Portal Bitrix24 | **YES** | URL portal KH | "abc.bitrix24.vn" |
+| `UF_CRM_LICENSE_KEY` | License Key | Nên có | Key bản quyền B24 | Sau khi mua license |
+| `UF_CRM_PAYMENT_METHOD` | Phương thức TT | **YES** | Chọn từ dropdown | Chuyển khoản / Tiền mặt |
+| `UF_CRM_CONTRACT_NUMBER_OF_PAYMENTS` | Số đợt TT | Nên có | Số đợt thanh toán theo HĐ | "3" |
+| `UF_CRM_PAYMENT_CYCLE` | Chu kỳ TT | Nên có | Chu kỳ thanh toán | Theo nghiệm thu |
+| `CLOSEDATE` | Ngày dự kiến đóng | **Cập nhật** | Ngày dự kiến hoàn tất Deal | Theo timeline triển khai |
+| `COMMENTS` | Ghi chú | **Cập nhật** | Thông tin HĐ + email/domain | Xem mẫu bên dưới |
+
+#### Mẫu ghi chú COMMENTS bổ sung tại Bước 08
+
+```
+--- Hợp đồng [DD/MM/YYYY] ---
+Số HĐ Bản quyền: [Số]
+Số HĐ Triển khai: [Số]
+Ngày ký: [DD/MM/YYYY]
+Người ký: [Tên] - [Chức vụ]
+
+Lịch thanh toán:
+- Đợt 1 (Bản quyền): [Số tiền] - [Hạn]
+- Đợt 2 (Triển khai GĐ1): [Số tiền] - [Hạn]
+- Đợt 3 (...): [Số tiền] - [Hạn]
+
+Email xác nhận: [email@domain.com]
+Tên miền xác nhận: [abc.bitrix24.vn]
+Điều khoản đặc biệt: [Nếu có]
+```
+
+> **Lưu ý cho AI/Automation:** `UF_CRM_CONTRACT_NO` và `UF_CRM_CONTRACT_DATE` phải được điền trước khi chuyển sang Payment. `UF_CRM_B24_PORTAL` cần xác nhận từ KH qua eSign trước khi mua license.
+
 ---
 
 ## 📥 Input

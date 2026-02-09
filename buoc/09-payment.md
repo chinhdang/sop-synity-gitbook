@@ -71,11 +71,61 @@ Từ PHASE 11 (PAYMENT):
 | Thao tác | Chi tiết |
 |----------|----------|
 | Tạo Invoice | Cho từng đợt thanh toán |
-| Cập nhật Deal stage | → WON (sau đợt 1) |
+| Cập nhật Deal stage | → PAYMENT → WON |
 | Automation | Email nhắc thanh toán tự động |
 | Tạo Task | Nhắc thủ công nếu chưa TT sau 4h |
 | Ghi chú Deal | Lịch sử thanh toán từng đợt |
 | Email đối tác | Thông báo KH đã thanh toán lần đầu cho Referer (nếu có) |
+
+### Deal fields — Cập nhật tại Bước 09
+
+#### Khi bắt đầu thu tiền (chuyển stage Payment)
+
+| Bitrix Field | Tên hiển thị | Bắt buộc | Cách điền | Ghi chú |
+|-------------|-------------|----------|-----------|---------|
+| `STAGE_ID` | Stage | **YES** | `FINAL_INVOICE` | Payment |
+| `UF_CRM_PAYMENT_METHOD` | Phương thức TT | **YES** | Đã có từ Bước 08 | Chuyển khoản / Tiền mặt |
+| `COMMENTS` | Ghi chú | **Cập nhật** | Lịch sử thanh toán từng đợt | Xem mẫu bên dưới |
+
+#### Khi Deal Won (đợt 1 đã thanh toán, bàn giao Triển khai)
+
+| Bitrix Field | Tên hiển thị | Bắt buộc | Cách điền | Ghi chú |
+|-------------|-------------|----------|-----------|---------|
+| `STAGE_ID` | Stage | **YES** | `WON` | Deal won |
+| `CLOSED` | Đóng Deal | Auto | `Y` khi WON | Auto |
+| `CLOSEDATE` | Ngày đóng | Auto | Ngày chuyển WON | Auto |
+| `OPPORTUNITY` | Giá trị Deal | **Xác nhận** | Số tiền cuối cùng theo HĐ | Phải khớp tổng Invoice |
+
+#### Khi có nhiều đợt thanh toán (Partial Payment)
+
+| Bitrix Field | Tên hiển thị | Bắt buộc | Cách điền | Ghi chú |
+|-------------|-------------|----------|-----------|---------|
+| `STAGE_ID` | Stage | Tùy chọn | `PARTIAL_PAYMENT` | Nếu chưa TT hết |
+| `UF_CRM_CONTRACT_AMOUNT_INSTALLMENT` | Số tiền từng đợt | Nên có | Danh sách số tiền | Theo lịch HĐ |
+| `UF_CRM_CONTRACT_INSTALLMENT_DATE` | Ngày TT từng đợt | Nên có | Ngày hạn thanh toán | Theo lịch HĐ |
+
+#### Mẫu ghi chú COMMENTS bổ sung tại Bước 09
+
+```
+--- Thanh toán ---
+Đợt 1 (Bản quyền): [Số tiền] VND
+  - Ngày gửi Invoice: [DD/MM/YYYY]
+  - Ngày nhận tiền: [DD/MM/YYYY]
+  - Hóa đơn VAT: #[Số] - [DD/MM/YYYY]
+
+Đợt 2 (Triển khai GĐ1): [Số tiền] VND
+  - Biên bản nghiệm thu: [DD/MM/YYYY]
+  - Ngày gửi Invoice: [DD/MM/YYYY]
+  - Ngày nhận tiền: [DD/MM/YYYY]
+  - Hóa đơn VAT: #[Số] - [DD/MM/YYYY]
+
+Tổng đã thu: [Số tiền] / [Tổng HĐ] VND
+Còn lại: [Số tiền] VND
+
+Bàn giao P. Triển khai: [DD/MM/YYYY]
+```
+
+> **Lưu ý cho AI/Automation:** Khi `STAGE_ID` = `WON`, kiểm tra `UF_CRM_REFERRER` để gửi email thông báo đối tác. `OPPORTUNITY` cuối cùng phải khớp với tổng giá trị Invoice. Deal chỉ chuyển WON khi đợt 1 đã thanh toán — điều kiện bắt buộc trước Kick-off.
 
 ### Luồng thanh toán tự động
 

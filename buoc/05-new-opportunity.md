@@ -61,15 +61,42 @@ DEAL STAGE 1: NEW OPPORTUNITY
 |----------|----------|
 | Tạo Deal | Từ Good Lead, stage: New Opportunity |
 | Liên kết | Deal ↔ Contact ↔ Company |
-| Deal fields | Title, Giá trị dự kiến, Nguồn, Modules |
+| Deal fields | Xem bảng bên dưới |
 | Activity | Ghi nhận ngày convert Lead → Deal |
 
-### Cách đặt tên Deal
+### Deal fields — Tạo mới tại Bước 05
+
+| Bitrix Field | Tên hiển thị | Bắt buộc | Cách điền | Ví dụ |
+|-------------|-------------|----------|-----------|-------|
+| `TITLE` | Tiêu đề Deal | **YES** | `[Công ty] - [Nhu cầu] - [MM/YYYY]` | "ABC Corp - CRM Sales - 02/2026" |
+| `STAGE_ID` | Stage | **YES** | `NEW` | New Opportunity |
+| `COMPANY_ID` | Công ty | **YES** | Link Company từ Lead | Auto khi convert Lead |
+| `CONTACT_ID` | Liên hệ chính | **YES** | Link Contact từ Lead | Auto khi convert Lead |
+| `ASSIGNED_BY_ID` | Người phụ trách | **YES** | Nhân sự Deal pipeline | ID nhân viên |
+| `OPPORTUNITY` | Giá trị dự kiến | Nên có | Số tiền VND ước tính | 50000000 |
+| `CURRENCY_ID` | Tiền tệ | Auto | Mặc định | `VND` |
+| `SOURCE_ID` | Nguồn | Nên có | Copy từ Lead | `FACEBOOK`, `RECOMMENDATION`... |
+| `LEAD_ID` | Lead gốc | Auto | Liên kết Lead đã convert | Lead #ID |
+| `UF_CRM_REFERRER` | Referrer (Partner) | Nếu có | Copy từ Lead `UF_CRM_REFERRER` | Contact đối tác |
+| `UF_CRM_SERVICE_TYPE` | Loại dịch vụ | Nên có | Chọn từ dropdown | Tùy loại triển khai |
+| `COMMENTS` | Ghi chú | **YES** | Tóm tắt BANT + brief nhu cầu | Xem mẫu bên dưới |
+
+#### Mẫu ghi chú COMMENTS khi tạo Deal
 
 ```
-[Tên công ty] - [Nhu cầu chính] - [Tháng/Năm]
-Ví dụ: ABC Corp - CRM Sales - 02/2026
+--- Chuyển từ Lead #[ID] ---
+BANT:
+- Budget: [Tóm tắt ngân sách]
+- Authority: [Người QĐ] - [Chức vụ]
+- Need: [Nhu cầu chính]
+- Timeline: [Thời gian triển khai dự kiến]
+
+Modules đề xuất: [CRM, HR, Project...]
+Scope sơ bộ: [Số user, phòng ban]
+Next actions: [Danh sách]
 ```
+
+> **Lưu ý cho AI/Automation:** `LEAD_ID` tự động liên kết khi convert Lead. `UF_CRM_REFERRER` phải copy thủ công từ Lead sang Deal nếu có đối tác giới thiệu. `TITLE` dùng format chuẩn để dễ tìm kiếm và phân loại.
 
 ---
 

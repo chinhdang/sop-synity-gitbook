@@ -105,6 +105,37 @@ PHASE 4-5: PRE-MEETING + MEETING (Gộp)
 | Tạo Task | Cho từng next action đã chốt (assign đúng người) |
 | Email đối tác | Thông báo Book Meeting cho Referer (nếu có) |
 
+### Lead fields — Cập nhật tại Bước 03
+
+| Bitrix Field | Tên hiển thị | Bắt buộc | Cách điền | Ghi chú |
+|-------------|-------------|----------|-----------|---------|
+| `STATUS_ID` | Stage | **YES** | Chuyển sang `PROCESSED` | Book Meeting |
+| `OPPORTUNITY` | Giá trị ước tính | Nên có | Số tiền VND ước tính từ BANT | vd: 50000000 |
+| `CURRENCY_ID` | Tiền tệ | Auto | Mặc định `VND` | |
+| `COMMENTS` | Ghi chú | **Cập nhật** | Bổ sung thêm vào ghi chú cũ | Xem mẫu bên dưới |
+
+#### Mẫu ghi chú COMMENTS tại Bước 03
+
+```
+--- Meeting [DD/MM/YYYY] ---
+Người QĐ: [Tên] - [Chức vụ]
+Người chi tiền: [Tên] - [Chức vụ] (nếu khác người QĐ)
+
+BANT chi tiết:
+- Budget: [Có/Chưa có] - [Ghi chú]
+- Authority: [Người QĐ có mặt? Quy trình approve?]
+- Need: [Nhu cầu chính phù hợp giải pháp SYNITY?]
+- Timeline: [Khi nào muốn triển khai?]
+
+Next Actions:
+1. [Hành động] - [Ai] - [Deadline]
+2. [Hành động] - [Ai] - [Deadline]
+
+Đánh giá sơ bộ: [Qualified / Cần follow-up / Không qualified]
+```
+
+> **Lưu ý cho AI/Automation:** `OPPORTUNITY` giúp forecast doanh thu. Nếu KH đề cập budget trong meeting, cập nhật ngay. `COMMENTS` là nguồn context chính cho Bước 04 đánh giá qualification.
+
 ---
 
 ## 📥 Input

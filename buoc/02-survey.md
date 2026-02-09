@@ -69,11 +69,44 @@ Google Form submit → Bitrix Automation (match SĐT)
 
 ### Thủ công (P. Chuyển đổi kiểm tra & bổ sung)
 
-| Thực thể | Trường cần có | Cách bổ sung nếu thiếu |
-|----------|---------------|------------------------|
-| **Lead** | Tên, SĐT, Email, Nguồn đến, Nhu cầu | Đã có từ Bước 01 + Form |
-| **Contact** | Họ tên, Email, SĐT, Giới tính, Nguồn đến, Facebook cá nhân | Hỏi KH qua Zalo |
-| **Company** | Tên công ty, MST, Địa chỉ pháp lý, Địa chỉ nhận hồ sơ | Tra masothue.com |
+#### Lead — Kiểm tra & cập nhật sau form
+
+| Bitrix Field | Tên hiển thị | Bắt buộc | Nguồn dữ liệu | Ghi chú |
+|-------------|-------------|----------|---------------|---------|
+| `TITLE` | Tiêu đề Lead | **YES** | Bước 01 | Đã có |
+| `HONORIFIC` | Danh xưng | **YES** | Bước 01 | Đã có |
+| `NAME` | Tên | **YES** | Bước 01 / Form | Đã có |
+| `POST` | Chức vụ | **YES** | Google Form | Cập nhật nếu form có |
+| `PHONE` | SĐT | **YES** | Bước 01 | Đã có — dùng match form |
+| `EMAIL` | Email | **YES** | Google Form (auto) | Kiểm tra đã cập nhật |
+| `COMPANY_TITLE` | Tên công ty | **YES** | Google Form (auto) | Kiểm tra đã cập nhật |
+| `COMPANY_ID` | Link Company | **YES** | Auto tạo từ form | Kiểm tra liên kết |
+| `CONTACT_ID` | Link Contact | **YES** | Auto tạo từ form | Kiểm tra liên kết |
+| `SOURCE_ID` | Nguồn đến | **YES** | Bước 01 | Đã có |
+| `COMMENTS` | Ghi chú | **YES** | Nhân sự review | Ghi BANT sơ bộ + insight website/FB |
+| `OPPORTUNITY` | Giá trị ước tính | Nên có | Đánh giá BANT | Nếu KH đề cập budget |
+| `STATUS_ID` | Stage | **Auto** | Automation | `IN_PROCESS` (Submitted Form) |
+
+> **Lưu ý cho AI/Automation:** Sau khi Google Form submit, automation match theo `PHONE` để cập nhật Lead. Nếu match thất bại, nhân sự cần cập nhật thủ công và báo IT.
+
+#### Contact — Kiểm tra auto-created
+
+| Trường | Bắt buộc | Nguồn | Bổ sung nếu thiếu |
+|--------|----------|-------|-------------------|
+| Họ tên | **YES** | Google Form | Hỏi KH qua Zalo |
+| Email | **YES** | Google Form | Hỏi KH qua Zalo |
+| SĐT | **YES** | Google Form | Đã có từ Lead |
+| Chức vụ | **YES** | Google Form | Hỏi KH qua Zalo |
+| Facebook cá nhân | Nên có | Google Form / tra cứu | Tra Facebook |
+
+#### Company — Kiểm tra auto-created
+
+| Trường | Bắt buộc | Nguồn | Bổ sung nếu thiếu |
+|--------|----------|-------|-------------------|
+| Tên công ty | **YES** | Google Form | Hỏi KH |
+| MST | **YES** | Google Form / masothue.com | Tra masothue.com |
+| Địa chỉ pháp lý | Nên có | masothue.com | Tra masothue.com |
+| Website | Nên có | Google Form / tra cứu | Tra Google |
 
 ---
 

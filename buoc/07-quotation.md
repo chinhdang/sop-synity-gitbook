@@ -82,6 +82,44 @@ PHASE 6: QUOTATION (Báo giá)
 | Email đối tác | Thông báo đã gửi báo giá cho Referer (nếu có) |
 | Deal Lost | Stage → LOST + lý do + email đối tác Referer (nếu có) |
 
+### Deal fields — Cập nhật tại Bước 07
+
+| Bitrix Field | Tên hiển thị | Bắt buộc | Cách điền | Ghi chú |
+|-------------|-------------|----------|-----------|---------|
+| `STAGE_ID` | Stage | **YES** | `PREPAYMENT_INVOICE` | Quotation |
+| `OPPORTUNITY` | Giá trị Deal | **YES** | Số tiền chính xác theo báo giá | Phải khớp với Estimate |
+| `TAX_VALUE` | Thuế VAT | Nên có | Tính 8-10% trên OPPORTUNITY | Auto nếu cấu hình |
+| `UF_CRM_ESTIMATE` | Báo giá liên kết | **YES** | Link Estimate đã tạo | ID Estimate |
+| `UF_CRM_BUDGET` | Ngân sách KH | Nên có | Ngân sách KH đề cập | Đối chiếu với OPPORTUNITY |
+| `COMMENTS` | Ghi chú | **Cập nhật** | Ngày gửi, hạn, ưu đãi | Xem mẫu bên dưới |
+
+#### Khi Deal Lost (áp dụng ở bất kỳ bước nào)
+
+| Bitrix Field | Tên hiển thị | Bắt buộc | Cách điền |
+|-------------|-------------|----------|-----------|
+| `STAGE_ID` | Stage | **YES** | `LOSE` (Deal lost) |
+| `UF_CRM_LOST_REASON` | Lý do Lost | **YES** | Chọn từ dropdown |
+| `COMMENTS` | Ghi chú | **YES** | Chi tiết lý do, bài học |
+| `UF_CRM_REFERRER` | Referrer | Kiểm tra | Nếu có → gửi email thông báo đối tác |
+
+#### Mẫu ghi chú COMMENTS bổ sung tại Bước 07
+
+```
+--- Báo giá [DD/MM/YYYY] ---
+Estimate #: [Số báo giá]
+Ngày gửi: [DD/MM/YYYY]
+Ngày hết hạn: [DD/MM/YYYY] (7 ngày)
+Ưu đãi: [Mô tả ưu đãi + deadline]
+Giá trị BG: [Số tiền] VND (chưa VAT)
+
+Follow-up:
+- Ngày 3: [Kết quả]
+- Ngày 5: [Kết quả]
+- Ngày 7: [Kết quả / Hết hạn]
+```
+
+> **Lưu ý cho AI/Automation:** `UF_CRM_ESTIMATE` liên kết Deal với Estimate. Khi Deal Lost, luôn kiểm tra `UF_CRM_REFERRER` để thông báo đối tác. `UF_CRM_LOST_REASON` là bắt buộc khi chuyển sang LOSE.
+
 ---
 
 ## 📥 Input
