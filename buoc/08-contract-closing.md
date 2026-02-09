@@ -26,13 +26,35 @@ PHASE 7: CONTRACT (Hợp đồng)
 
 ---
 
+## ⚖️ Nguyên tắc: Luôn tách 2 Hợp đồng
+
+> **Quy định:** Mọi deal đều có **2 hợp đồng riêng biệt**, không gộp chung.
+
+| # | Hợp đồng | Phạm vi | Bắt buộc |
+|---|----------|---------|----------|
+| 1 | **HĐ Bản quyền Bitrix24** | Cung cấp license phần mềm | **Luôn có** (kể cả KH chỉ mua bản quyền) |
+| 2 | **HĐ Dịch vụ Triển khai** | Dịch vụ tư vấn, cấu hình, training | Có khi KH mua dịch vụ triển khai |
+
+### Lý do tách hợp đồng
+
+1. **Không phải KH nào cũng mua cả hai:** Có KH chỉ mua bản quyền → cần HĐ riêng hoàn chỉnh.
+2. **Hoàn thiện hồ sơ pháp lý:** Mỗi HĐ bản quyền có bộ hồ sơ đầy đủ cho thanh tra/kiểm tra:
+   - Báo giá
+   - Hợp đồng
+   - Đề nghị thanh toán
+   - Biên bản bàn giao bản quyền
+3. **Loại rủi ro bồi thường:** HĐ dịch vụ triển khai có điều khoản bồi thường. Nếu gộp bản quyền vào → SYNITY phải bồi thường cả giá trị license (không hợp lý vì triển khai không làm tổn hại phần mềm). Tách riêng = loại rủi ro phần không chịu trách nhiệm.
+
+---
+
 ## ✅ Nhân sự thực hiện
 
 ### A. Soạn hợp đồng
 
-- [ ] Soạn **Hợp đồng Bản quyền** Bitrix24 (từ template)
-- [ ] Soạn **Hợp đồng Triển khai** (từ template)
+- [ ] Soạn **HĐ Bản quyền Bitrix24** (từ template) — luôn có
+- [ ] Soạn **HĐ Dịch vụ Triển khai** (từ template) — nếu KH mua dịch vụ
 - [ ] Điền thông tin KH từ CRM (MST, địa chỉ pháp lý, người đại diện)
+- [ ] Đảm bảo 2 HĐ có **số HĐ riêng biệt**
 - [ ] Review nội bộ với Chinh
 
 ### B. Buổi Review Hợp đồng
@@ -48,16 +70,24 @@ PHASE 7: CONTRACT (Hợp đồng)
 
 ### C. Ký kết
 
+> **Nguyên tắc:** eSign giúp xúc tiến nhanh để tiến hành thanh toán. **HĐ ký tay đóng dấu** (bản cứng có dấu đỏ) mới là bản pháp lý chính thức.
+
 - [ ] Gửi HĐ chính thức (deadline ký: **7 ngày**)
-- [ ] Gửi qua eSign (Bitrix24) hoặc bản cứng
-- [ ] Theo dõi tiến độ ký
-- [ ] KH ký → upload HĐ đã ký vào CRM
+- [ ] **eSign (Bitrix24):** Gửi eSign cho KH ký nhanh → tiến hành thu tiền bản quyền trước
+  - eSign **KHÔNG thay thế** HĐ ký tay đóng dấu
+- [ ] **HĐ ký tay đóng dấu (bản cứng):** Song song chuẩn bị bản cứng
+  - In HĐ → ký tay → đóng dấu (cả 2 bên)
+  - HĐ bản cứng có dấu đỏ = **bản pháp lý chính thức**
+- [ ] Theo dõi tiến độ ký cả 2 hình thức
+- [ ] Upload vào CRM: eSign + bản scan HĐ ký tay đóng dấu
 
 ### D. Thu tiền bản quyền trước (chiến thuật giữ khách)
 
-- [ ] **Thu tiền BẢN QUYỀN trước** (tách riêng khỏi phí triển khai)
-- [ ] Mục đích: KH đã "đầu tư" → khó bỏ giữa chừng
-- [ ] Tạo Invoice bản quyền trong CRM
+> **Chiến lược:** Thu tiền bản quyền TRƯỚC khi bắt đầu triển khai. KH đã "đầu tư" → khó bỏ giữa chừng.
+
+- [ ] Sau khi KH eSign HĐ bản quyền → chuyển sang **Bước 09** để thu tiền
+- [ ] **KHÔNG bắt đầu triển khai** khi chưa thu đủ tiền bản quyền
+- [ ] Chi tiết quy trình thu tiền + kích hoạt: Xem [Bước 09 — Luồng Bản quyền](09-payment.md#a-luồng-bản-quyền-bitrix24)
 
 ### E. Xác nhận Email & Tên miền
 
@@ -78,10 +108,10 @@ PHASE 7: CONTRACT (Hợp đồng)
 | Thao tác | Chi tiết |
 |----------|----------|
 | Cập nhật Deal stage | → CONTRACT |
-| Upload HĐ đã ký | Attach vào Deal |
-| Tạo Invoice | Invoice bản quyền Bitrix24 |
+| Upload HĐ bản quyền | eSign + bản scan ký tay đóng dấu → attach vào Deal |
+| Upload HĐ triển khai | eSign + bản scan ký tay đóng dấu → attach vào Deal (nếu có) |
 | eSign | Xác nhận email & tên miền |
-| Ghi chú Deal | Ngày ký, Người ký, Điều khoản đặc biệt |
+| Ghi chú Deal | Số HĐ (2 số riêng biệt), Ngày ký, Người ký, Điều khoản đặc biệt |
 
 ### Deal fields — Cập nhật tại Bước 08
 
