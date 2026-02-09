@@ -25,7 +25,7 @@ DEAL STAGE 1: NEW OPPORTUNITY
 
 ---
 
-## ✅ Checklist hành động
+## ✅ Nhân sự thực hiện
 
 ### A. Tạo Deal từ Good Lead
 

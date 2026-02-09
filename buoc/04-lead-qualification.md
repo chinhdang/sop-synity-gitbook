@@ -27,7 +27,7 @@ PHASE 6: QUALIFICATION (Phân loại)
 
 ---
 
-## ✅ Checklist hành động
+## ✅ Nhân sự thực hiện
 
 ### A. Đánh giá sau meeting
 
@@ -99,16 +99,51 @@ PHASE 6: QUALIFICATION (Phân loại)
 
 > **Contact Lifecycle:** Khi Lead → Junk, cập nhật Contact `UF_CRM_CONTACT_LIFECYCLE_STAGE` = `1024` (**Unqualified**). Xem [Contact Lifecycle Flow](../crm/contact-fields.md#lifecycle-flow).
 
-### Automation (SLA 14 ngày)
+---
+
+## ⚡ Automation Rules (Bitrix24 tự động)
+
+> Các Automation Rule dưới đây **chạy tự động** khi điều kiện trigger được kích hoạt. Nhân sự **không cần thao tác** — chỉ cần biết để theo dõi.
+
+### AR-1: Ngày 10 — Cảnh báo sắp hết hạn SLA
+
+| Thuộc tính | Giá trị |
+|-----------|---------|
+| **Entity** | Lead |
+| **Trigger** | Lead tồn tại 10 ngày kể từ ngày tạo, chưa close |
+| **Action** | Gửi notification cho P. Chuyển đổi |
+| Nội dung | "Lead [Tên KH] sắp hết hạn 14 ngày. Vui lòng close." |
+
+### AR-2: Ngày 14 — Auto chuyển Junk Lead
+
+| Thuộc tính | Giá trị |
+|-----------|---------|
+| **Entity** | Lead |
+| **Trigger** | Lead tồn tại 14 ngày kể từ ngày tạo, chưa close |
+| **Actions** | 1. Lead stage → `JUNK` (Junk Lead) |
+| | 2. `UF_CRM_JUNK_REASON` = "Không phản hồi (auto 14 ngày)" |
+
+### AR-3: Auto Junk → Thông báo quản lý
+
+| Thuộc tính | Giá trị |
+|-----------|---------|
+| **Entity** | Lead |
+| **Trigger** | Lead chuyển stage `JUNK` bởi Automation (AR-2) |
+| **Action** | Gửi notification cho quản lý |
+| Nội dung | "Lead [Tên KH] đã auto Junk do quá 14 ngày không close." |
+
+### Luồng SLA 14 ngày tổng hợp
 
 ```
-Automation Rules:
-├── Ngày 10: Gửi cảnh báo cho P. Chuyển đổi
-│   └── "Lead [Tên KH] sắp hết hạn 14 ngày. Vui lòng close."
-├── Ngày 14: Auto chuyển Junk Lead
-│   ├── Lead stage → Junk Lead
-│   └── Lý do: "Không phản hồi (auto 14 ngày)"
-└── Notification: Gửi cho quản lý khi auto Junk
+NHÂN SỰ                              AUTOMATION RULE
+────────                              ───────────────
+Tạo Lead (Bước 01) ──────────►
+                                      Ngày 10 ──► AR-1: Cảnh báo P. Chuyển đổi
+Nhận cảnh báo, ưu tiên close ◄────────┘
+Close Lead (Good/Junk) ──────►
+                                      Ngày 14 (nếu chưa close):
+                                      ──► AR-2: Auto Junk + Lý do
+                                      ──► AR-3: Thông báo quản lý
 ```
 
 ---

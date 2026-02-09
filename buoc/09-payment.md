@@ -28,7 +28,7 @@ Từ PHASE 11 (PAYMENT):
 
 ---
 
-## ✅ Checklist hành động
+## ✅ Nhân sự thực hiện
 
 ### A. Thu tiền đợt đầu (trước Kick-off)
 
@@ -72,8 +72,6 @@ Từ PHASE 11 (PAYMENT):
 |----------|----------|
 | Tạo Invoice | Cho từng đợt thanh toán |
 | Cập nhật Deal stage | → PAYMENT → WON |
-| Automation | Email nhắc thanh toán tự động |
-| Tạo Task | Nhắc thủ công nếu chưa TT sau 4h |
 | Ghi chú Deal | Lịch sử thanh toán từng đợt |
 | Email đối tác | Thông báo KH đã thanh toán lần đầu cho Referer (nếu có) |
 
@@ -91,18 +89,45 @@ Từ PHASE 11 (PAYMENT):
 
 **Partial Payment:** Dùng `PARTIAL_PAYMENT` nếu chưa thanh toán hết.
 
-### Luồng thanh toán tự động
+---
+
+## ⚡ Automation Rules (Bitrix24 tự động)
+
+> Các Automation Rule dưới đây **chạy tự động** khi điều kiện trigger được kích hoạt. Nhân sự **không cần thao tác** — chỉ cần biết để theo dõi.
+
+### AR-1: Invoice đến hạn → Auto email nhắc thanh toán
+
+| Thuộc tính | Giá trị |
+|-----------|---------|
+| **Entity** | Invoice / Deal |
+| **Trigger** | Invoice đến hạn thanh toán |
+| **Action** | Gửi email nhắc thanh toán tự động cho KH |
+| Template | Xem [Template email nhắc thanh toán](#-template-email-nhắc-thanh-toán) |
+
+### AR-2: Chưa thanh toán sau 4h → Tạo Task nhắc thủ công
+
+| Thuộc tính | Giá trị |
+|-----------|---------|
+| **Entity** | Invoice / Deal |
+| **Trigger** | KH chưa thanh toán sau 4 giờ kể từ email nhắc (AR-1) |
+| **Action** | Tạo Task cho P. Chuyển đổi |
+| Task name | "Nhắc thanh toán [Tên KH] - Invoice #[số]" |
+| Responsible | P. Chuyển đổi |
+| Nội dung | Gọi điện / nhắn Zalo nhắc KH thanh toán |
+
+### Luồng thanh toán tổng hợp
 
 ```
-Invoice tạo → Gửi email KH
-      ↓
-Đến hạn → Auto email nhắc
-      ↓
-Chưa TT sau 4h → Tạo Task nhắc thủ công
-      ↓
-KH thanh toán → Kế toán xác nhận → Xuất HĐ VAT (MISA)
-      ↓
-Gửi HĐ điện tử cho KH
+NHÂN SỰ                              AUTOMATION RULE
+────────                              ───────────────
+Tạo Invoice ──────────────────►
+Gửi thông tin TT cho KH ─────►
+                                      Đến hạn ──► AR-1: Auto email nhắc
+                                      Chưa TT sau 4h ──► AR-2: Tạo Task
+Nhận Task, gọi/nhắn KH ◄─────────────┘
+Xác nhận tiền về ─────────────►
+Kế toán xuất HĐ VAT (MISA) ──►
+Gửi HĐ điện tử cho KH ──────►
 ```
 
 ---

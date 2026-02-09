@@ -27,7 +27,7 @@ DEAL STAGE 2: PROPOSAL & SOLUTION
 
 ---
 
-## ✅ Checklist hành động
+## ✅ Nhân sự thực hiện
 
 ### A. Phát triển giải pháp
 

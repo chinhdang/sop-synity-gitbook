@@ -25,7 +25,7 @@ PHASE 1-2: AWARENESS + INTEREST
 
 ---
 
-## ✅ Checklist hành động
+## ✅ Nhân sự thực hiện
 
 ### A. Tiếp nhận KH mới
 

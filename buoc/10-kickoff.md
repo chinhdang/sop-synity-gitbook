@@ -26,7 +26,7 @@ PHASE 8: KICKOFF (Khởi động dự án)
 
 ---
 
-## ✅ Checklist hành động
+## ✅ Nhân sự thực hiện
 
 ### A. Chuẩn bị trước Kick-off (P. Triển khai)
 

@@ -23,7 +23,7 @@ PHASE 12: CLOSING (Kết thúc dự án)
 
 ---
 
-## ✅ Checklist hành động
+## ✅ Nhân sự thực hiện
 
 ### A. Nghiệm thu cuối cùng
 

@@ -26,7 +26,7 @@ PHASE 7: CONTRACT (Hợp đồng)
 
 ---
 
-## ✅ Checklist hành động
+## ✅ Nhân sự thực hiện
 
 ### A. Soạn hợp đồng
 

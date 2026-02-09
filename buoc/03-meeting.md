@@ -30,7 +30,7 @@ PHASE 4-5: PRE-MEETING + MEETING (Gộp)
 
 ---
 
-## ✅ Checklist hành động
+## ✅ Nhân sự thực hiện
 
 ### A. Chuẩn bị meeting
 

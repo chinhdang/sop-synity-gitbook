@@ -34,7 +34,7 @@ PHASE 10: TRACKING & UAT (Theo dõi & Nghiệm thu)
 
 ---
 
-## ✅ Checklist hành động
+## ✅ Nhân sự thực hiện
 
 ### 11a. Training module giao tiếp (ngay sau Kick-off)
 

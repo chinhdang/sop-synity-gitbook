@@ -27,7 +27,7 @@ PHASE 3: SURVEY (Khảo sát)
 
 ---
 
-## ✅ Checklist hành động
+## ✅ Nhân sự thực hiện
 
 ### A. Sau khi KH điền form
 
@@ -54,33 +54,70 @@ PHASE 3: SURVEY (Khảo sát)
 
 ## 💾 Thao tác CRM (Bitrix24)
 
-### Tự động (Automation khi KH submit Google Form)
-
-```
-Google Form submit → Bitrix Automation (match SĐT)
-├── Cập nhật Lead fields từ form data
-├── Tạo Contact (nếu chưa có)
-├── Tạo Company (nếu chưa có)
-├── Liên kết Contact ↔ Company ↔ Lead
-├── Gửi Email xác nhận cho KH
-├── Gửi ZNS xác nhận cho KH
-└── Lead stage → Submitted Form
-```
-
-### Thủ công (P. Chuyển đổi kiểm tra & bổ sung)
-
 > **Chi tiết trường thông tin:**
 > - [Lead Fields — Bước 02](../crm/lead-fields.md#bước-02--survey-in_process)
 > - [Contact Fields](../crm/contact-fields.md#contact-kh--tạo-tại-bước-02-auto-từ-google-form)
 > - [Company Fields](../crm/company-fields.md)
 
-**Kiểm tra sau form submit:**
+**Kiểm tra sau form submit (thủ công):**
 - Lead: `EMAIL`, `COMPANY_TITLE`, `COMPANY_ID`, `CONTACT_ID` đã auto cập nhật?
 - Contact: Họ tên, Email, SĐT, Chức vụ đã đủ?
 - Company: Tên công ty, MST (tra masothue.com nếu thiếu)
 - Bổ sung `COMMENTS`: BANT sơ bộ + insight website/FB KH
 
 > **Contact Lifecycle:** Khi Contact KH được tạo (auto hoặc thủ công), set `UF_CRM_CONTACT_LIFECYCLE_STAGE` = `48` (**SQL** — Sales Qualified Lead). Xem [Contact Lifecycle Flow](../crm/contact-fields.md#lifecycle-flow).
+
+---
+
+## ⚡ Automation Rules (Bitrix24 tự động)
+
+> Các Automation Rule dưới đây **chạy tự động** khi điều kiện trigger được kích hoạt. Nhân sự **không cần thao tác** — chỉ cần biết để theo dõi và kiểm tra kết quả.
+
+### AR-1: Google Form submit → Cập nhật Lead
+
+| Thuộc tính | Giá trị |
+|-----------|---------|
+| **Entity** | Lead |
+| **Trigger** | KH submit Google Form (match SĐT trong Lead) |
+| **Actions** | 1. Cập nhật Lead fields từ form data |
+| | 2. Tạo Contact (nếu chưa có) |
+| | 3. Tạo Company (nếu chưa có) |
+| | 4. Liên kết Contact ↔ Company ↔ Lead |
+| | 5. Lead stage → `IN_PROCESS` (Submitted Form) |
+
+### AR-2: Google Form submit → Gửi Email xác nhận
+
+| Thuộc tính | Giá trị |
+|-----------|---------|
+| **Entity** | Lead |
+| **Trigger** | Lead stage → `IN_PROCESS` (Submitted Form) |
+| **Action** | Gửi Email xác nhận cho KH |
+| Template | Xác nhận đã nhận form khảo sát |
+
+### AR-3: Google Form submit → Gửi ZNS xác nhận
+
+| Thuộc tính | Giá trị |
+|-----------|---------|
+| **Entity** | Lead |
+| **Trigger** | Lead stage → `IN_PROCESS` (Submitted Form) |
+| **Action** | Gửi ZNS (Zalo Notification Service) xác nhận cho KH |
+| Template | Xác nhận đã nhận form khảo sát |
+
+### Luồng tự động tổng hợp
+
+```
+NHÂN SỰ                              AUTOMATION RULE
+────────                              ───────────────
+Gửi Google Form cho KH ──────►
+                                      KH submit form
+                                      ──► AR-1: Match SĐT → Cập nhật Lead
+                                           + Tạo Contact + Company
+                                           + Lead stage → Submitted Form
+                                      ──► AR-2: Gửi Email xác nhận
+                                      ──► AR-3: Gửi ZNS xác nhận
+Kiểm tra data đã cập nhật ◄───────────┘
+Bổ sung MST, BANT, insight ──────►
+```
 
 ---
 
