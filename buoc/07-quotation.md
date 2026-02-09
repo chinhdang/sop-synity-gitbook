@@ -30,17 +30,11 @@ PHASE 6: QUOTATION (Báo giá)
 
 ---
 
-## ✅ Checklist hành động
+## ✅ Nhân sự thực hiện
 
 ### A. Tạo Estimate trong Bitrix24
 
 - [ ] Tạo **Estimate** từ Deal (CRM → Deal → tạo Estimate)
-- [ ] Hệ thống tự động sinh `QUOTE_NUMBER` (VD: `EST.94.25`)
-- [ ] Thêm **Products** vào Estimate:
-  - Từng module rõ ràng, không gộp chung
-  - Áp dụng **nền giá cố định** từ Product Catalog
-  - Thiết lập discount nếu có ưu đãi
-  - VAT 8% (cấu hình sẵn)
 - [ ] Điền thêm UF fields nếu cần:
   - `UF_CRM_QUOTE_NUMBER_OF_PAYMENTS` — Số đợt thanh toán
   - `UF_CRM_QUOTE_PAYMENT_CYCLE` — Chu kỳ thanh toán
@@ -50,7 +44,7 @@ PHASE 6: QUOTATION (Báo giá)
 
 ### B. Tạo file Excel báo giá (ngoài Bitrix)
 
-- [ ] Lấy `QUOTE_NUMBER` từ Estimate vừa tạo
+- [ ] Lấy `QUOTE_NUMBER` từ Estimate vừa tạo (auto sinh, VD: `EST.94.25`)
 - [ ] Kết hợp thông tin KH từ Deal + Contact + Company:
   - Tên công ty, địa chỉ, MST (Company)
   - Tên người liên hệ, chức vụ, email (Contact)
@@ -58,15 +52,17 @@ PHASE 6: QUOTATION (Báo giá)
 - [ ] Tạo file Excel báo giá theo **template chuẩn** (Drive)
 - [ ] Ghi `QUOTE_NUMBER` lên file báo giá
 
-### C. Estimate → Sent (Automation)
+### C. Chuyển Estimate → Sent & Hoàn thành Task Flow
 
 - [ ] Chuyển Estimate stage → **Sent** (`SENT`)
-- [ ] **Automation tự động tạo Task Flow:**
-  - Tên task: "Thêm Products vào Estimate `[QUOTE_NUMBER]`"
-  - Giao cho: RP (Responsible Person — hiện tại là Chinh)
-  - Deadline: **4 giờ**
-  - Nội dung: Thêm products vào Estimate giống Excel báo giá đã tạo
-  - Khi hoàn thành task → Estimate sẵn sàng, products khớp với file Excel
+  - *→ Automation Rule tự động tạo Task Flow (xem section Automation bên dưới)*
+- [ ] RP (Chinh) nhận Task Flow, thêm **Products** vào Estimate trong **4 giờ**:
+  - Từng module rõ ràng, không gộp chung
+  - Áp dụng **nền giá cố định** từ Product Catalog
+  - Thiết lập discount nếu có ưu đãi
+  - VAT 8% (cấu hình sẵn)
+  - Products trong Estimate phải **khớp với file Excel** đã tạo
+- [ ] Hoàn thành Task Flow khi đã thêm xong products
 
 ### D. Gửi báo giá cho KH
 
@@ -76,9 +72,7 @@ PHASE 6: QUOTATION (Báo giá)
 - [ ] **Nếu KH từ đối tác giới thiệu:** Gửi email thông báo cho đối tác (xem Deal → UF Referer)
   - Nội dung: *(Sẽ bổ sung sau)*
 
-### E. Tạo Collab & Upload PDF (chỉ lần báo giá đầu tiên)
-
-> **Chỉ áp dụng khi gửi báo giá lần đầu cho KH này.** Các lần báo giá sau chỉ upload thêm PDF vào Collab đã có.
+### E. Tạo Collab & Upload PDF
 
 - [ ] **Nếu đây là báo giá đầu tiên:**
   1. RP (Chinh) tạo **Collab** mới: `SYNITY x [Tên công ty KH]`
@@ -102,41 +96,26 @@ PHASE 6: QUOTATION (Báo giá)
 > **B2B:** Quá trình đàm phán giá thường phức tạp, có thể tạo nhiều báo giá. Mỗi Estimate = 1 phiên bản báo giá.
 
 - [ ] **KH đồng ý báo giá:**
-  1. Chuyển Estimate → **Approved** (`APPROVED`)
-  2. Automation tự động copy Products từ Estimate → Deal Products
-  3. Cập nhật `OPPORTUNITY` trên Deal khớp với Estimate đã Approved
+  1. Nhân sự chuyển Estimate → **Approved** (`APPROVED`)
+  2. *→ Automation Rule tự động copy Products từ Estimate → Deal Products*
+  3. Nhân sự cập nhật `OPPORTUNITY` trên Deal khớp với Estimate
   4. Chuyển sang Bước 08 (Contract)
 
 - [ ] **KH từ chối / yêu cầu sửa báo giá:**
-  1. Chuyển Estimate hiện tại → **Declined** (`DECLAINED`)
+  1. Nhân sự chuyển Estimate hiện tại → **Declined** (`DECLAINED`)
   2. Tạo **Estimate MỚI** từ Deal
   3. Điều chỉnh Products / giá / scope theo đàm phán
   4. Lặp lại từ bước A (tạo file Excel mới, gửi lại)
 
 - [ ] **KH không phản hồi sau deadline:**
-  1. Chuyển Estimate → **Declined** (`DECLAINED`)
+  1. Nhân sự chuyển Estimate → **Declined** (`DECLAINED`)
   2. Đề xuất voucher bảo lưu cho KH
 
 - [ ] **KH từ chối hoàn toàn / Deal Lost** → xem section H
 
-```
-Estimate Flow (có thể lặp nhiều vòng):
-
-  Tạo Estimate ──► Sent ──► Negotiation ──┐
-       ▲                                   │
-       │              KH từ chối / sửa     │
-       └── Tạo Estimate MỚI ◄── Declined ◄┘
-                                           │
-                         KH đồng ý         │
-                    Approved ◄─────────────┘
-                        │
-                        ▼
-              Auto copy Products → Deal
-```
-
 ### H. Deal Lost (áp dụng ở bất kỳ bước nào trong Deal pipeline)
 
-- [ ] Close tất cả Estimate đang mở → **Declined**
+- [ ] Nhân sự close tất cả Estimate đang mở → **Declined**
 - [ ] Chuyển Deal stage → **LOST** (`LOSE`)
 - [ ] Ghi chú lý do Lost vào Deal (`UF_CRM_LOST_REASON`)
 - [ ] **Nếu KH từ đối tác giới thiệu:** Gửi email thông báo cho đối tác (xem Deal → UF Referer)
@@ -147,38 +126,65 @@ Estimate Flow (có thể lặp nhiều vòng):
 
 ---
 
+## ⚡ Automation Rules (Bitrix24 tự động)
+
+> Các Automation Rule dưới đây **chạy tự động** khi điều kiện trigger được kích hoạt. Nhân sự **không cần thao tác** — chỉ cần biết để theo dõi.
+
+### AR-1: Estimate → Sent → Tạo Task Flow
+
+| Thuộc tính | Giá trị |
+|-----------|---------|
+| **Entity** | Estimate |
+| **Trigger** | Estimate chuyển stage `SENT` |
+| **Action** | Tạo Task Flow |
+| Task name | "Thêm Products vào Estimate `[QUOTE_NUMBER]`" |
+| Responsible | RP (hiện tại: Chinh) |
+| Deadline | **4 giờ** từ lúc trigger |
+| Description | "Thêm products vào Estimate khớp với file Excel báo giá đã tạo" |
+
+**Mục đích:** Đảm bảo Products trong Estimate khớp với file Excel. Estimate PHẢI có products trước khi → Approved (để AR-2 copy chính xác).
+
+### AR-2: Estimate → Approved → Copy Products vào Deal
+
+| Thuộc tính | Giá trị |
+|-----------|---------|
+| **Entity** | Estimate |
+| **Trigger** | Estimate chuyển stage `APPROVED` |
+| **Action** | Copy Product Rows từ Estimate → Deal Products |
+| Deal | Deal liên kết (`DEAL_ID`) |
+
+**Mục đích:** Khi KH đồng ý báo giá, products tự động đổ vào Deal — không cần nhân sự nhập lại.
+
+### Estimate Flow tổng hợp
+
+```
+NHÂN SỰ                              AUTOMATION RULE
+────────                              ───────────────
+Tạo Estimate ──────────────────►
+Tạo file Excel ────────────────►
+Chuyển Estimate → SENT ────────► AR-1: Tạo Task Flow (deadline 4h)
+                                       │
+Nhận Task, thêm Products ◄────────────┘
+Hoàn thành Task Flow ──────────►
+Gửi Excel cho KH ─────────────►
+Tạo Collab + Upload PDF ──────►
+Follow-up ─────────────────────►
+
+  ┌─ KH đồng ý:
+  │  Chuyển Estimate → APPROVED ──► AR-2: Copy Products → Deal
+  │
+  ├─ KH từ chối:
+  │  Chuyển Estimate → DECLINED ──►
+  │  Tạo Estimate MỚI ────────────► (lặp lại)
+  │
+  └─ Deal Lost:
+     Close Estimates → DECLINED ──►
+     Chuyển Deal → LOSE ──────────►
+```
+
+---
+
 ## 💾 Thao tác CRM (Bitrix24)
-
-| Thao tác | Chi tiết |
-|----------|----------|
-| Tạo Estimate | Từ Deal, thêm Products theo module |
-| Estimate stage | DRAFT → SENT → Negotiation → APPROVED / DECLINED |
-| **Auto Task Flow** | Estimate → SENT → auto tạo task "Thêm Products vào Estimate" (deadline 4h) |
-| Tạo file Excel | Lấy QUOTE_NUMBER + info KH → file báo giá ngoài Bitrix |
-| **Tạo Collab** | Lần đầu: RP tạo `SYNITY x [Tên KH]`, upload PDF vào `00. Bao gia` |
-| Cập nhật Deal stage | → `PREPAYMENT_INVOICE` (Quotation) |
-| Ghi chú Deal | QUOTE_NUMBER, ngày gửi, ngày hết hạn, ưu đãi |
-| Tạo Activity | "Follow-up báo giá lần [1/2/3]" |
-| Estimate Approved | Auto copy Products → Deal Products |
-| Estimate Declined | Close Estimate cũ → tạo Estimate MỚI (nếu tiếp tục đàm phán) |
-| Email đối tác | Thông báo đã gửi báo giá cho Referer (nếu có) |
-| Deal Lost | Close Estimates + Stage → LOST + lý do + email đối tác |
-
-### Automation: Task Flow khi Estimate → Sent
-
-```
-Estimate stage → SENT
-    │
-    ├── Auto tạo Task Flow:
-    │   ├── Tên: "Thêm Products vào Estimate [QUOTE_NUMBER]"
-    │   ├── Responsible: RP (hiện tại: Chinh)
-    │   ├── Deadline: 4 giờ từ lúc tạo
-    │   ├── Mô tả: "Thêm products vào Estimate khớp với file Excel báo giá"
-    │   └── Khi hoàn thành → Products trong Estimate = file Excel
-    │
-    └── Lưu ý: Estimate PHẢI có products trước khi → Approved
-        (để automation copy products vào Deal chính xác)
-```
 
 ### Deal fields — Cập nhật tại Bước 07
 
