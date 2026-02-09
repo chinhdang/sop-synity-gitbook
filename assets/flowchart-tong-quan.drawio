@@ -1,0 +1,225 @@
+<mxfile host="app.diagrams.net" modified="2026-02-09T00:00:00.000Z" agent="GitBook" version="24.0.0" type="device">
+  <diagram id="customer-journey" name="Hành Trình Khách Hàng SYNITY">
+    <mxGraphModel dx="1422" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="2200" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- ========== TITLE ========== -->
+        <mxCell id="title" value="&lt;b&gt;HÀNH TRÌNH KHÁCH HÀNG SYNITY&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;fontSize=20;fontColor=#1a1a2e;" vertex="1" parent="1">
+          <mxGeometry x="350" y="20" width="400" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="subtitle" value="&lt;i&gt;&quot;Đã chạm là phải xuất sắc&quot;&lt;/i&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;fontSize=12;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="420" y="55" width="260" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- ========== PHA 1: AWARENESS ========== -->
+        <mxCell id="pha1-group" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;arcSize=8;opacity=40;" vertex="1" parent="1">
+          <mxGeometry x="40" y="100" width="1020" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="pha1-label" value="&lt;b&gt;PHA 1: AWARENESS&lt;/b&gt;" style="text;html=1;align=left;verticalAlign=top;fontSize=14;fontColor=#b45309;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="55" y="108" width="200" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="step01" value="&lt;b&gt;01&lt;/b&gt;&lt;br&gt;Attraction" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;fontStyle=0;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="100" y="150" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="step01-desc" value="KH thấy bài viết Facebook" style="text;html=1;align=left;verticalAlign=middle;fontSize=10;fontColor=#666;" vertex="1" parent="1">
+          <mxGeometry x="270" y="160" width="180" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="decision1" value="KH&lt;br&gt;quan tâm?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="490" y="140" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="loop1" value="Không → Quay lại 01" style="text;html=1;align=left;verticalAlign=middle;fontSize=10;fontColor=#999;" vertex="1" parent="1">
+          <mxGeometry x="640" y="160" width="150" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Arrows Pha 1 -->
+        <mxCell id="a01-d1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#d6b656;strokeWidth=2;" edge="1" source="step01" target="decision1" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a-d1-loop" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#ccc;strokeWidth=1;dashed=1;" edge="1" source="decision1" target="loop1" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ========== PHA 2: CONSIDERATION ========== -->
+        <mxCell id="pha2-group" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;arcSize=5;opacity=40;" vertex="1" parent="1">
+          <mxGeometry x="40" y="310" width="1020" height="520" as="geometry" />
+        </mxCell>
+        <mxCell id="pha2-label" value="&lt;b&gt;PHA 2: CONSIDERATION&lt;/b&gt;" style="text;html=1;align=left;verticalAlign=top;fontSize=14;fontColor=#1e40af;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="55" y="318" width="250" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="step02" value="&lt;b&gt;02&lt;/b&gt;&lt;br&gt;New Opportunity" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="100" y="360" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="step02-desc" value="Tạo Zalo group, kết nối" style="text;html=1;align=left;verticalAlign=middle;fontSize=10;fontColor=#666;" vertex="1" parent="1">
+          <mxGeometry x="290" y="370" width="170" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="step03" value="&lt;b&gt;03&lt;/b&gt;&lt;br&gt;Sale Qualification" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="100" y="450" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="step03-desc" value="Gửi form khảo sát, xác định BANT" style="text;html=1;align=left;verticalAlign=middle;fontSize=10;fontColor=#666;" vertex="1" parent="1">
+          <mxGeometry x="290" y="460" width="220" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="step04" value="&lt;b&gt;04&lt;/b&gt;&lt;br&gt;Need Analysis" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="100" y="540" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="step04-desc" value="Cuộc gọi tiền meeting + First Meeting" style="text;html=1;align=left;verticalAlign=middle;fontSize=10;fontColor=#666;" vertex="1" parent="1">
+          <mxGeometry x="290" y="550" width="240" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="step05" value="&lt;b&gt;05&lt;/b&gt;&lt;br&gt;Proposal Development" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="100" y="630" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="step05-desc" value="Phân tích, chọn module" style="text;html=1;align=left;verticalAlign=middle;fontSize=10;fontColor=#666;" vertex="1" parent="1">
+          <mxGeometry x="290" y="640" width="170" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="step06" value="&lt;b&gt;06&lt;/b&gt;&lt;br&gt;Solution Feedback" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="100" y="720" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="step06-desc" value="Trình bày giải pháp, nhận feedback" style="text;html=1;align=left;verticalAlign=middle;fontSize=10;fontColor=#666;" vertex="1" parent="1">
+          <mxGeometry x="290" y="730" width="230" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Arrows Pha 2 -->
+        <mxCell id="a-d1-02" value="Có" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#6c8ebf;strokeWidth=2;fontColor=#16a34a;fontSize=11;fontStyle=1;" edge="1" source="decision1" target="step02" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a02-03" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#6c8ebf;strokeWidth=2;" edge="1" source="step02" target="step03" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a03-04" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#6c8ebf;strokeWidth=2;" edge="1" source="step03" target="step04" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a04-05" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#6c8ebf;strokeWidth=2;" edge="1" source="step04" target="step05" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a05-06" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#6c8ebf;strokeWidth=2;" edge="1" source="step05" target="step06" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Role badge Pha 2 -->
+        <mxCell id="role-pha2" value="👤 P. Chuyển đổi" style="label;whiteSpace=wrap;html=1;rounded=1;fillColor=#e8f0fe;strokeColor=#6c8ebf;fontSize=11;fontStyle=1;fontColor=#1e40af;align=center;spacingLeft=4;" vertex="1" parent="1">
+          <mxGeometry x="850" y="540" width="140" height="35" as="geometry" />
+        </mxCell>
+
+        <!-- ========== PHA 3: DECISION ========== -->
+        <mxCell id="pha3-group" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;arcSize=5;opacity=40;" vertex="1" parent="1">
+          <mxGeometry x="40" y="860" width="1020" height="440" as="geometry" />
+        </mxCell>
+        <mxCell id="pha3-label" value="&lt;b&gt;PHA 3: DECISION&lt;/b&gt;" style="text;html=1;align=left;verticalAlign=top;fontSize=14;fontColor=#15803d;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="55" y="868" width="200" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="step07" value="&lt;b&gt;07&lt;/b&gt;&lt;br&gt;Quotation" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="100" y="910" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="step07-desc" value="Gửi báo giá (deadline 7 ngày)" style="text;html=1;align=left;verticalAlign=middle;fontSize=10;fontColor=#666;" vertex="1" parent="1">
+          <mxGeometry x="290" y="920" width="210" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="decision2" value="KH&lt;br&gt;chấp nhận?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="490" y="900" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="loop2" value="Không → Follow-up / Hết ưu đãi" style="text;html=1;align=left;verticalAlign=middle;fontSize=10;fontColor=#999;" vertex="1" parent="1">
+          <mxGeometry x="640" y="920" width="220" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="step08" value="&lt;b&gt;08&lt;/b&gt;&lt;br&gt;Contract &amp; Closing" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="100" y="1020" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="step08-desc" value="Soạn &amp; ký hợp đồng" style="text;html=1;align=left;verticalAlign=middle;fontSize=10;fontColor=#666;" vertex="1" parent="1">
+          <mxGeometry x="290" y="1030" width="160" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="step09" value="&lt;b&gt;09&lt;/b&gt;&lt;br&gt;Payment" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="100" y="1110" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="step09-desc" value="Thu tiền bản quyền + Đợt 1 triển khai" style="text;html=1;align=left;verticalAlign=middle;fontSize=10;fontColor=#666;" vertex="1" parent="1">
+          <mxGeometry x="290" y="1120" width="250" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Arrows Pha 3 -->
+        <mxCell id="a06-07" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#82b366;strokeWidth=2;" edge="1" source="step06" target="step07" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a07-d2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#82b366;strokeWidth=2;" edge="1" source="step07" target="decision2" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a-d2-loop" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#ccc;strokeWidth=1;dashed=1;" edge="1" source="decision2" target="loop2" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a-d2-08" value="Có" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#82b366;strokeWidth=2;fontColor=#16a34a;fontSize=11;fontStyle=1;" edge="1" source="decision2" target="step08" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a08-09" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#82b366;strokeWidth=2;" edge="1" source="step08" target="step09" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Role badge Pha 3 -->
+        <mxCell id="role-pha3" value="👤 P. Chuyển đổi + 💰 Kế toán" style="label;whiteSpace=wrap;html=1;rounded=1;fillColor=#e8f5e9;strokeColor=#82b366;fontSize=11;fontStyle=1;fontColor=#15803d;align=center;" vertex="1" parent="1">
+          <mxGeometry x="800" y="1120" width="220" height="35" as="geometry" />
+        </mxCell>
+
+        <!-- ========== PHA 4: DELIVERY ========== -->
+        <mxCell id="pha4-group" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;arcSize=5;opacity=40;" vertex="1" parent="1">
+          <mxGeometry x="40" y="1330" width="1020" height="350" as="geometry" />
+        </mxCell>
+        <mxCell id="pha4-label" value="&lt;b&gt;PHA 4: DELIVERY&lt;/b&gt;" style="text;html=1;align=left;verticalAlign=top;fontSize=14;fontColor=#7e22ce;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="55" y="1338" width="200" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="step10" value="&lt;b&gt;10&lt;/b&gt;&lt;br&gt;Kick-off" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=12;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="100" y="1380" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="step10-desc" value="Khởi động dự án" style="text;html=1;align=left;verticalAlign=middle;fontSize=10;fontColor=#666;" vertex="1" parent="1">
+          <mxGeometry x="290" y="1390" width="140" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="step11" value="&lt;b&gt;11&lt;/b&gt;&lt;br&gt;Khảo sát &amp; Triển khai" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=12;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="100" y="1470" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="step11-desc" value="Quick Win mỗi 1-2 tuần" style="text;html=1;align=left;verticalAlign=middle;fontSize=10;fontColor=#666;" vertex="1" parent="1">
+          <mxGeometry x="290" y="1480" width="170" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="step12" value="&lt;b&gt;12&lt;/b&gt;&lt;br&gt;Off-boarding" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=12;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="100" y="1560" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="step12-desc" value="Nghiệm thu, tổng kết, bàn giao" style="text;html=1;align=left;verticalAlign=middle;fontSize=10;fontColor=#666;" vertex="1" parent="1">
+          <mxGeometry x="290" y="1570" width="210" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Arrows Pha 4 -->
+        <mxCell id="a09-10" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#9673a6;strokeWidth=2;" edge="1" source="step09" target="step10" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a10-11" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#9673a6;strokeWidth=2;" edge="1" source="step10" target="step11" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a11-12" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#9673a6;strokeWidth=2;" edge="1" source="step11" target="step12" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Role badge Pha 4 -->
+        <mxCell id="role-pha4" value="🛠️ P. Triển khai" style="label;whiteSpace=wrap;html=1;rounded=1;fillColor=#f3e8ff;strokeColor=#9673a6;fontSize=11;fontStyle=1;fontColor=#7e22ce;align=center;" vertex="1" parent="1">
+          <mxGeometry x="850" y="1470" width="140" height="35" as="geometry" />
+        </mxCell>
+
+        <!-- ========== FINISH ========== -->
+        <mxCell id="finish" value="✅ HOÀN THÀNH" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=13;fontStyle=1;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="120" y="1710" width="120" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="a12-finish" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#b85450;strokeWidth=2;" edge="1" source="step12" target="finish" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

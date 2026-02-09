@@ -19,73 +19,40 @@
 
 > 💡 **Hướng dẫn:** Click vào từng bước để xem chi tiết
 
-```
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                        HÀNH TRÌNH KHÁCH HÀNG SYNITY                         │
-└─────────────────────────────────────────────────────────────────────────────┘
+📂 **[Mở flowchart trong draw.io](https://app.diagrams.net/?url=https://raw.githubusercontent.com/chinhdang/sop-synity-gitbook/main/assets/flowchart-tong-quan.drawio)** — xem & chỉnh sửa trực tiếp
 
-╔═══════════════╗
-║ PHA 1:        ║
-║ AWARENESS     ║──▶ [01. Attraction] ──▶ KH thấy bài viết Facebook
-╚═══════════════╝         │
-                          ▼
-                    KH quan tâm?
-                     /        \
-                   Có          Không → Quay lại 01
-                   │
-                   ▼
-╔═══════════════╗
-║ PHA 2:        ║
-║ CONSIDERATION ║
-╚═══════════════╝
-       │
-       ├──▶ [02. New Opportunity] ──▶ Tạo Zalo group, kết nối
-       │           │
-       │           ▼
-       ├──▶ [03. Sale Qualification] ──▶ Gửi form khảo sát, xác định BANT
-       │           │
-       │           ▼
-       ├──▶ [04. Need Analysis] ──▶ Cuộc gọi tiền meeting + First Meeting
-       │           │
-       │           ▼
-       ├──▶ [05. Proposal Development] ──▶ Phân tích, chọn module
-       │           │
-       │           ▼
-       └──▶ [06. Solution Feedback] ──▶ Trình bày giải pháp, nhận feedback
-                   │
-                   ▼
-╔═══════════════╗
-║ PHA 3:        ║
-║ DECISION      ║
-╚═══════════════╝
-       │
-       ├──▶ [07. Quotation] ──▶ Gửi báo giá (deadline 7 ngày)
-       │           │
-       │           ▼
-       │     KH chấp nhận?
-       │      /        \
-       │    Có          Không → Follow-up / Hết ưu đãi
-       │    │
-       │    ▼
-       ├──▶ [08. Contract & Closing] ──▶ Soạn & ký hợp đồng
-       │           │
-       │           ▼
-       └──▶ [09. Payment] ──▶ Thu tiền bản quyền + Đợt 1 triển khai
-                   │
-                   ▼
-╔═══════════════╗
-║ PHA 4:        ║
-║ DELIVERY      ║
-╚═══════════════╝
-       │
-       ├──▶ [10. Kick-off] ──▶ Khởi động dự án
-       │           │
-       │           ▼
-       ├──▶ [11. Khảo sát & Triển khai] ──▶ Quick Win mỗi 1-2 tuần
-       │           │
-       │           ▼
-       └──▶ [12. Off-boarding] ──▶ Nghiệm thu, tổng kết, bàn giao
+<details>
+<summary><strong>Xem bản text (nếu draw.io chưa load)</strong></summary>
+
 ```
+PHA 1: AWARENESS
+  [01. Attraction] → KH thấy bài viết Facebook → KH quan tâm?
+                                                    │
+                                                   Có
+                                                    ▼
+PHA 2: CONSIDERATION (👤 P. Chuyển đổi)
+  [02. New Opportunity]      → Tạo Zalo group, kết nối
+  [03. Sale Qualification]   → Gửi form khảo sát, xác định BANT
+  [04. Need Analysis]        → Cuộc gọi tiền meeting + First Meeting
+  [05. Proposal Development] → Phân tích, chọn module
+  [06. Solution Feedback]    → Trình bày giải pháp, nhận feedback
+                                                    │
+                                                    ▼
+PHA 3: DECISION (👤 P. Chuyển đổi + 💰 Kế toán)
+  [07. Quotation]            → Gửi báo giá (deadline 7 ngày) → KH chấp nhận?
+  [08. Contract & Closing]   → Soạn & ký hợp đồng
+  [09. Payment]              → Thu tiền bản quyền + Đợt 1
+                                                    │
+                                                    ▼
+PHA 4: DELIVERY (🛠️ P. Triển khai)
+  [10. Kick-off]             → Khởi động dự án
+  [11. Khảo sát & Triển khai]→ Quick Win mỗi 1-2 tuần
+  [12. Off-boarding]         → Nghiệm thu, tổng kết, bàn giao
+                                                    │
+                                                    ▼
+                                              ✅ HOÀN THÀNH
+```
+</details>
 
 ---
 
