@@ -148,5 +148,5 @@
 
 | Ngày | Thay đổi | Người cập nhật | Approved |
 |------|----------|----------------|----------|
-| 09/02/2026 | Restructure: Lead → Deal pipeline, đổi tên bước 01-06 | -- | CEO ✅ |
-| 09/02/2026 | Khởi tạo SOP v2.0 (cấu trúc Wiki) | -- | CEO ✅ |
+| 09/02/2026 | **v2.1 – Restructure Lead → Deal pipeline.** Tách CRM flow thành 2 pipeline: Lead (bước 01-04) và Deal (bước 05-09). Google Form thay JotForm, auto tạo Lead + Contact + Company. Lead có SLA 14 ngày, Junk Lead yêu cầu lý do (dropdown). Good Lead convert thành Deal (stage: New Opportunity). Đổi tên bước 01-06, rename bước 11 thành Implementation. Cập nhật CJM flowchart, SUMMARY, landing pages, navigation links toàn bộ. | Chinh | CEO ✅ |
+| 09/02/2026 | **v2.0 – Khởi tạo SOP (cấu trúc Wiki).** Tạo GitBook structure 12 bước, 3 landing pages theo vai trò, templates email/tin nhắn. Enrich tất cả bước với CJM Actions từ Customer Journey Map. | Chinh | CEO ✅ |
