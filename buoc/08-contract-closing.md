@@ -8,7 +8,7 @@
 
 ## 🎯 Mục tiêu
 
-Review hợp đồng với người quyết định, làm rõ điều khoản, ký kết, thu tiền bản quyền trước, và xác nhận email + tên miền.
+Review hợp đồng với người quyết định, làm rõ điều khoản, ký kết, và khởi tạo luồng thu tiền bản quyền.
 
 ---
 
@@ -20,8 +20,8 @@ PHASE 7: CONTRACT (Hợp đồng)
 ├── Làm rõ điều khoản: Thanh toán, Bảo mật, Cách làm việc
 ├── Gửi hợp đồng (deadline ký: 7 ngày)
 ├── ◇ Khách ký hợp đồng?
-├── Thu tiền BẢN QUYỀN trước (chiến thuật giữ khách)
-└── Văn bản xác nhận Email + Tên miền trước khi mua license
+├── KH eSign HĐ Bản quyền → Tạo Invoice → Auto gửi Đề nghị TT
+└── Thu tiền BẢN QUYỀN trước khi triển khai
 ```
 
 ---
@@ -102,22 +102,43 @@ PHASE 7: CONTRACT (Hợp đồng)
 - [ ] Theo dõi tiến độ ký cả 2 hình thức
 - [ ] Upload vào CRM: eSign + bản scan HĐ ký tay đóng dấu
 
-### E. Thu tiền bản quyền trước (chiến thuật giữ khách)
+### E. Luồng bản quyền: eSign → Invoice → Đề nghị TT
 
 > **Chiến lược:** Thu tiền bản quyền TRƯỚC khi bắt đầu triển khai. KH đã "đầu tư" → khó bỏ giữa chừng.
+>
+> **Tên miền Bitrix24** đã ghi rõ trong HĐ Bản quyền → không cần eSign xác nhận riêng.
 
-- [ ] Sau khi KH eSign HĐ bản quyền → chuyển sang **Bước 09** để thu tiền
+```
+KH đồng ý báo giá (Bước 07)
+  │
+  ▼
+Soạn HĐ Bản quyền Bitrix (Document Template)     ← Bước B
+  │
+  ▼
+KH review + đồng ý HĐ                             ← Bước C
+  │
+  ▼
+Gửi HĐ eSign (Bitrix24)                            ← Bước D
+  │
+  ▼
+KH eSign xong → Tạo Invoice thanh toán bản quyền
+  │
+  ▼
+Invoice tự động gửi email Đề nghị TT cho KH        ← Bitrix workflow
+  │  (email kèm file PDF Đề nghị TT — tạo tự động)
+  ▼
+KH thanh toán → Bước 09 (Kích hoạt license)
+```
+
+- [ ] Sau khi KH eSign HĐ bản quyền → **tạo Invoice** thanh toán bản quyền trong CRM
+- [ ] Invoice tự động gửi **email Đề nghị thanh toán** cho KH (Bitrix workflow)
+  - Email kèm **file PDF Đề nghị TT** — tạo tự động từ Document Template
+  - Nhân sự **không cần gửi thủ công** — chỉ kiểm tra email đã gửi thành công
+- [ ] Lưu **tên miền Bitrix24** của KH vào Deal: `UF_CRM_B24_PORTAL`
 - [ ] **KHÔNG bắt đầu triển khai** khi chưa thu đủ tiền bản quyền
-- [ ] Chi tiết quy trình thu tiền + kích hoạt: Xem [Bước 09 — Luồng Bản quyền](09-payment.md#a-luồng-bản-quyền-bitrix24)
+- [ ] Chi tiết quy trình kích hoạt + nghiệm thu: Xem [Bước 09 — Luồng Bản quyền](09-payment.md#a-luồng-bản-quyền-bitrix24)
 
-### F. Xác nhận Email & Tên miền
-
-- [ ] Gửi **eSign xác nhận email & tên miền** cho KH
-- [ ] KH xác nhận email domain sẽ dùng cho Bitrix24
-- [ ] KH xác nhận tên miền (nếu dùng subdomain riêng)
-- [ ] Lưu xác nhận vào CRM trước khi mua license
-
-### G. Hoàn tất
+### F. Hoàn tất
 
 - [ ] Cập nhật Deal stage = CONTRACT
 - [ ] Bàn giao thông tin cho bước Payment (Bước 09)
@@ -131,7 +152,8 @@ PHASE 7: CONTRACT (Hợp đồng)
 | Cập nhật Deal stage | → CONTRACT |
 | Upload HĐ bản quyền | eSign + bản scan ký tay đóng dấu → attach vào Deal |
 | Upload HĐ triển khai | eSign + bản scan ký tay đóng dấu → attach vào Deal (nếu có) |
-| eSign | Xác nhận email & tên miền |
+| Tạo Invoice bản quyền | Sau khi KH eSign → Invoice auto gửi email Đề nghị TT |
+| Lưu tên miền B24 | `UF_CRM_B24_PORTAL` (đã ghi trong HĐ bản quyền) |
 | Ghi chú Deal | Số HĐ (2 số riêng biệt), Ngày ký, Người ký, Điều khoản đặc biệt |
 
 ### Deal fields — Cập nhật tại Bước 08
@@ -142,7 +164,7 @@ PHASE 7: CONTRACT (Hợp đồng)
 
 **Bắt buộc:** `STAGE_ID` → `EXECUTING`, `UF_CRM_CONTRACT_NO`, `UF_CRM_CONTRACT_DATE`, `UF_CRM_B24_PORTAL`, `UF_CRM_PAYMENT_METHOD`.
 
-**Quan trọng:** Số HĐ + Ngày ký phải điền trước khi chuyển sang Payment. Portal B24 cần xác nhận qua eSign.
+**Quan trọng:** Số HĐ + Ngày ký phải điền trước khi chuyển sang Payment. Portal B24 (`UF_CRM_B24_PORTAL`) lấy từ HĐ bản quyền.
 
 ---
 
@@ -151,10 +173,9 @@ PHASE 7: CONTRACT (Hợp đồng)
 | Input | Nguồn | Bắt buộc |
 |-------|-------|----------|
 | Báo giá đã chấp nhận | Bước 07 | ✅ |
-| Template HĐ Bản quyền | Drive | ✅ |
-| Template HĐ Triển khai | Drive | ✅ |
-| Thông tin công ty KH (MST, địa chỉ) | CRM | ✅ |
-| Template eSign xác nhận email & tên miền | Drive | ✅ |
+| Template HĐ Bản quyền | Document Template (Bitrix) | ✅ |
+| Template HĐ Triển khai | Document Template (Bitrix) | Nếu có dịch vụ |
+| Thông tin công ty KH (Requisite) | CRM | ✅ |
 
 ---
 
@@ -163,8 +184,7 @@ PHASE 7: CONTRACT (Hợp đồng)
 | Output | Lưu ở đâu | Người nhận |
 |--------|-----------|------------|
 | Hợp đồng đã ký (2 bản) | CRM + Drive | Team + KH |
-| eSign email & tên miền | Bitrix eSign | KH |
-| Invoice bản quyền | CRM | KH + Kế toán |
+| Invoice bản quyền + email Đề nghị TT (auto) | CRM + Email | KH + Kế toán |
 | Deal stage = CONTRACT | CRM | Team |
 
 ---

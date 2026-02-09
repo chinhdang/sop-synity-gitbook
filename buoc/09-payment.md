@@ -16,7 +16,7 @@ Thu tiền bản quyền → kích hoạt license → nghiệm thu bàn giao b�
 
 ```
 LUỒNG BẢN QUYỀN:
-├── Đề nghị thanh toán bản quyền (eSign/email)
+├── Invoice + Đề nghị TT đã gửi auto (từ Bước 08.E)
 ├── KH thanh toán đầy đủ
 ├── Mua & kích hoạt license (đúng tên miền trong HĐ)
 ├── Screenshot chứng minh (phiên bản + thời hạn + tên miền)
@@ -56,9 +56,11 @@ LUỒNG TRIỂN KHAI:
 
 #### A1. Đề nghị thanh toán bản quyền
 
-- [ ] Tạo **Đề nghị thanh toán** bản quyền Bitrix24 (từ template)
-- [ ] Gửi cho KH qua **eSign** (Bitrix24) hoặc email
-- [ ] Nội dung: Số tiền, thông tin chuyển khoản, hạn thanh toán
+> **Invoice + Đề nghị TT đã được tạo tự động ở Bước 08.E** (sau khi KH eSign HĐ bản quyền). Nhân sự chỉ cần kiểm tra.
+
+- [ ] Kiểm tra Invoice bản quyền đã tạo trong CRM (từ Bước 08)
+- [ ] Kiểm tra email Đề nghị TT đã gửi tự động cho KH (kèm PDF — Bitrix workflow)
+- [ ] Nếu email chưa gửi → gửi lại thủ công hoặc kiểm tra workflow
 
 #### A2. KH thanh toán
 
@@ -69,7 +71,7 @@ LUỒNG TRIỂN KHAI:
 #### A3. Mua & kích hoạt bản quyền
 
 - [ ] Mua license trên Bitrix24 Partner Portal
-- [ ] Kích hoạt trên đúng **tên miền đã xác nhận** trong eSign Bước 08
+- [ ] Kích hoạt trên đúng **tên miền ghi trong HĐ bản quyền** (`UF_CRM_B24_PORTAL`)
 - [ ] Kiểm tra: đúng phiên bản, đúng thời hạn, đúng tên miền
 
 #### A4. Screenshot chứng minh
@@ -213,8 +215,7 @@ Gửi HĐ điện tử cho KH ──────►
 |-------|-------|----------|
 | HĐ bản quyền đã ký (eSign) | Bước 08 | ✅ |
 | HĐ triển khai đã ký (eSign) | Bước 08 | Nếu có |
-| eSign xác nhận email & tên miền | Bước 08 | ✅ |
-| Template Đề nghị thanh toán | Drive | ✅ |
+| Invoice bản quyền + email Đề nghị TT (auto) | Bước 08.E | ✅ |
 | Template Biên bản nghiệm thu bàn giao bản quyền | Drive | ✅ |
 | Biên bản nghiệm thu triển khai (cho đợt sau) | Bước 11 | ✅ |
 | Thông tin thanh toán công ty SYNITY | Kế toán | ✅ |
