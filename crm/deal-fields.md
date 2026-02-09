@@ -96,6 +96,17 @@
 
 ### Bước 09 — Payment (`FINAL_INVOICE` → `WON`)
 
+> **⛔ Điều kiện chuyển sang Payment:** Trước khi Deal chuyển sang `FINAL_INVOICE`, các trường sau **phải được điền đầy đủ** — đây là nguồn dữ liệu cho Document Template (HĐ bản quyền, Đề nghị TT). Nếu thiếu → tài liệu tự động sẽ bị lỗi.
+
+| Trường bắt buộc | Lý do |
+|-----------------|-------|
+| `UF_CRM_CONTRACT_NO` | Số HĐ → hiển thị trong Đề nghị TT (`{UfCrmSmartInvoiceContractNo}`) |
+| `UF_CRM_CONTRACT_DATE` | Ngày ký HĐ → hiển thị trong Đề nghị TT (`{ContractSignedDate}`) |
+| `UF_CRM_B24_PORTAL` | Tên miền Bitrix24 KH → ghi trong HĐ bản quyền (`{clientBitrixDomain}`) |
+| **Company Requisites** đầy đủ | Tên pháp lý, MST, Địa chỉ, SĐT → hiển thị trong HĐ + Đề nghị TT |
+| **Contact** đầy đủ | Tên, Chức vụ, Danh xưng → người đại diện ký HĐ |
+| **Product Rows** | Tên gói + mô tả → hiển thị trong HĐ + Đề nghị TT |
+
 #### Khi bắt đầu thu tiền:
 
 | Bitrix Field | Tên hiển thị | Bắt buộc | Cách điền | Ghi chú |
@@ -153,6 +164,70 @@
 | `UF_CRM_CONTRACT_AMOUNT_INSTALLMENT` | array | Số tiền từng đợt | Danh sách số tiền |
 | `UF_CRM_CONTRACT_INSTALLMENT_DATE` | string | Ngày TT từng đợt | Ngày hạn TT |
 | `UF_CRM_CARE_STATUS` | enumeration | Care Status | Trạng thái chăm sóc |
+
+---
+
+## Document Templates & Biến CRM
+
+> Bitrix24 Document Templates sử dụng biến CRM để tạo tài liệu tự động (HĐ, Đề nghị TT...).
+> Tài liệu có thể gửi cho KH trực tiếp hoặc qua **Bitrix eSign**.
+
+### 2 định dạng UF ID trong Bitrix24
+
+| Ngữ cảnh | Format | Ví dụ |
+|-----------|--------|-------|
+| API / CRM Settings | Uppercase + underscore | `UF_CRM_B24_PORTAL` |
+| Document Template | camelCase | `{clientBitrixDomain}` |
+
+> Smart Invoice UF: `UF_CRM_SMART_INVOICE_*` → `{UfCrmSmartInvoice*}` trong template.
+
+### Mapping Deal UF → Document Template
+
+| Deal UF Field | Template Variable | Dùng trong | Ghi chú |
+|---|---|---|---|
+| `UF_CRM_B24_PORTAL` | `{clientBitrixDomain}` | HĐ Bản quyền | Tên miền portal KH |
+| `UF_CRM_CONTRACT_DATE` | `{ContractSignedDate}` | Đề nghị TT | Auto copy Deal → Smart Invoice |
+| `UF_CRM_CONTRACT_NO` | `{UfCrmSmartInvoiceContractNo}` | Đề nghị TT | Qua Smart Invoice UF |
+
+### Biến từ CRM entities liên kết
+
+| Template Variable | Entity | Dữ liệu |
+|---|---|---|
+| `{CompanyRequisiteRqCompanyName}` | Company Requisite | Tên pháp lý công ty KH |
+| `{CompanyRequisiteRqVatId}` | Company Requisite | Mã số thuế |
+| `{CompanyAddressLegal}` | Company | Địa chỉ pháp lý |
+| `{CompanyPhone}` | Company | SĐT công ty |
+| `{ContactsContactHonorificName}` | Contact | Danh xưng (Ông/Bà) |
+| `{ContactName}` | Contact | Tên người đại diện |
+| `{ContactsContactPost}` | Contact | Chức vụ |
+| `{ProductsProductTitle}` | Product Row | Tên gói Bitrix24 |
+| `{ProductsProductDescription}` | Product Row | Mô tả gói |
+| `{Opportunity}` | Smart Invoice | Tổng giá trị |
+| `{UfCrmSmartInvoiceAmountText}` | Smart Invoice UF | Số tiền bằng chữ |
+| `{UfCrmSmartInvoiceContractNo}` | Smart Invoice UF | Số HĐ |
+| `{Id}` | Smart Invoice | ID invoice |
+| `{DocumentCreateTime~ d/m/Y}` | System | Ngày tạo tài liệu |
+
+### Flow dữ liệu
+
+```
+Deal UF fields ──auto copy──► Smart Invoice UF fields
+                               + Product Rows (copy từ Deal)
+                               ↓
+                        Document Template
+                        (HĐ bản quyền / Đề nghị TT)
+                               ↓
+                        Tài liệu PDF → gửi KH / eSign
+```
+
+### Templates hiện có
+
+| Template | Số HĐ format | Dùng tại |
+|----------|-------------|----------|
+| HĐ Cung cấp Bản quyền Bitrix24 | `HDBQ.{CompanyTitle}.{DocumentCreateTime~ Ymd}` | Bước 08 |
+| Đề nghị Thanh toán Bản quyền | — | Bước 09 |
+
+> **Nội dung chuyển khoản auto format:** `BTI{Id} TT {UfCrmSmartInvoiceContractNo}` — để hệ thống SYNITY tự động xác nhận thanh toán.
 
 ---
 
@@ -259,3 +334,5 @@ Bàn giao P. Triển khai: [DD/MM/YYYY]
 4. **Deal Lost:** Luôn kiểm tra `UF_CRM_REFERRER` để thông báo đối tác
 5. **Deal Won:** Chỉ khi đợt 1 đã thanh toán, điều kiện trước Kick-off
 6. **Khi có `UF_CRM_REFERRER`:** Gửi email thông báo đối tác tại Bước 07 (gửi BG + Deal Lost) và Bước 09 (thanh toán đợt 1)
+7. **Trước Payment:** `UF_CRM_CONTRACT_NO`, `UF_CRM_CONTRACT_DATE`, `UF_CRM_B24_PORTAL` + Company Requisites + Contact + Product Rows phải đầy đủ — Document Template sẽ lỗi nếu thiếu
+8. **Document Template biến CRM:** UF field dùng camelCase trong template (VD: `UF_CRM_B24_PORTAL` → `{clientBitrixDomain}`). Xem [Document Templates & Biến CRM](#document-templates--biến-crm)
