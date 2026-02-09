@@ -15,43 +15,45 @@
 
 ---
 
-## 🗺️ Flowchart tổng quan
+## 🗺️ Customer Journey Map (CJM Blueprint)
 
-> 💡 **Hướng dẫn:** Click vào từng bước để xem chi tiết
+> 💡 **Đây là bản đồ toàn cảnh hành trình khách hàng SYNITY** — từ lúc KH biết đến SYNITY cho đến khi nghiệm thu xong.
 
-📂 **[Mở flowchart trong draw.io](https://app.diagrams.net/?url=https://raw.githubusercontent.com/chinhdang/sop-synity-gitbook/main/assets/flowchart-tong-quan.drawio)** — xem & chỉnh sửa trực tiếp
+📂 **[Mở CJM Blueprint trong draw.io](https://app.diagrams.net/?url=https://raw.githubusercontent.com/chinhdang/sop-synity-gitbook/main/assets/flowchart-tong-quan.drawio)** — xem & chỉnh sửa trực tiếp
 
 <details>
-<summary><strong>Xem bản text (nếu draw.io chưa load)</strong></summary>
+<summary><strong>Xem bản text tóm tắt CJM Blueprint</strong></summary>
 
 ```
-PHA 1: AWARENESS
-  [01. Attraction] → KH thấy bài viết Facebook → KH quan tâm?
-                                                    │
-                                                   Có
-                                                    ▼
-PHA 2: CONSIDERATION (👤 P. Chuyển đổi)
-  [02. New Opportunity]      → Tạo Zalo group, kết nối
-  [03. Sale Qualification]   → Gửi form khảo sát, xác định BANT
-  [04. Need Analysis]        → Cuộc gọi tiền meeting + First Meeting
-  [05. Proposal Development] → Phân tích, chọn module
-  [06. Solution Feedback]    → Trình bày giải pháp, nhận feedback
-                                                    │
-                                                    ▼
-PHA 3: DECISION (👤 P. Chuyển đổi + 💰 Kế toán)
-  [07. Quotation]            → Gửi báo giá (deadline 7 ngày) → KH chấp nhận?
-  [08. Contract & Closing]   → Soạn & ký hợp đồng
-  [09. Payment]              → Thu tiền bản quyền + Đợt 1
-                                                    │
-                                                    ▼
-PHA 4: DELIVERY (🛠️ P. Triển khai)
-  [10. Kick-off]             → Khởi động dự án
-  [11. Khảo sát & Triển khai]→ Quick Win mỗi 1-2 tuần
-  [12. Off-boarding]         → Nghiệm thu, tổng kết, bàn giao
-                                                    │
-                                                    ▼
-                                              ✅ HOÀN THÀNH
+                AWARENESS    │  CONSIDERATION  │        DECISION         │       DELIVERY & USE
+                             │                 │                         │
+Customer        Browsing     │  Researching    │  Survey → Quotation →   │  Kick-off → Khảo sát →
+Stage                        │                 │  Contract & Payment     │  Tracking → Closing
+─────────────────────────────┼─────────────────┼─────────────────────────┼──────────────────────────
+Customer     Lướt Facebook → │ Comment/Inbox → │ Tham gia Meeting →      │ Tham gia Kick-off →
+Activities   Xem bài Chinh   │ Zalo Group →    │ Xem báo giá →          │ Cung cấp thông tin QT →
+                             │ Điền Form KS    │ Ký HĐ → Thanh toán    │ Sử dụng HT → Check-in →
+                             │                 │                         │ Ký nghiệm thu → TT
+─────────────────────────────┼─────────────────┼─────────────────────────┼──────────────────────────
+Channels     Facebook        │ Messenger       │ Zoom/Meet, Email        │ Collab Chat, Video Call
+                             │ Zalo, Email     │                         │
+─────────────────────────────┼─────────────────┼─────────────────────────┼──────────────────────────
+CRM          ─               │ Tạo Contact/    │ Update Deal Stage →     │ Tạo Collab → eSign →
+Bitrix24                     │ Company/Deal    │ Tạo Estimate → Invoice  │ Task Mgmt → Nghiệm thu
+─────────────────────────────┼─────────────────┼─────────────────────────┼──────────────────────────
+Automation   ─               │ n8n/Make        │ AI Summary Recap        │ Auto Task Nhắc TT 4h
+                             │ Form → CRM      │ Auto Email Invoice      │ MISA API Hóa đơn
+─────────────────────────────┼─────────────────┼─────────────────────────┼──────────────────────────
+Responsible  Marketing       │ P. Chuyển đổi   │ P. Chuyển đổi +        │ P. Triển khai +
+                             │                 │ P. Kế toán             │ P. Kế toán
+─────────────────────────────┼─────────────────┼─────────────────────────┼──────────────────────────
+Deal Stage   ─               │ NEW →           │ MEETING → PROPOSAL →   │ WON
+                             │ QUALIFICATION   │ QUOTATION → CONTRACT   │
+─────────────────────────────┼─────────────────┼─────────────────────────┼──────────────────────────
+Phase           CONVERSION                     │        DELIVERY        │    COLLECT FEEDBACK
 ```
+
+**Tác giả:** Đặng Đình Chinh – CEO SYNITY
 </details>
 
 ---
