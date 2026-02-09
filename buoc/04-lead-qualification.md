@@ -87,6 +87,8 @@ PHASE 6: QUALIFICATION (Phân loại)
 
 **Tạo Deal:** `TITLE` (format: `[Công ty] - [Nhu cầu] - [MM/YYYY]`), `STAGE_ID` = `NEW`, liên kết `COMPANY_ID` + `CONTACT_ID`, copy `UF_CRM_REFERRER` nếu có.
 
+> **Contact Lifecycle:** Khi Good Lead → Deal, cập nhật Contact `UF_CRM_CONTACT_LIFECYCLE_STAGE` = `50` (**Opportunity**). Xem [Contact Lifecycle Flow](../crm/contact-fields.md#lifecycle-flow).
+
 ### Khi Junk Lead — Đóng Lead
 
 > **Chi tiết trường thông tin:** Xem [Lead Fields — Junk Lead](../crm/lead-fields.md#khi-junk-lead)
@@ -94,6 +96,8 @@ PHASE 6: QUALIFICATION (Phân loại)
 **Bắt buộc:** `STATUS_ID` → `JUNK`, `UF_CRM_JUNK_REASON` (chọn dropdown). Nếu có `UF_CRM_REFERRER` → gửi email thông báo đối tác.
 
 **5 lý do Junk:** Không đủ ngân sách / Không phải người QĐ / Nhu cầu không phù hợp / Không phản hồi (auto 14 ngày) / Khác (ghi chú).
+
+> **Contact Lifecycle:** Khi Lead → Junk, cập nhật Contact `UF_CRM_CONTACT_LIFECYCLE_STAGE` = `1024` (**Unqualified**). Xem [Contact Lifecycle Flow](../crm/contact-fields.md#lifecycle-flow).
 
 ### Automation (SLA 14 ngày)
 

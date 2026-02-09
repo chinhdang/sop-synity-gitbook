@@ -83,6 +83,8 @@ PHASE 1-2: AWARENESS + INTEREST
 | Nguồn | Đối tác giới thiệu | ✅ |
 | Ghi chú | [Mô tả về đối tác] | Nên có |
 
+> **Contact Lifecycle:** Nếu đối tác giới thiệu đang là Customer (đã mua hàng), khi giới thiệu KH mới → cập nhật `UF_CRM_CONTACT_LIFECYCLE_STAGE` = `54` (**Evangelist**). Xem [Contact Lifecycle Flow](../crm/contact-fields.md#lifecycle-flow).
+
 ---
 
 ## 📥 Input

@@ -87,6 +87,8 @@ Từ PHASE 11 (PAYMENT):
 
 **Deal Won:** `STAGE_ID` → `WON` khi đợt 1 đã thanh toán. Kiểm tra `UF_CRM_REFERRER` để thông báo đối tác.
 
+> **Contact Lifecycle — Deal Won:** Khi Deal → WON, cập nhật Contact `UF_CRM_CONTACT_LIFECYCLE_STAGE` = `52` (**Customer**). Xem [Contact Lifecycle Flow](../crm/contact-fields.md#lifecycle-flow).
+
 **Partial Payment:** Dùng `PARTIAL_PAYMENT` nếu chưa thanh toán hết.
 
 ### Luồng thanh toán tự động

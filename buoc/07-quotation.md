@@ -94,6 +94,8 @@ PHASE 6: QUOTATION (Báo giá)
 
 **Deal Lost:** `STAGE_ID` → `LOSE`, `UF_CRM_LOST_REASON` (bắt buộc), kiểm tra `UF_CRM_REFERRER` để thông báo đối tác.
 
+> **Contact Lifecycle — Deal Lost:** Khi Deal → Lost, cập nhật Contact `UF_CRM_CONTACT_LIFECYCLE_STAGE` = `1026` (**Closed Lost**). Ngoại trừ Contact đã có Deal WON khác (giữ nguyên **Customer**). Xem [Contact Lifecycle Flow](../crm/contact-fields.md#lifecycle-flow).
+
 ---
 
 ## 📥 Input

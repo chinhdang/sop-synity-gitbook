@@ -80,6 +80,8 @@ Google Form submit → Bitrix Automation (match SĐT)
 - Company: Tên công ty, MST (tra masothue.com nếu thiếu)
 - Bổ sung `COMMENTS`: BANT sơ bộ + insight website/FB KH
 
+> **Contact Lifecycle:** Khi Contact KH được tạo (auto hoặc thủ công), set `UF_CRM_CONTACT_LIFECYCLE_STAGE` = `48` (**SQL** — Sales Qualified Lead). Xem [Contact Lifecycle Flow](../crm/contact-fields.md#lifecycle-flow).
+
 ---
 
 ## 📥 Input
