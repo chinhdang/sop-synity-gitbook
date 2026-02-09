@@ -41,11 +41,15 @@ DEAL STAGE 1: NEW OPPORTUNITY
 > **Mục đích:** Đảm bảo Company có đủ thông tin pháp lý (Requisite) cho Bước 08 — tạo HĐ tự động.
 
 - [ ] Mở Company card → tab **Details/Requisites**
-- [ ] Kiểm tra đã có Requisite chưa? Nếu chưa → tạo mới (template: Company)
+- [ ] Kiểm tra đã có Requisite chưa? Nếu chưa → tạo mới (template: "SYNITY - Doanh nghiệp VN")
 - [ ] **`RQ_COMPANY_NAME`** — Tên pháp lý (tra [masothue.com](https://masothue.com))
 - [ ] **`RQ_VAT_ID`** — Mã số thuế
-- [ ] **Address** — Địa chỉ pháp lý (từ masothue.com)
+- [ ] **Address** — Địa chỉ pháp lý (theo [quy chuẩn VN](../crm/requisite-guide.md#address-gắn-vào-requisite--mapping-cho-việt-nam))
 - [ ] Kiểm tra Contact liên kết: đã có **tên + chức vụ** chưa?
+- [ ] Bắt đầu thu thập **5 vai trò liên hệ** (bổ sung dần, hoàn chỉnh trước Bước 08):
+  - [ ] Người đại diện — `UF_CRM_REP_NAME` + `UF_CRM_REP_POSITION`
+  - [ ] QLDA — `UF_CRM_PM_NAME` + `UF_CRM_PM_EMAIL`
+  - [ ] Kỹ thuật, Liên lạc, Kế toán — khi có thông tin
 
 > **Hướng dẫn chi tiết:** Xem [Requisites — Hướng dẫn nhập thông tin pháp lý](../crm/requisite-guide.md)
 

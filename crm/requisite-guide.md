@@ -60,17 +60,91 @@ Company (hoặc Contact)
 - `CITY` bỏ trống — VN không có cấp "City" tách biệt
 - `COUNTRY` luôn = `Việt Nam` (có dấu, chuẩn hoá)
 
+### 5 vai trò liên hệ phía KH (UF fields trên Requisite)
+
+> HĐ dịch vụ triển khai yêu cầu thông tin liên hệ **5 vai trò** phía KH. Các trường này là UF custom fields trên Requisite entity, hiển thị trên form khi dùng preset **"SYNITY - Doanh nghiệp VN"** hoặc preset **"Company"**.
+
+#### 1. Người đại diện pháp luật
+
+| UF Field | Label | Bắt buộc | Dùng trong HĐ |
+|----------|-------|----------|---------------|
+| `UF_CRM_REP_NAME` | Họ tên Người đại diện | **YES** | "Ông/Bà [tên], đại diện cho [công ty]" |
+| `UF_CRM_REP_POSITION` | Chức vụ | **YES** | "chức vụ [X]" |
+| `UF_CRM_REP_EMAIL` | Email Người đại diện | Nên có | Gửi HĐ, thông báo |
+| `UF_CRM_REP_PHONE` | SĐT Người đại diện | Nên có | Liên hệ ký kết |
+
+#### 2. Quản lý dự án (QLDA)
+
+| UF Field | Label | Bắt buộc | Mô tả |
+|----------|-------|----------|-------|
+| `UF_CRM_PM_NAME` | Họ tên QLDA | **YES** | Đầu mối chính phía KH |
+| `UF_CRM_PM_EMAIL` | Email QLDA | **YES** | Gửi tài liệu, lịch họp |
+| `UF_CRM_PM_PHONE` | SĐT QLDA | Nên có | Liên hệ trực tiếp |
+
+#### 3. Kỹ thuật
+
+| UF Field | Label | Bắt buộc | Mô tả |
+|----------|-------|----------|-------|
+| `UF_CRM_TECH_NAME` | Họ tên Kỹ thuật | Nên có | IT support phía KH |
+| `UF_CRM_TECH_EMAIL` | Email Kỹ thuật | Nên có | Cấu hình domain, DNS |
+| `UF_CRM_TECH_PHONE` | SĐT Kỹ thuật | Nên có | Hỗ trợ kỹ thuật |
+
+#### 4. Người liên lạc
+
+| UF Field | Label | Bắt buộc | Mô tả |
+|----------|-------|----------|-------|
+| `UF_CRM_LIAISON_NAME` | Họ tên Người liên lạc | Nên có | Đầu mối liên lạc hàng ngày |
+| `UF_CRM_LIAISON_EMAIL` | Email Người liên lạc | Nên có | |
+| `UF_CRM_LIAISON_PHONE` | SĐT Người liên lạc | Nên có | |
+
+#### 5. Kế toán
+
+| UF Field | Label | Bắt buộc | Mô tả |
+|----------|-------|----------|-------|
+| `UF_CRM_ACC_NAME` | Họ tên Kế toán | Nên có | Xử lý thanh toán |
+| `UF_CRM_ACC_EMAIL` | Email Kế toán | Nên có | Gửi Đề nghị TT, Invoice |
+| `UF_CRM_ACC_PHONE` | SĐT Kế toán | Nên có | |
+
+> **Lưu ý:** Người đại diện có 4 fields (thêm Chức vụ) vì HĐ cần câu: *"Ông/Bà [tên], chức vụ [X], đại diện cho [công ty]"*.
+> Các vai trò khác có 3 fields (Họ tên, Email, SĐT).
+
+### Contact Role — Vai trò dự án trên Contact
+
+> Ngoài Requisite UF fields (dùng cho Document Template), mỗi Contact còn có field **`UF_CRM_CONTACT_ROLE`** (enum, multiple) để đánh dấu vai trò trong dự án.
+
+| Enum ID | Vai trò | XML_ID |
+|---------|---------|--------|
+| 1028 | Người đại diện pháp luật | REP |
+| 1030 | Quản lý dự án (QLDA) | PM |
+| 1032 | Kỹ thuật | TECH |
+| 1034 | Người liên lạc | LIAISON |
+| 1036 | Kế toán | ACC |
+
+**Tại sao cần cả hai?**
+
+| | Contact Role (`UF_CRM_CONTACT_ROLE`) | Requisite UF fields |
+|---|---|---|
+| **Mục đích** | CRM operations: liên lạc, giao việc, báo cáo | Document Template: HĐ, Đề nghị TT |
+| **Searchable** | Có — filter tất cả QLDA trên portal | Không (flat text) |
+| **Thay người** | Đổi Contact → tự nhiên | Phải sửa text field |
+| **Multiple roles** | 1 Contact có thể có nhiều vai trò | N/A |
+| **Deal-level** | Contact gắn Company, ảnh hưởng mọi Deal | Requisite gắn Company |
+
+> **Quy trình:** Khi có Contact mới cho 1 vai trò → (1) gán `UF_CRM_CONTACT_ROLE` trên Contact, (2) copy thông tin sang Requisite UF fields khi chuẩn bị HĐ (Bước 08).
+
 ### Trường bổ sung (nên có cho HĐ hoàn chỉnh)
 
 | Requisite Field | Mô tả | Ghi chú |
 |----------------|-------|---------|
 | `RQ_COMPANY_FULL_NAME` | Tên đầy đủ (tiếng Anh) | Cho HĐ song ngữ |
-| `RQ_DIRECTOR` | Giám đốc | Người ký HĐ phía KH |
-| `RQ_CEO_NAME` | Tên người đứng đầu | |
-| `RQ_CEO_WORK_POS` | Chức vụ người đứng đầu | |
+| `RQ_DIRECTOR` | Giám đốc | Built-in field (chỉ hiện ở preset RU/CIS) |
+| `RQ_CEO_NAME` | Tên người đứng đầu | Built-in field (chỉ hiện ở preset RU/CIS) |
+| `RQ_CEO_WORK_POS` | Chức vụ người đứng đầu | Built-in field (chỉ hiện ở preset RU/CIS) |
 | `RQ_COMPANY_REG_DATE` | Ngày đăng ký kinh doanh | |
 
-> **Lưu ý:** Contact cũng cần có `NAME` + `POST` (chức vụ) — dùng cho `{ContactName}` và `{ContactsContactPost}` trong Document Template.
+> **Lưu ý:** `RQ_DIRECTOR`, `RQ_CEO_NAME`, `RQ_CEO_WORK_POS` là country-specific fields (RU/CIS). Chúng tồn tại trong API nhưng **không hiển thị trên UI** khi dùng preset US. Thay vào đó, dùng UF fields `UF_CRM_REP_NAME` + `UF_CRM_REP_POSITION` ở trên.
+>
+> Contact cũng cần có `NAME` + `POST` (chức vụ) — dùng cho `{ContactName}` và `{ContactsContactPost}` trong Document Template.
 
 ---
 
@@ -86,6 +160,47 @@ Company (hoặc Contact)
 | Số tài khoản | 1788168168 | Bank Detail ID: 2 |
 
 > **Khi tạo Smart Invoice:** Phải set `MC_REQUISITE_ID = 658` và `MC_BANK_DETAIL_ID = 2` trong Requisite Link để Document Template lấy đúng thông tin SYNITY.
+
+---
+
+## Requisite Presets — Templates
+
+> Portal hiện có 2 presets hoạt động:
+
+| Preset ID | Tên | Country | Dùng cho |
+|-----------|-----|---------|----------|
+| 1 | Company | US (122) | Preset mặc định, requisite cũ |
+| 4 | **SYNITY - Doanh nghiệp VN** | US (122) | Preset mới, tối ưu cho HĐ triển khai |
+
+> **Tại sao COUNTRY_ID = US?** Bitrix24 chỉ hỗ trợ 11 nước (RU, BY, KZ, UA, BR, DE, CO, PL, US, FR, UZ). Việt Nam **không có** trong danh sách. Dùng US vì preset US có ít fields nhất (5 fields cơ bản), UF custom fields hoạt động với mọi country.
+
+### Preset 4: "SYNITY - Doanh nghiệp VN" — Thứ tự fields
+
+| Sort | Field | Section |
+|------|-------|---------|
+| 100 | `RQ_COMPANY_NAME` | Thông tin công ty |
+| 110 | `RQ_VAT_ID` | |
+| 120 | `RQ_ADDR` | |
+| 200 | `UF_CRM_REP_NAME` | Người đại diện pháp luật |
+| 210 | `UF_CRM_REP_POSITION` | |
+| 220 | `UF_CRM_REP_EMAIL` | |
+| 230 | `UF_CRM_REP_PHONE` | |
+| 300 | `UF_CRM_PM_NAME` | Quản lý dự án |
+| 310 | `UF_CRM_PM_EMAIL` | |
+| 320 | `UF_CRM_PM_PHONE` | |
+| 400 | `UF_CRM_TECH_NAME` | Kỹ thuật |
+| 410 | `UF_CRM_TECH_EMAIL` | |
+| 420 | `UF_CRM_TECH_PHONE` | |
+| 500 | `UF_CRM_LIAISON_NAME` | Người liên lạc |
+| 510 | `UF_CRM_LIAISON_EMAIL` | |
+| 520 | `UF_CRM_LIAISON_PHONE` | |
+| 600 | `UF_CRM_ACC_NAME` | Kế toán |
+| 610 | `UF_CRM_ACC_EMAIL` | |
+| 620 | `UF_CRM_ACC_PHONE` | |
+| 700 | `RQ_SIGNATURE` | Chữ ký & Con dấu |
+| 710 | `RQ_STAMP` | |
+
+> **Lưu ý:** 16 UF fields cũng đã được thêm vào Preset 1 (Company) để requisite cũ vẫn nhập được thông tin 5 vai trò. Bitrix24 không cho phép thay đổi PRESET_ID trên requisite đã tạo.
 
 ---
 
@@ -152,7 +267,17 @@ Từ địa chỉ đầy đủ trên masothue.com, tách thành các field:
 | `CITY` | *(bỏ trống)* | Không dùng cho VN |
 | `COUNTRY` | `Việt Nam` | Luôn = "Việt Nam" |
 
-### Bước 4: Kiểm tra
+### Bước 4: Nhập thông tin 5 vai trò (khi có)
+
+> Không bắt buộc ở giai đoạn đầu. Bổ sung dần khi có thông tin, **bắt buộc hoàn chỉnh trước Bước 08 (HĐ Dịch vụ Triển khai).**
+
+- [ ] **Người đại diện:** Họ tên + Chức vụ (bắt buộc cho HĐ) + Email + SĐT
+- [ ] **QLDA:** Họ tên + Email (bắt buộc) + SĐT
+- [ ] **Kỹ thuật:** Họ tên + Email + SĐT (khi có)
+- [ ] **Người liên lạc:** Họ tên + Email + SĐT (khi có)
+- [ ] **Kế toán:** Họ tên + Email + SĐT (khi có)
+
+### Bước 5: Kiểm tra
 
 - [ ] `RQ_COMPANY_NAME` — đã điền đúng tên pháp lý?
 - [ ] `RQ_VAT_ID` — đã điền MST?
@@ -160,6 +285,7 @@ Từ địa chỉ đầy đủ trên masothue.com, tách thành các field:
 - [ ] `REGION` — có Phường + Quận?
 - [ ] `PROVINCE` — có Tỉnh/TP?
 - [ ] `COUNTRY` — = "Việt Nam"?
+- [ ] `UF_CRM_REP_NAME` + `UF_CRM_REP_POSITION` — Người đại diện?
 - [ ] Contact liên kết — đã có tên + chức vụ?
 
 > **Nguồn tra cứu:** [masothue.com](https://masothue.com) — nhập MST hoặc tên công ty để lấy đầy đủ thông tin pháp lý.
@@ -194,6 +320,8 @@ Từ địa chỉ đầy đủ trên masothue.com, tách thành các field:
 | `crm.requisite.link.register` | Liên kết Requisite với Deal/Invoice |
 | `crm.requisite.link.get` | Xem Requisite Link của Deal/Invoice |
 | `crm.requisite.preset.list` | Danh sách templates |
+| `crm.requisite.preset.field.list` | Fields trong 1 preset |
+| `crm.requisite.userfield.list` | Danh sách UF fields trên Requisite |
 
 > **Chi tiết API:** Xem [Bitrix24 REST API — Requisites](https://apidocs.bitrix24.com/api-reference/crm/requisites/)
 

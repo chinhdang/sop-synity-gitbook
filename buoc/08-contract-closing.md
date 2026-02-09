@@ -56,7 +56,13 @@ PHASE 7: CONTRACT (Hợp đồng)
 - [ ] Mở Company card → tab **Details/Requisites** → kiểm tra:
   - [ ] `RQ_COMPANY_NAME` — Tên pháp lý *(nếu thiếu: tra [masothue.com](https://masothue.com))*
   - [ ] `RQ_VAT_ID` — Mã số thuế
-  - [ ] Address — Địa chỉ pháp lý
+  - [ ] Address — Địa chỉ pháp lý (theo [quy chuẩn VN](../crm/requisite-guide.md#address-gắn-vào-requisite--mapping-cho-việt-nam))
+- [ ] Kiểm tra **5 vai trò liên hệ** (bắt buộc cho HĐ Dịch vụ Triển khai):
+  - [ ] **Người đại diện:** `UF_CRM_REP_NAME` + `UF_CRM_REP_POSITION` *(bắt buộc)*
+  - [ ] **QLDA:** `UF_CRM_PM_NAME` + `UF_CRM_PM_EMAIL` *(bắt buộc)*
+  - [ ] **Kỹ thuật:** `UF_CRM_TECH_NAME` + `UF_CRM_TECH_EMAIL` *(nên có)*
+  - [ ] **Người liên lạc:** `UF_CRM_LIAISON_NAME` *(nên có)*
+  - [ ] **Kế toán:** `UF_CRM_ACC_NAME` + `UF_CRM_ACC_EMAIL` *(nên có)*
 - [ ] Kiểm tra Contact:
   - [ ] Tên đầy đủ + Danh xưng (Ông/Bà) + Chức vụ
 - [ ] Kiểm tra Deal:
