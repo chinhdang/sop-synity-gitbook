@@ -1,6 +1,6 @@
-# Bước 11: Khảo sát & Triển khai
+# Bước 11: Implementation – Triển khai & Theo dõi
 
-> **Pha:** 4 - Delivery | **Phụ trách chính:** P. Triển khai
+> **Pha:** 3 - Delivery | **Phụ trách chính:** P. Triển khai
 > **Thời gian:** Theo timeline dự án
 > **CJM Phase:** IMPLEMENTATION (Triển khai) + TRACKING & UAT (Theo dõi & Nghiệm thu)
 

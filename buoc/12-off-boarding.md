@@ -141,7 +141,7 @@ PHASE 12: CLOSING (Kết thúc dự án)
 
 | Điều hướng | Link |
 |------------|------|
-| ← Bước trước: 11. Khảo sát & Triển khai | [Link](11-khao-sat-trien-khai.md) |
+| ← Bước trước: 11. Implementation | [Link](11-implementation.md) |
 | ↑ Về Landing P. Triển khai | [Link](../landing/p-trien-khai.md) |
 | ↑ Về Landing P. Kế toán | [Link](../landing/p-ke-toan.md) |
 | 🏠 Trang chủ | [Link](../README.md) |

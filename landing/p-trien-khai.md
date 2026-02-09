@@ -51,7 +51,7 @@ Hành trình của P. Triển khai:
                     Nghiệm thu & Bàn giao
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-                      Pha 4: DELIVERY & USE
+                      Pha 3: DELIVERY
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
 
@@ -60,9 +60,9 @@ Hành trình của P. Triển khai:
 | Bước | Tên | Vai trò | Mục tiêu | SLA | Link |
 |------|-----|---------|----------|-----|------|
 | 10 | Kick-off | **R/A** | Team KH sẵn sàng, thống nhất cách phối hợp | < 5 ngày từ thanh toán | [→ Xem chi tiết](../buoc/10-kickoff.md) |
-| 11a | Training module giao tiếp | **R** | KH dùng được Chat, Task, Files ngay | Ngay sau Kick-off | [→ Xem chi tiết](../buoc/11-khao-sat-trien-khai.md) |
-| 11b | Khảo sát quy trình | **R/A** | Chốt phạm vi triển khai GĐ1 | 1 tuần (max 4 buổi) | [→ Xem chi tiết](../buoc/11-khao-sat-trien-khai.md) |
-| 11c | Triển khai | **R/A** | Quick Win mỗi 1-2 tuần | Theo timeline | [→ Xem chi tiết](../buoc/11-khao-sat-trien-khai.md) |
+| 11a | Training module giao tiếp | **R** | KH dùng được Chat, Task, Files ngay | Ngay sau Kick-off | [→ Xem chi tiết](../buoc/11-implementation.md) |
+| 11b | Khảo sát quy trình | **R/A** | Chốt phạm vi triển khai GĐ1 | 1 tuần (max 4 buổi) | [→ Xem chi tiết](../buoc/11-implementation.md) |
+| 11c | Implementation (Sprint) | **R/A** | Quick Win mỗi 1-2 tuần | Theo timeline | [→ Xem chi tiết](../buoc/11-implementation.md) |
 | 12 | Off-boarding | **R/A** | Nghiệm thu, thu tiền, tổng kết | Theo nghiệm thu | [→ Xem chi tiết](../buoc/12-off-boarding.md) |
 
 > **R** = Responsible (Thực hiện) | **A** = Accountable (Chịu trách nhiệm)
@@ -116,7 +116,7 @@ Hành trình của P. Triển khai:
 □ Họp nội bộ SYNITY phân công
 □ Đưa hạng mục vào Collab (Task + Timeline)
 ```
-📋 [→ Xem Bước 11 chi tiết](../buoc/11-khao-sat-trien-khai.md)
+📋 [→ Xem Bước 11 chi tiết](../buoc/11-implementation.md)
 
 ---
 

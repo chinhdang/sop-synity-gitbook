@@ -1,6 +1,6 @@
 # Bước 10: Kick-off – Khởi động dự án
 
-> **Pha:** 4 - Delivery & Use | **Phụ trách chính:** P. Triển khai + P. Chuyển đổi
+> **Pha:** 3 - Delivery | **Phụ trách chính:** P. Triển khai + P. Chuyển đổi
 > **Điều kiện bắt đầu:** KH đã thanh toán đợt 1
 > **CJM Phase:** KICKOFF (Khởi động dự án)
 
@@ -295,7 +295,7 @@ chống đối ngầm và làm dự án thất bại dù công cụ tốt đến
 | Điều hướng | Link |
 |------------|------|
 | ← Bước trước: 09. Payment | [Link](09-payment.md) |
-| → Bước tiếp: 11. Khảo sát & Triển khai | [Link](11-khao-sat-trien-khai.md) |
+| → Bước tiếp: 11. Implementation | [Link](11-implementation.md) |
 | ↑ Về Landing P. Triển khai | [Link](../landing/p-trien-khai.md) |
 | 🏠 Trang chủ | [Link](../README.md) |
 

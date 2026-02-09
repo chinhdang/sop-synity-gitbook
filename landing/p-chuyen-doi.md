@@ -34,29 +34,39 @@
 ```
 Hành trình của P. Chuyển đổi:
 
-[02] ──▶ [03] ──▶ [04] ──▶ [05] ──▶ [06] ──▶ [07] ──▶ [08] ──▶ [09]
- │        │        │        │        │        │        │        │
- ▼        ▼        ▼        ▼        ▼        ▼        ▼        ▼
-New      Sale     Need    Proposal Solution  Quote  Contract Payment
-Opp      Qual    Analysis  Dev     Feedback          Closing
+   LEAD PIPELINE                              DEAL PIPELINE
+   ─────────────                              ─────────────
+[01] ──▶ [02] ──▶ [03] ──▶ [04] ──▶ [05] ──▶ [06] ──▶ [07] ──▶ [08] ──▶ [09]
+ │        │        │        │        │        │        │        │        │
+ ▼        ▼        ▼        ▼        ▼        ▼        ▼        ▼        ▼
+New      Survey  Meeting   Lead    New Opp  Proposal  Quote  Contract Payment
+Lead                       Qual             & Sol             Closing
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-        Pha 2: CONSIDERATION          │    Pha 3: DECISION
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     Pha 1: LEAD QUALIFICATION       │         Pha 2: DEAL CLOSING
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
+
+### Lead Pipeline vs Deal Pipeline
+
+| Pipeline | Bước | Mô tả |
+|----------|------|-------|
+| **Lead** | 01-04 | Từ khi KH quan tâm đến khi xác định Good Lead. SLA: 14 ngày close Lead |
+| **Deal** | 05-09 | Từ khi tạo Deal đến khi thu tiền và bàn giao cho P. Triển khai |
 
 ### Chi tiết từng bước
 
-| Bước | Tên | Vai trò | Mục tiêu | SLA | Link |
-|------|-----|---------|----------|-----|------|
-| 02 | New Opportunity | **R** | Có SĐT + tạo Zalo group + Deal CRM | Trong ngày | [→ Xem chi tiết](../buoc/02-new-opportunity.md) |
-| 03 | Sale Qualification | **R** | KH điền form, xác định BANT | 1-2 ngày | [→ Xem chi tiết](../buoc/03-sale-qualification.md) |
-| 04 | Need Analysis | **R** | First Meeting, xác định người quyết định | 3-4 ngày | [→ Xem chi tiết](../buoc/04-need-analysis.md) |
-| 05 | Proposal Development | R | Chọn module phù hợp | 2-3 ngày | [→ Xem chi tiết](../buoc/05-proposal-development.md) |
-| 06 | Solution Feedback | R | Trình bày, nhận feedback | 1-2 ngày | [→ Xem chi tiết](../buoc/06-solution-feedback.md) |
-| 07 | Quotation | **R** | Gửi báo giá có ưu đãi + deadline | < 7 ngày | [→ Xem chi tiết](../buoc/07-quotation.md) |
-| 08 | Contract & Closing | **R** | Ký hợp đồng | < 7 ngày | [→ Xem chi tiết](../buoc/08-contract-closing.md) |
-| 09 | Payment | **R** | Thu tiền bản quyền + đợt 1 | < 7 ngày | [→ Xem chi tiết](../buoc/09-payment.md) |
+| Bước | Tên | Pipeline | Vai trò | Mục tiêu | SLA | Link |
+|------|-----|----------|---------|----------|-----|------|
+| 01 | New Lead | Lead | **R** | Nhận lead, tạo Lead CRM, liên hệ đầu tiên | Trong ngày | [→ Xem chi tiết](../buoc/01-new-lead.md) |
+| 02 | Survey | Lead | **R** | KH điền form khảo sát nhu cầu | 1-2 ngày | [→ Xem chi tiết](../buoc/02-survey.md) |
+| 03 | Meeting | Lead | **R** | First Meeting, xác định người quyết định | 3-4 ngày | [→ Xem chi tiết](../buoc/03-meeting.md) |
+| 04 | Lead Qualification | Lead | **R** | Xác định Good Lead / Junk Lead | SLA 14 ngày | [→ Xem chi tiết](../buoc/04-lead-qualification.md) |
+| 05 | New Opportunity | Deal | **R** | Tạo Deal từ Good Lead | Trong ngày | [→ Xem chi tiết](../buoc/05-new-opportunity.md) |
+| 06 | Proposal & Solution | Deal | R | Đề xuất giải pháp, nhận feedback | 2-3 ngày | [→ Xem chi tiết](../buoc/06-proposal-solution.md) |
+| 07 | Quotation | Deal | **R** | Gửi báo giá có ưu đãi + deadline | < 7 ngày | [→ Xem chi tiết](../buoc/07-quotation.md) |
+| 08 | Contract & Closing | Deal | **R** | Ký hợp đồng | < 7 ngày | [→ Xem chi tiết](../buoc/08-contract-closing.md) |
+| 09 | Payment | Deal | **R** | Thu tiền bản quyền + đợt 1 | < 7 ngày | [→ Xem chi tiết](../buoc/09-payment.md) |
 
 > **R** = Responsible (Thực hiện chính)
 
@@ -70,10 +80,10 @@ Opp      Qual    Analysis  Dev     Feedback          Closing
 □ Xin SĐT từ Chinh
 □ Tạo nhóm Zalo (KH + Chinh + Huy)
 □ Inbox KH chào hỏi, giới thiệu
-□ Tạo Deal + Contact trong Bitrix
+□ Tạo Lead + Contact trong Bitrix
 □ Gửi form khảo sát trong 24h
 ```
-📋 [→ Xem Bước 02 chi tiết](../buoc/02-new-opportunity.md)
+📋 [→ Xem Bước 01 chi tiết](../buoc/01-new-lead.md)
 
 ---
 
@@ -86,7 +96,7 @@ Opp      Qual    Analysis  Dev     Feedback          Closing
 □ Đặt lịch First Meeting
 □ Chuẩn bị kịch bản theo kết quả khảo sát
 ```
-📋 [→ Xem Bước 03-04 chi tiết](../buoc/03-sale-qualification.md)
+📋 [→ Xem Bước 02-03 chi tiết](../buoc/02-survey.md)
 
 ---
 
@@ -99,7 +109,7 @@ Opp      Qual    Analysis  Dev     Feedback          Closing
 □ Tạo báo giá (< 7 ngày)
 □ Follow-up giữ độ nóng
 ```
-📋 [→ Xem Bước 05-07 chi tiết](../buoc/05-proposal-development.md)
+📋 [→ Xem Bước 05-07 chi tiết](../buoc/05-new-opportunity.md)
 
 ---
 
@@ -314,15 +324,37 @@ Anh/chị có muốn em tạo voucher bảo lưu không ạ?
 
 ## 💾 Thao tác CRM thường dùng
 
-### Tạo Deal mới
+### Tạo Lead mới
 
 ```
-Bitrix24 → CRM → Deals → Add
+Bitrix24 → CRM → Leads → Add
+├── Title: [Tên KH] - [Nguồn] - [Tháng/Năm]
+├── Contact: Liên kết với contact KH
+├── Source: [Facebook/Referral/...]
+├── Stage: New Lead
+└── Assigned: Huy
+```
+
+### Cập nhật Lead sau mỗi bước
+
+| Khi nào | Stage mới | Cần làm thêm |
+|---------|-----------|--------------|
+| Lead mới vào | New Lead | Tạo Zalo group, liên hệ |
+| Gửi form khảo sát | Submitted Form | Chờ KH điền form |
+| Đặt lịch meeting | Book Meeting | Chuẩn bị kịch bản |
+| Sau meeting, đang theo dõi | Follow-up | Ghi recap, follow-up |
+| Lead đủ điều kiện | Good Lead | Convert sang Deal (Bước 05) |
+| Lead không đủ điều kiện | Junk Lead | Ghi lý do (dropdown) |
+
+### Tạo Deal mới (từ Good Lead)
+
+```
+Bitrix24 → CRM → Deals → Add (hoặc Convert từ Lead)
 ├── Title: [Tên công ty] - [Nhu cầu] - [Tháng/Năm]
 ├── Contact: Liên kết với contact KH
 ├── Company: Liên kết với company
 ├── Stage: New Opportunity
-├── Source: [Facebook/Referral/...]
+├── Source: Từ Lead
 └── Assigned: Huy
 ```
 
@@ -330,12 +362,11 @@ Bitrix24 → CRM → Deals → Add
 
 | Khi nào | Stage mới | Cần làm thêm |
 |---------|-----------|--------------|
-| KH điền form | Qualified | Kiểm tra BANT |
-| Sau First Meeting | Need Analysis | Ghi recap vào Activities |
-| Gửi báo giá | Proposal Sent | Attach file báo giá |
-| KH chấp nhận | Negotiation | Tạo Estimate trong Bitrix |
-| Ký HĐ | Contract Signed | Upload HĐ đã ký |
-| Thanh toán đợt 1 | Won | Chuyển P. Triển khai |
+| Convert từ Lead | New Opportunity | Ghi thông tin từ Lead |
+| Đề xuất giải pháp | Proposal & Solution | Attach file đề xuất |
+| Gửi báo giá | Quotation | Attach file báo giá |
+| Ký HĐ | Contract | Upload HĐ đã ký |
+| Thanh toán đợt 1 | Payment | Chuyển P. Triển khai |
 
 ---
 

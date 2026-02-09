@@ -8,7 +8,7 @@
 
 | Vai trò | Phụ trách chính | Link |
 |---------|-----------------|------|
-| 👤 **P. Chuyển đổi** | Bước 02-09 (Sales → Closing) | [→ Vào trang của tôi](landing/p-chuyen-doi.md) |
+| 👤 **P. Chuyển đổi** | Bước 01-09 (Lead Qualification → Deal Closing) | [→ Vào trang của tôi](landing/p-chuyen-doi.md) |
 | 🛠️ **P. Triển khai** | Bước 10-12 (Delivery) | [→ Vào trang của tôi](landing/p-trien-khai.md) |
 | 💰 **P. Kế toán** | Bước 09, 12 (Payment & Invoice) | [→ Vào trang của tôi](landing/p-ke-toan.md) |
 | 👔 **Chinh (CEO)** | Review & Approve toàn bộ | [→ Dashboard tổng quan](#) |
@@ -24,20 +24,21 @@
 <details>
 <summary><strong>Xem bản text tóm tắt: CJM Phase → SOP Step mapping</strong></summary>
 
-| CJM Phase | SOP Step | Phụ trách |
-|-----------|----------|-----------|
-| **1. AWARENESS** (Nhận biết) | 01. Attraction | Marketing + CEO |
-| **2. INTEREST** (Quan tâm) | 02. New Opportunity | P. Chuyển đổi |
-| **3. SURVEY** (Khảo sát) | 03. Sale Qualification | P. Chuyển đổi |
-| **4. PRE-MEETING** (Tiền Meeting) | 04. Need Analysis | Chinh + P. Chuyển đổi |
-| **5. MEETING** (Họp) | 05. Proposal Development | Chinh + P. Chuyển đổi |
-| *(Bridge)* | 06. Solution Feedback | Chinh + P. Chuyển đổi |
-| **6. QUOTATION** (Báo giá) | 07. Quotation | P. Chuyển đổi |
-| **7. CONTRACT** (Hợp đồng) | 08. Contract & Closing | P. Chuyển đổi |
-| **7+11. PAYMENT** (Thanh toán) | 09. Payment | P. Chuyển đổi + Kế toán |
-| **8. KICKOFF** (Khởi động) | 10. Kick-off | P. Triển khai |
-| **9+10. IMPLEMENTATION + TRACKING** | 11. Khảo sát & Triển khai | P. Triển khai |
-| **12. CLOSING** (Kết thúc) | 12. Off-boarding | P. Triển khai + Kế toán |
+| CJM Phase | SOP Step | Pipeline | Phụ trách |
+|-----------|----------|----------|-----------|
+| **1. AWARENESS** | 01. New Lead | Lead | P. Chuyển đổi |
+| **2. INTEREST** | 01. New Lead | Lead | P. Chuyển đổi |
+| **3. SURVEY** | 02. Survey | Lead | P. Chuyển đổi |
+| **4. PRE-MEETING + 5. MEETING** | 03. Meeting | Lead | Chinh + P. Chuyển đổi |
+| *(Qualification)* | 04. Lead Qualification | Lead | Chinh + P. Chuyển đổi |
+| *(Deal creation)* | 05. New Opportunity | Deal | Chinh + P. Chuyển đổi |
+| *(Bridge)* | 06. Proposal & Solution | Deal | Chinh + P. Chuyển đổi |
+| **6. QUOTATION** | 07. Quotation | Deal | P. Chuyển đổi |
+| **7. CONTRACT** | 08. Contract & Closing | Deal | P. Chuyển đổi |
+| **7+11. PAYMENT** | 09. Payment | Deal | P. Chuyển đổi + Kế toán |
+| **8. KICKOFF** | 10. Kick-off | Delivery | P. Triển khai |
+| **9+10. IMPLEMENTATION + TRACKING** | 11. Implementation | Delivery | P. Triển khai |
+| **12. CLOSING** | 12. Off-boarding | Delivery | P. Triển khai + Kế toán |
 
 **Tác giả:** Đặng Đình Chinh – CEO SYNITY
 </details>
@@ -46,20 +47,20 @@
 
 ## 📋 Danh sách các bước
 
-| Pha | Bước | Tên | CJM Phase | Phụ trách | Link |
-|-----|------|-----|-----------|-----------|------|
-| **1. Awareness** | 01 | Attraction | AWARENESS | Marketing + CEO | [Xem →](buoc/01-attraction.md) |
-| **2. Consideration** | 02 | New Opportunity | INTEREST | P. Chuyển đổi | [Xem →](buoc/02-new-opportunity.md) |
-| | 03 | Sale Qualification | SURVEY | P. Chuyển đổi | [Xem →](buoc/03-sale-qualification.md) |
-| | 04 | Need Analysis | PRE-MEETING | Chinh + P. Chuyển đổi | [Xem →](buoc/04-need-analysis.md) |
-| | 05 | Proposal Development | MEETING | Chinh + P. Chuyển đổi | [Xem →](buoc/05-proposal-development.md) |
-| | 06 | Solution Feedback | *(Bridge)* | Chinh + P. Chuyển đổi | [Xem →](buoc/06-solution-feedback.md) |
-| **3. Decision** | 07 | Quotation | QUOTATION | P. Chuyển đổi | [Xem →](buoc/07-quotation.md) |
-| | 08 | Contract & Closing | CONTRACT | P. Chuyển đổi | [Xem →](buoc/08-contract-closing.md) |
-| | 09 | Payment | PAYMENT | P. Chuyển đổi + Kế toán | [Xem →](buoc/09-payment.md) |
-| **4. Delivery** | 10 | Kick-off | KICKOFF | P. Triển khai | [Xem →](buoc/10-kickoff.md) |
-| | 11 | Khảo sát & Triển khai | IMPLEMENTATION + TRACKING | P. Triển khai | [Xem →](buoc/11-khao-sat-trien-khai.md) |
-| | 12 | Off-boarding | CLOSING | P. Triển khai + Kế toán | [Xem →](buoc/12-off-boarding.md) |
+| Pha | Bước | Tên | Pipeline | CJM Phase | Phụ trách | Link |
+|-----|------|-----|----------|-----------|-----------|------|
+| **1. Lead Qualification** | 01 | New Lead | Lead | AWARENESS + INTEREST | P. Chuyển đổi | [Xem →](buoc/01-new-lead.md) |
+| | 02 | Survey | Lead | SURVEY | P. Chuyển đổi | [Xem →](buoc/02-survey.md) |
+| | 03 | Meeting | Lead | PRE-MEETING + MEETING | Chinh + P. Chuyển đổi | [Xem →](buoc/03-meeting.md) |
+| | 04 | Lead Qualification | Lead | *(Qualification)* | Chinh + P. Chuyển đổi | [Xem →](buoc/04-lead-qualification.md) |
+| **2. Deal Closing** | 05 | New Opportunity | Deal | INTEREST (Deal) | Chinh + P. Chuyển đổi | [Xem →](buoc/05-new-opportunity.md) |
+| | 06 | Proposal & Solution | Deal | *(Bridge)* | Chinh + P. Chuyển đổi | [Xem →](buoc/06-proposal-solution.md) |
+| | 07 | Quotation | Deal | QUOTATION | P. Chuyển đổi | [Xem →](buoc/07-quotation.md) |
+| | 08 | Contract & Closing | Deal | CONTRACT | P. Chuyển đổi | [Xem →](buoc/08-contract-closing.md) |
+| | 09 | Payment | Deal | PAYMENT | P. Chuyển đổi + Kế toán | [Xem →](buoc/09-payment.md) |
+| **3. Delivery** | 10 | Kick-off | Delivery | KICKOFF | P. Triển khai | [Xem →](buoc/10-kickoff.md) |
+| | 11 | Implementation | Delivery | IMPLEMENTATION + TRACKING | P. Triển khai | [Xem →](buoc/11-implementation.md) |
+| | 12 | Off-boarding | Delivery | CLOSING | P. Triển khai + Kế toán | [Xem →](buoc/12-off-boarding.md) |
 
 ---
 
@@ -90,7 +91,7 @@
 ### Theo giai đoạn
 
 <details>
-<summary><strong>📁 Pha 2: Consideration</strong></summary>
+<summary><strong>📁 Pha 1: Lead Qualification + Pha 2: Deal Closing</strong></summary>
 
 - [ ] Form khảo sát nhu cầu sơ bộ → [Link]()
 - [ ] Form khảo sát theo ngành (Đào tạo) → [Link]()
@@ -99,7 +100,7 @@
 </details>
 
 <details>
-<summary><strong>📁 Pha 3: Decision</strong></summary>
+<summary><strong>📁 Pha 2: Deal Closing (continued)</strong></summary>
 
 - [ ] Template báo giá (bản mới nhất) → [Link]()
 - [ ] Template hợp đồng bản quyền → [Link]()
@@ -108,7 +109,7 @@
 </details>
 
 <details>
-<summary><strong>📁 Pha 4: Delivery</strong></summary>
+<summary><strong>📁 Pha 3: Delivery</strong></summary>
 
 - [ ] Slide Kick-off dự án → [Link]()
 - [ ] Form khảo sát quy trình phòng ban → [Link]()
@@ -147,4 +148,5 @@
 
 | Ngày | Thay đổi | Người cập nhật | Approved |
 |------|----------|----------------|----------|
+| 09/02/2026 | Restructure: Lead → Deal pipeline, đổi tên bước 01-06 | -- | CEO ✅ |
 | 09/02/2026 | Khởi tạo SOP v2.0 (cấu trúc Wiki) | -- | CEO ✅ |

@@ -1,6 +1,6 @@
 # Bước 08: Contract & Closing – Soạn & ký hợp đồng
 
-> **Pha:** 3 - Decision | **Phụ trách chính:** P. Chuyển đổi (Huy)
+> **Pha:** 2 - Deal Closing | **Phụ trách chính:** P. Chuyển đổi (Huy)
 > **Thời gian chuẩn:** < 7 ngày
 > **CJM Phase:** CONTRACT (Hợp đồng)
 

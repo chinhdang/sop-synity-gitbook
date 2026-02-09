@@ -38,7 +38,7 @@
         <mxCell id="5H6nJfGrn3FOew1XaDN5-11" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff8e1;strokeColor=#fbbc04;fontSize=11;" value="Khách hàng&#xa;điền form" vertex="1">
           <mxGeometry height="80" width="100" x="190" y="490" as="geometry" />
         </mxCell>
-        <mxCell id="5H6nJfGrn3FOew1XaDN5-12" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff8e1;strokeColor=#fbbc04;fontSize=11;" value="Hệ thống tự động tạo&#xa;Contact / Company / Deal" vertex="1">
+        <mxCell id="5H6nJfGrn3FOew1XaDN5-12" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff8e1;strokeColor=#fbbc04;fontSize=11;" value="Hệ thống tự động tạo&#xa;Contact / Company / Lead" vertex="1">
           <mxGeometry height="60" width="160" x="40" y="600" as="geometry" />
         </mxCell>
         <mxCell id="5H6nJfGrn3FOew1XaDN5-13" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff8e1;strokeColor=#fbbc04;fontSize=11;" value="Tra cứu bổ sung&#xa;(MST, thông tin pháp lý)" vertex="1">
@@ -236,7 +236,7 @@
         <mxCell id="5H6nJfGrn3FOew1XaDN5-77" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#263238;fontColor=#ffffff;fontSize=12;fontStyle=1;strokeColor=#263238;" value="CHUẨN HÓA DỮ LIỆU" vertex="1">
           <mxGeometry height="30" width="300" x="40" y="1010" as="geometry" />
         </mxCell>
-        <mxCell id="5H6nJfGrn3FOew1XaDN5-78" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fafafa;strokeColor=#263238;fontSize=10;align=left;spacingLeft=10;spacingTop=5;" value="CONTACT: Họ tên, Email, SĐT, Giới tính,&#xa;Nguồn đến, Facebook, Website&#xa;&#xa;COMPANY: Có công ty không?, Địa chỉ&#xa;pháp lý, Địa chỉ nhận hồ sơ&#xa;&#xa;→ Vào 1 Contact/Company/Deal là&#xa;có ĐỦ THÔNG TIN để làm việc" vertex="1">
+        <mxCell id="5H6nJfGrn3FOew1XaDN5-78" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fafafa;strokeColor=#263238;fontSize=10;align=left;spacingLeft=10;spacingTop=5;" value="CONTACT: Họ tên, Email, SĐT, Giới tính,&#xa;Nguồn đến, Facebook, Website&#xa;&#xa;COMPANY: Có công ty không?, Địa chỉ&#xa;pháp lý, Địa chỉ nhận hồ sơ&#xa;&#xa;→ Vào 1 Contact/Company/Lead là&#xa;có ĐỦ THÔNG TIN để làm việc" vertex="1">
           <mxGeometry height="140" width="300" x="40" y="1040" as="geometry" />
         </mxCell>
         <mxCell id="5H6nJfGrn3FOew1XaDN5-79" edge="1" parent="1" source="5H6nJfGrn3FOew1XaDN5-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#666666;strokeWidth=1;" target="5H6nJfGrn3FOew1XaDN5-5">
@@ -603,7 +603,7 @@
         <mxCell id="tz93hegtnIzc4BmWEGWM-11" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff8e1;strokeColor=#fbbc04;fontSize=11;" value="Khách hàng&#xa;điền form" vertex="1">
           <mxGeometry height="80" width="100" x="190" y="490" as="geometry" />
         </mxCell>
-        <mxCell id="tz93hegtnIzc4BmWEGWM-12" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff8e1;strokeColor=#fbbc04;fontSize=11;" value="Hệ thống tự động tạo&#xa;Contact / Company / Deal" vertex="1">
+        <mxCell id="tz93hegtnIzc4BmWEGWM-12" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff8e1;strokeColor=#fbbc04;fontSize=11;" value="Hệ thống tự động tạo&#xa;Contact / Company / Lead" vertex="1">
           <mxGeometry height="60" width="160" x="40" y="600" as="geometry" />
         </mxCell>
         <mxCell id="tz93hegtnIzc4BmWEGWM-13" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff8e1;strokeColor=#fbbc04;fontSize=11;" value="Tra cứu bổ sung&#xa;(MST, thông tin pháp lý)" vertex="1">
@@ -801,7 +801,7 @@
         <mxCell id="tz93hegtnIzc4BmWEGWM-77" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#263238;fontColor=#ffffff;fontSize=12;fontStyle=1;strokeColor=#263238;" value="CHUẨN HÓA DỮ LIỆU" vertex="1">
           <mxGeometry height="30" width="300" x="40" y="1010" as="geometry" />
         </mxCell>
-        <mxCell id="tz93hegtnIzc4BmWEGWM-78" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fafafa;strokeColor=#263238;fontSize=10;align=left;spacingLeft=10;spacingTop=5;" value="CONTACT: Họ tên, Email, SĐT, Giới tính,&#xa;Nguồn đến, Facebook, Website&#xa;&#xa;COMPANY: Có công ty không?, Địa chỉ&#xa;pháp lý, Địa chỉ nhận hồ sơ&#xa;&#xa;→ Vào 1 Contact/Company/Deal là&#xa;có ĐỦ THÔNG TIN để làm việc" vertex="1">
+        <mxCell id="tz93hegtnIzc4BmWEGWM-78" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fafafa;strokeColor=#263238;fontSize=10;align=left;spacingLeft=10;spacingTop=5;" value="CONTACT: Họ tên, Email, SĐT, Giới tính,&#xa;Nguồn đến, Facebook, Website&#xa;&#xa;COMPANY: Có công ty không?, Địa chỉ&#xa;pháp lý, Địa chỉ nhận hồ sơ&#xa;&#xa;→ Vào 1 Contact/Company/Lead là&#xa;có ĐỦ THÔNG TIN để làm việc" vertex="1">
           <mxGeometry height="140" width="300" x="40" y="1040" as="geometry" />
         </mxCell>
         <mxCell id="tz93hegtnIzc4BmWEGWM-79" edge="1" parent="1" source="tz93hegtnIzc4BmWEGWM-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#666666;strokeWidth=1;" target="tz93hegtnIzc4BmWEGWM-5">
@@ -1404,10 +1404,10 @@
         <mxCell id="reA-nXUCAS1d8bc4PnGR-86" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e8f5e9;strokeColor=#388e3c;fontSize=9;fontStyle=1;verticalAlign=middle;fontColor=#2e7d32;" value="CRM&#xa;Bitrix24" vertex="1">
           <mxGeometry height="100" width="140" y="420" as="geometry" />
         </mxCell>
-        <mxCell id="reA-nXUCAS1d8bc4PnGR-87" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#388e3c;fontSize=8;" value="Tạo Contact&#xa;Company&#xa;Deal" vertex="1">
+        <mxCell id="reA-nXUCAS1d8bc4PnGR-87" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#388e3c;fontSize=8;" value="Tạo Contact&#xa;Company&#xa;Lead" vertex="1">
           <mxGeometry height="50" width="80" x="540" y="440" as="geometry" />
         </mxCell>
-        <mxCell id="reA-nXUCAS1d8bc4PnGR-88" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#388e3c;fontSize=8;" value="Update&#xa;Deal Stage" vertex="1">
+        <mxCell id="reA-nXUCAS1d8bc4PnGR-88" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#388e3c;fontSize=8;" value="Update&#xa;Lead/Deal Stage" vertex="1">
           <mxGeometry height="50" width="80" x="660" y="440" as="geometry" />
         </mxCell>
         <mxCell id="reA-nXUCAS1d8bc4PnGR-89" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#388e3c;fontSize=8;" value="Tạo&#xa;Activity/Task" vertex="1">
@@ -1650,22 +1650,22 @@
         <mxCell id="reA-nXUCAS1d8bc4PnGR-168" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffccbc;strokeColor=#e64a19;fontSize=8;fontStyle=1;" value="INVOICE" vertex="1">
           <mxGeometry height="40" width="200" x="1840" y="800" as="geometry" />
         </mxCell>
-        <mxCell id="reA-nXUCAS1d8bc4PnGR-169" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#a5d6a7;strokeColor=#388e3c;fontSize=9;fontStyle=1;verticalAlign=middle;fontColor=#2e7d32;" value="Deal Stage" vertex="1">
+        <mxCell id="reA-nXUCAS1d8bc4PnGR-169" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#a5d6a7;strokeColor=#388e3c;fontSize=9;fontStyle=1;verticalAlign=middle;fontColor=#2e7d32;" value="Lead → Deal Stage" vertex="1">
           <mxGeometry height="40" width="140" y="840" as="geometry" />
         </mxCell>
-        <mxCell id="reA-nXUCAS1d8bc4PnGR-170" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e3f2fd;strokeColor=#1976d2;fontSize=8;" value="NEW" vertex="1">
+        <mxCell id="reA-nXUCAS1d8bc4PnGR-170" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e3f2fd;strokeColor=#1976d2;fontSize=8;" value="NEW LEAD" vertex="1">
           <mxGeometry height="40" width="100" x="340" y="840" as="geometry" />
         </mxCell>
-        <mxCell id="reA-nXUCAS1d8bc4PnGR-171" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff3e0;strokeColor=#f57c00;fontSize=8;" value="QUALIFICATION" vertex="1">
+        <mxCell id="reA-nXUCAS1d8bc4PnGR-171" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff3e0;strokeColor=#f57c00;fontSize=8;" value="SUBMITTED FORM" vertex="1">
           <mxGeometry height="40" width="120" x="440" y="840" as="geometry" />
         </mxCell>
-        <mxCell id="reA-nXUCAS1d8bc4PnGR-172" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff8e1;strokeColor=#fbc02d;fontSize=8;" value="MEETING" vertex="1">
+        <mxCell id="reA-nXUCAS1d8bc4PnGR-172" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff8e1;strokeColor=#fbc02d;fontSize=8;" value="BOOK MEETING" vertex="1">
           <mxGeometry height="40" width="100" x="560" y="840" as="geometry" />
         </mxCell>
-        <mxCell id="reA-nXUCAS1d8bc4PnGR-173" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff8e1;strokeColor=#fbc02d;fontSize=8;" value="PROPOSAL" vertex="1">
+        <mxCell id="reA-nXUCAS1d8bc4PnGR-173" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff8e1;strokeColor=#fbc02d;fontSize=8;" value="GOOD LEAD" vertex="1">
           <mxGeometry height="40" width="100" x="660" y="840" as="geometry" />
         </mxCell>
-        <mxCell id="reA-nXUCAS1d8bc4PnGR-174" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff8e1;strokeColor=#fbc02d;fontSize=8;" value="QUOTATION" vertex="1">
+        <mxCell id="reA-nXUCAS1d8bc4PnGR-174" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#388e3c;fontSize=8;" value="NEW OPP&#xa;(Deal)" vertex="1">
           <mxGeometry height="40" width="100" x="760" y="840" as="geometry" />
         </mxCell>
         <mxCell id="reA-nXUCAS1d8bc4PnGR-175" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#388e3c;fontSize=8;" value="CONTRACT" vertex="1">

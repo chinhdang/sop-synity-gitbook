@@ -1,6 +1,6 @@
 # Bước 09: Payment – Thu tiền
 
-> **Pha:** 3 - Decision | **Phụ trách chính:** P. Chuyển đổi + Kế toán
+> **Pha:** 2 - Deal Closing | **Phụ trách chính:** P. Chuyển đổi + Kế toán
 > **Thời gian chuẩn:** < 7 ngày
 > **CJM Phase:** CONTRACT (Thu tiền đợt đầu) + PAYMENT (Thu tiền theo đợt)
 

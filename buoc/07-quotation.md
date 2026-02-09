@@ -1,6 +1,6 @@
 # Bước 07: Quotation – Gửi báo giá
 
-> **Pha:** 3 - Decision | **Phụ trách chính:** P. Chuyển đổi (Huy)
+> **Pha:** 2 - Deal Closing | **Phụ trách chính:** P. Chuyển đổi (Huy)
 > **Thời gian chuẩn:** < 7 ngày (hiệu lực báo giá)
 > **CJM Phase:** QUOTATION (Báo giá)
 
@@ -160,7 +160,7 @@ Giữ vị thế chuyên gia (Bác sĩ – Bệnh nhân).
 
 | Điều hướng | Link |
 |------------|------|
-| ← Bước trước: 06. Solution Feedback | [Link](06-solution-feedback.md) |
+| ← Bước trước: 06. Proposal & Solution | [Link](06-proposal-solution.md) |
 | → Bước tiếp: 08. Contract & Closing | [Link](08-contract-closing.md) |
 | ↑ Về Landing P. Chuyển đổi | [Link](../landing/p-chuyen-doi.md) |
 | 🏠 Trang chủ | [Link](../README.md) |
