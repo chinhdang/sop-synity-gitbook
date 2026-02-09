@@ -39,13 +39,26 @@ Company (hoặc Contact)
 | `RQ_COMPANY_NAME` | `{CompanyRequisiteRqCompanyName}` | Tên pháp lý công ty | **YES** |
 | `RQ_VAT_ID` | `{CompanyRequisiteRqVatId}` | Mã số thuế | **YES** |
 
-### Address (gắn vào Requisite)
+### Address (gắn vào Requisite) — Mapping cho Việt Nam
 
-| Address Field | Template Variable | Mô tả | Bắt buộc |
-|--------------|-------------------|-------|----------|
-| `ADDRESS_1` | `{CompanyAddressLegal}` | Địa chỉ pháp lý | **YES** |
-| `CITY` | — | Thành phố | Nên có |
-| `COUNTRY` | — | Quốc gia | Nên có |
+> Bitrix24 thiết kế cho hệ thống Mỹ/Âu (City → State). Việt Nam có 4 cấp hành chính khác biệt.
+> Dưới đây là **quy chuẩn mapping** đã được xác nhận.
+
+| Bitrix Field | Cấp hành chính VN | Bắt buộc | Ví dụ |
+|---|---|---|---|
+| `ADDRESS_1` | Số nhà + Đường | **YES** | `412 Nguyễn Thị Minh Khai` |
+| `ADDRESS_2` | Toà nhà / Tầng / Phòng | Nếu có | `Tầng 14, Toà nhà HM Town` |
+| `REGION` | Phường/Xã, Quận/Huyện | **YES** | `Phường Bàn Cờ, Quận 3` |
+| `PROVINCE` | Tỉnh / Thành phố trực thuộc TW | **YES** | `Thành phố Hồ Chí Minh` |
+| `CITY` | *(bỏ trống — không dùng cho VN)* | — | — |
+| `COUNTRY` | Quốc gia (chuẩn hoá) | **YES** | `Việt Nam` |
+| `POSTAL_CODE` | Mã bưu chính | Nếu có | `700000` |
+
+**Lý do mapping:**
+- `REGION` = Phường + Quận — gần nghĩa nhất, 2 cấp này luôn đi chung
+- `PROVINCE` = Tỉnh/TP — khớp chính xác với "State/Province"
+- `CITY` bỏ trống — VN không có cấp "City" tách biệt
+- `COUNTRY` luôn = `Việt Nam` (có dấu, chuẩn hoá)
 
 ### Trường bổ sung (nên có cho HĐ hoàn chỉnh)
 
@@ -124,11 +137,29 @@ crm.requisite.link.register({
 | Tax ID / VAT ID (MST) | masothue.com | Tra theo tên công ty |
 | Address (địa chỉ pháp lý) | masothue.com | Lấy từ thông tin đăng ký |
 
-### Bước 3: Kiểm tra
+### Bước 3: Nhập Address theo quy chuẩn VN
+
+Từ địa chỉ đầy đủ trên masothue.com, tách thành các field:
+
+**Ví dụ:** `Tầng 14, Toà nhà HM Town, 412 Nguyễn Thị Minh Khai, Phường Bàn Cờ, Quận 3, TP Hồ Chí Minh`
+
+| Field | Điền | Cách tách |
+|-------|------|----------|
+| `ADDRESS_1` | `412 Nguyễn Thị Minh Khai` | Số nhà + Đường |
+| `ADDRESS_2` | `Tầng 14, Toà nhà HM Town` | Toà nhà, tầng, phòng (nếu có) |
+| `REGION` | `Phường Bàn Cờ, Quận 3` | Phường/Xã + Quận/Huyện |
+| `PROVINCE` | `Thành phố Hồ Chí Minh` | Tỉnh/TP (viết đầy đủ) |
+| `CITY` | *(bỏ trống)* | Không dùng cho VN |
+| `COUNTRY` | `Việt Nam` | Luôn = "Việt Nam" |
+
+### Bước 4: Kiểm tra
 
 - [ ] `RQ_COMPANY_NAME` — đã điền đúng tên pháp lý?
 - [ ] `RQ_VAT_ID` — đã điền MST?
-- [ ] Address — đã thêm địa chỉ pháp lý?
+- [ ] `ADDRESS_1` — có số nhà + đường?
+- [ ] `REGION` — có Phường + Quận?
+- [ ] `PROVINCE` — có Tỉnh/TP?
+- [ ] `COUNTRY` — = "Việt Nam"?
 - [ ] Contact liên kết — đã có tên + chức vụ?
 
 > **Nguồn tra cứu:** [masothue.com](https://masothue.com) — nhập MST hoặc tên công ty để lấy đầy đủ thông tin pháp lý.
@@ -145,6 +176,7 @@ crm.requisite.link.register({
 | Có `RQ_COMPANY_NAME` + `RQ_VAT_ID` | ~15 | Đủ cho Document Template |
 | Chỉ có Address (rỗng) | ~38 | `ADDRESS_ONLY=Y`, cần bổ sung |
 | Có Bank Detail (KH) | 1 | Không ảnh hưởng HĐ |
+| **Address chuẩn VN** | **15/15** | **Tất cả address đã chuẩn hoá theo mapping VN** |
 
 **Ưu tiên bổ sung:** Khi Deal chuyển đến giai đoạn Contract (Bước 08), nhân sự **phải kiểm tra và bổ sung** Requisite cho Company trước khi tạo Document Template.
 
