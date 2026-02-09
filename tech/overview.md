@@ -36,6 +36,18 @@
 │  - Copy Products khi Estimate → Approved (Bước 07)     │
 │  - Email nhắc thanh toán + auto Task (Bước 09)         │
 └─────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────┐
+│              Git Repo (Version Control)                  │
+│                                                         │
+│  n8n-atom (VS Code/Cursor) ◄──► n8n Instance            │
+│       │                                                 │
+│       ▼                                                 │
+│  Git repo: workflow JSON files                          │
+│  ├── commit history (ai sửa, sửa gì, khi nào)          │
+│  ├── PR review trước khi deploy                         │
+│  └── rollback khi workflow lỗi                          │
+└─────────────────────────────────────────────────────────┘
 ```
 
 ---
@@ -52,6 +64,8 @@
 | **Wix** | Website — form liên hệ, landing page | P. Kỹ thuật |
 | **MISA** | Kế toán — xuất hóa đơn VAT | P. Kế toán |
 | **Zalo (ZNS)** | Gửi thông báo cho KH qua Zalo | P. Kỹ thuật (setup), Bitrix (trigger) |
+| **n8n-atom** | VS Code/Cursor extension — quản lý n8n workflows as code, Git version control | P. Kỹ thuật |
+| **Git (GitHub)** | Version control cho n8n workflow files — history, PR review, rollback | P. Kỹ thuật |
 
 ---
 
@@ -61,6 +75,37 @@
 |---|------|-------|----------------|
 | 1 | **Lead Capture** | Nhiều nguồn → n8n → Bitrix Lead | [n8n Lead Capture](n8n-lead-capture.md) |
 | 2 | *(Thêm khi có flow mới)* | | |
+
+---
+
+## Quản lý Workflow với n8n-atom + Git
+
+> Chi tiết quy trình: xem [n8n Workflow Management](n8n-workflow-management.md)
+
+n8n-atom là VS Code/Cursor extension giúp quản lý n8n workflows **as code**:
+
+| Không có n8n-atom | Có n8n-atom |
+|-------------------|-------------|
+| Workflow chỉ sống trong n8n UI | Workflow = file JSON trong Git repo |
+| Không lịch sử thay đổi | Git history: ai sửa, sửa gì, khi nào |
+| Workflow hỏng → khó rollback | `git revert` để khôi phục |
+| Không review trước deploy | PR review trước khi merge |
+| Không backup | Auto backup qua Git |
+
+### Quy trình tóm tắt
+
+```
+n8n-atom (editor) ──► Pull workflow từ n8n instance
+       │
+       ▼
+Sửa workflow trong editor
+       │
+       ▼
+git commit + push ──► Git repo (history + backup)
+       │
+       ▼
+PR review ──► Merge ──► Push workflow lên n8n instance
+```
 
 ---
 
@@ -84,6 +129,7 @@
 3. **Logging:** Mọi workflow n8n phải có error handling + notification khi fail.
 4. **Field mapping:** Tuân theo chuẩn field names trong [CRM Fields Reference](../crm/lead-fields.md).
 5. **Thêm source mới:** Theo template trong [n8n Lead Capture](n8n-lead-capture.md#template-thêm-source-mới).
+6. **Version control:** Mọi workflow phải được lưu trong Git repo qua n8n-atom. Xem [Workflow Management](n8n-workflow-management.md).
 
 ---
 
@@ -92,6 +138,7 @@
 | Đi đến | Link |
 |--------|------|
 | Landing P. Kỹ thuật | [Link](../landing/p-ky-thuat.md) |
+| n8n Workflow Management | [Link](n8n-workflow-management.md) |
 | n8n Lead Capture | [Link](n8n-lead-capture.md) |
 | CRM Fields Reference | [Lead](../crm/lead-fields.md) · [Contact](../crm/contact-fields.md) · [Company](../crm/company-fields.md) |
 | Trang chủ | [Link](../README.md) |

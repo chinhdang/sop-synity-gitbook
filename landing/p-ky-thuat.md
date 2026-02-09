@@ -1,7 +1,7 @@
 # P. Kỹ thuật – Trang làm việc
 
 > **Vai trò:** Setup & maintain hệ thống tích hợp, đảm bảo dữ liệu chảy đúng giữa các công cụ.
-> **Công cụ chính:** n8n, Bitrix24 (config), Google Workspace, UChat, Wix.
+> **Công cụ chính:** n8n, n8n-atom (VS Code), Git, Bitrix24 (config), Google Workspace, UChat, Wix.
 
 ---
 
@@ -33,6 +33,7 @@ KHÔNG quản lý:
 | Tài liệu | Mô tả | Link |
 |-----------|-------|------|
 | Tổng quan hệ thống | Bản đồ kiến trúc, công cụ, luồng dữ liệu | [→ Xem](../tech/overview.md) |
+| n8n Workflow Management | Version control workflows với n8n-atom + Git | [→ Xem](../tech/n8n-workflow-management.md) |
 | n8n Lead Capture | Tất cả workflows đẩy Lead vào Bitrix (GG Form, UChat, Wix...) | [→ Xem](../tech/n8n-lead-capture.md) |
 
 ### CRM Configuration Reference
@@ -68,6 +69,7 @@ Khi có nguồn dữ liệu mới cần đẩy Lead vào Bitrix:
 - [ ] Chuẩn hóa SĐT (format `0xxxxxxxxx`)
 - [ ] Test: tạo Lead test, kiểm tra Contact + Company tạo đúng
 - [ ] Thêm error handling + notification khi fail
+- [ ] **Commit workflow vào Git repo** (theo [quy trình n8n-atom](../tech/n8n-workflow-management.md))
 - [ ] Cập nhật trang [n8n Lead Capture](../tech/n8n-lead-capture.md) — thêm section cho source mới
 - [ ] Thông báo P. Chuyển đổi: có nguồn Lead mới
 
@@ -80,6 +82,7 @@ Khi có nguồn dữ liệu mới cần đẩy Lead vào Bitrix:
 | Hệ thống | Kiểm tra | Cách |
 |-----------|---------|------|
 | n8n | Có workflow nào fail không? | n8n Dashboard → Executions |
+| Git repo | Có workflow sửa trên n8n mà chưa commit không? | Pull từ n8n → so sánh với repo |
 | Bitrix | Automation Rules có hoạt động không? | Bitrix → CRM → Automation Rules |
 | Google Sheet | Form responses có đẩy vào Sheet không? | Kiểm tra Sheet |
 

@@ -33,9 +33,13 @@
 
 | # | Source | Loại | n8n Workflow | Trạng thái | Ghi chú |
 |---|--------|------|-------------|------------|---------|
-| 1 | [Google Form](#1-google-form) | Form khảo sát | *(tên workflow)* | Active | Nguồn chính |
-| 2 | [UChat](#2-uchat) | Chatbot | *(tên workflow)* | Active | Facebook Messenger / Zalo |
-| 3 | [Wix](#3-wix) | Website form | *(tên workflow)* | Active | Form liên hệ trên website |
+| # | Source | Loại | n8n Workflow | Git file | Trạng thái |
+|---|--------|------|-------------|----------|------------|
+| 1 | [Google Form](#1-google-form) | Form khảo sát | *(tên workflow)* | *(path trong repo)* | Active |
+| 2 | [UChat](#2-uchat) | Chatbot | *(tên workflow)* | *(path trong repo)* | Active |
+| 3 | [Wix](#3-wix) | Website form | *(tên workflow)* | *(path trong repo)* | Active |
+
+> 🔧 Tất cả workflow files được quản lý qua [n8n-atom + Git](n8n-workflow-management.md). Mọi thay đổi phải commit vào repo.
 
 ---
 
@@ -235,6 +239,7 @@ KH điền form trên Website (Wix)
 | Trigger URL/ID | *(điền)* |
 | n8n Workflow ID | *(điền)* |
 | n8n Workflow name | *(điền)* |
+| Git file path | *(điền)* |
 | Ngày setup | *(điền)* |
 | Người setup | *(điền)* |
 
@@ -248,6 +253,7 @@ KH điền form trên Website (Wix)
 4. **SOURCE_ID** — mỗi source có `SOURCE_ID` riêng để tracking nguồn Lead.
 5. **Error notification** — mọi workflow phải gửi alert (Telegram/Email) khi fail.
 6. **Lead stage** — sau khi push thành công, Lead stage = `IN_PROCESS` (Submitted Form).
+7. **Version control** — mọi workflow phải lưu trong Git repo qua n8n-atom. Xem [Workflow Management](n8n-workflow-management.md).
 
 ---
 
@@ -256,6 +262,7 @@ KH điền form trên Website (Wix)
 | Đi đến | Link |
 |--------|------|
 | Tổng quan hệ thống | [Link](overview.md) |
+| n8n Workflow Management | [Link](n8n-workflow-management.md) |
 | Landing P. Kỹ thuật | [Link](../landing/p-ky-thuat.md) |
 | SOP Bước 02 (Survey) | [Link](../buoc/02-survey.md) |
 | Lead Fields Reference | [Link](../crm/lead-fields.md) |

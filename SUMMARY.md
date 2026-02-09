@@ -41,6 +41,7 @@
 ## Hệ thống & Tích hợp
 
 * [Tổng quan hệ thống](tech/overview.md)
+* [n8n Workflow Management](tech/n8n-workflow-management.md)
 * [n8n Lead Capture](tech/n8n-lead-capture.md)
 
 ## Templates
