@@ -47,6 +47,8 @@ PHASE 4-5: PRE-MEETING + MEETING (Gộp)
   - **Xác định người ra quyết định** (Ai quyết? Ai chi tiền?)
 - [ ] Đặt lịch meeting qua Google Calendar
 - [ ] Gửi Calendar invite cho KH (email + Zalo group)
+- [ ] **Nếu KH từ đối tác giới thiệu:** Gửi email thông báo cho đối tác (xem Lead → UF Referer)
+  - Nội dung: *(Sẽ bổ sung sau)*
 - [ ] Chuẩn bị kịch bản meeting dựa trên insight
 - [ ] Chuẩn bị slide/demo phù hợp ngành KH
 - [ ] Brief nội bộ với Chinh (nếu Chinh tham gia)
@@ -101,6 +103,7 @@ PHASE 4-5: PRE-MEETING + MEETING (Gộp)
 | Ghi chú Lead | Người QĐ, Người chi tiền, Next action |
 | Cập nhật Contact | Bổ sung thông tin người quyết định |
 | Tạo Task | Cho từng next action đã chốt (assign đúng người) |
+| Email đối tác | Thông báo Book Meeting cho Referer (nếu có) |
 
 ---
 

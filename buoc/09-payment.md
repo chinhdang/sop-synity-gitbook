@@ -39,6 +39,8 @@ Từ PHASE 11 (PAYMENT):
 - [ ] Xác nhận tiền về (phối hợp với Kế toán)
 - [ ] Kế toán xuất hóa đơn VAT (trong vòng 24h)
 - [ ] Cập nhật Deal stage = WON
+- [ ] **Nếu KH từ đối tác giới thiệu:** Gửi email thông báo cho đối tác (xem Deal → Lead gốc → UF Referer)
+  - Nội dung: *(Sẽ bổ sung sau)*
 - [ ] **Bàn giao cho P. Triển khai** để tiến hành Kick-off
 
 ### B. Thu tiền các đợt tiếp theo (trong quá trình triển khai)
@@ -73,6 +75,7 @@ Từ PHASE 11 (PAYMENT):
 | Automation | Email nhắc thanh toán tự động |
 | Tạo Task | Nhắc thủ công nếu chưa TT sau 4h |
 | Ghi chú Deal | Lịch sử thanh toán từng đợt |
+| Email đối tác | Thông báo KH đã thanh toán lần đầu cho Referer (nếu có) |
 
 ### Luồng thanh toán tự động
 

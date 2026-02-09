@@ -43,6 +43,8 @@ PHASE 6: QUOTATION (Báo giá)
 - [ ] Cập nhật file tracking (số báo giá, ngày tạo, ngày hết hạn)
 - [ ] Cập nhật Deal stage = QUOTATION
 - [ ] Ghi chú CRM: ngày gửi, ngày hết hạn ưu đãi
+- [ ] **Nếu KH từ đối tác giới thiệu:** Gửi email thông báo cho đối tác (xem Deal → Lead gốc → UF Referer)
+  - Nội dung: *(Sẽ bổ sung sau)*
 
 ### C. Follow-up giữ độ nóng
 
@@ -66,6 +68,7 @@ PHASE 6: QUOTATION (Báo giá)
 | Cập nhật Deal stage | → QUOTATION |
 | Ghi chú Deal | Ngày gửi BG, Ngày hết hạn, Ưu đãi áp dụng |
 | Tạo Activity | "Follow-up báo giá lần [1/2/3]" |
+| Email đối tác | Thông báo đã gửi báo giá cho Referer (nếu có) |
 
 ---
 

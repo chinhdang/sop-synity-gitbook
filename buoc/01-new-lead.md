@@ -34,6 +34,21 @@ PHASE 1-2: AWARENESS + INTEREST
 - [ ] Tạo Lead trong Bitrix24 (Tên + SĐT + Nguồn đến)
 - [ ] Lead stage: **New Lead**
 
+### A1. Nếu KH từ đối tác giới thiệu (Referer)
+
+- [ ] Tạo **Contact đối tác giới thiệu** trong Bitrix24 (nếu chưa có):
+
+| Trường | Giá trị |
+|--------|---------|
+| Họ tên | [Tên đối tác] |
+| SĐT | [Số điện thoại] |
+| Email | [Email đối tác] |
+| Nguồn | Đối tác giới thiệu |
+| Ghi chú | [Mô tả về đối tác: mối quan hệ, ngành, lý do giới thiệu] |
+
+- [ ] Liên kết Contact đối tác vào Lead → UF **Referer**
+- [ ] Ghi chú Lead: "KH được giới thiệu bởi [Tên đối tác] - [Mô tả]"
+
 ### B. Kết nối & Tạo nhóm Zalo
 
 - [ ] Kết bạn Zalo với KH
@@ -59,8 +74,19 @@ PHASE 1-2: AWARENESS + INTEREST
 | Họ tên | [Tên KH] |
 | SĐT | [Số điện thoại] |
 | Nguồn đến | Facebook / Đối tác / Website / Khác |
+| UF Referer | [Contact đối tác giới thiệu] (nếu từ đối tác) |
 | Ghi chú | [Kênh cụ thể, tên đối tác giới thiệu nếu có] |
 | Stage | New Lead |
+
+### Tạo Contact đối tác giới thiệu (nếu KH từ đối tác)
+
+| Trường | Giá trị | Bắt buộc |
+|--------|---------|----------|
+| Họ tên | [Tên đối tác] | ✅ |
+| SĐT | [Số điện thoại] | ✅ |
+| Email | [Email đối tác] | ✅ |
+| Nguồn | Đối tác giới thiệu | ✅ |
+| Ghi chú | [Mô tả về đối tác] | Nên có |
 
 ---
 
