@@ -2,12 +2,27 @@
 
 > **Pha:** 4 - Delivery & Use | **Phụ trách chính:** P. Triển khai + P. Chuyển đổi
 > **Điều kiện bắt đầu:** KH đã thanh toán đợt 1
+> **CJM Phase:** KICKOFF (Khởi động dự án)
 
 ---
 
 ## 🎯 Mục tiêu
 
 Tạo tâm thế sẵn sàng cho **toàn bộ đội ngũ KH**, thống nhất cách phối hợp, và công bố roadmap dự kiến.
+
+---
+
+## 🗺️ CJM Actions trong bước này
+
+```
+PHASE 8: KICKOFF (Khởi động dự án)
+├── Tạo Collab workspace cho KH
+├── Thêm nhân sự 2 bên vào Collab
+├── Buổi KICK-OFF DỰ ÁN (Nhiều nhân sự tham gia)
+├── Truyền thông giá trị cho 3 nhóm: CEO - Quản lý - Thực thi
+├── Cung cấp TIMELINE tổng quan dự án (dùng chữ 'dự kiến')
+└── Training cơ bản toàn công ty (Chat, Video, Collab)
+```
 
 ---
 

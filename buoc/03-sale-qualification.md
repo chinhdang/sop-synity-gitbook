@@ -2,12 +2,26 @@
 
 > **Pha:** 2 - Consideration | **Phụ trách chính:** P. Chuyển đổi (Huy)
 > **Thời gian chuẩn:** 1-2 ngày sau khi kết nối
+> **CJM Phase:** SURVEY (Khảo sát)
 
 ---
 
 ## 🎯 Mục tiêu
 
 Xác định khách hàng có phù hợp không thông qua tiêu chí **BANT** (Budget - Authority - Need - Timeline).
+
+---
+
+## 🗺️ CJM Actions trong bước này
+
+```
+PHASE 3: SURVEY (Khảo sát)
+├── Gửi form khảo sát nhu cầu sơ bộ
+├── ◇ Khách hàng điền form?
+├── Hệ thống tự động tạo Contact / Company / Deal
+├── Tra cứu bổ sung (MST, thông tin pháp lý)
+└── Gửi email/SMS xác nhận đã nhận form
+```
 
 ---
 

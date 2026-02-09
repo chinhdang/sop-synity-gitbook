@@ -22,36 +22,22 @@
 📂 **[Mở CJM Blueprint trong draw.io](https://app.diagrams.net/#Uhttps://raw.githubusercontent.com/chinhdang/sop-synity-gitbook/main/assets/flowchart-tong-quan.drawio?t=20260209)** — xem & chỉnh sửa trực tiếp
 
 <details>
-<summary><strong>Xem bản text tóm tắt CJM Blueprint</strong></summary>
+<summary><strong>Xem bản text tóm tắt: CJM Phase → SOP Step mapping</strong></summary>
 
-```
-                AWARENESS    │  CONSIDERATION  │        DECISION         │       DELIVERY & USE
-                             │                 │                         │
-Customer        Browsing     │  Researching    │  Survey → Quotation →   │  Kick-off → Khảo sát →
-Stage                        │                 │  Contract & Payment     │  Tracking → Closing
-─────────────────────────────┼─────────────────┼─────────────────────────┼──────────────────────────
-Customer     Lướt Facebook → │ Comment/Inbox → │ Tham gia Meeting →      │ Tham gia Kick-off →
-Activities   Xem bài Chinh   │ Zalo Group →    │ Xem báo giá →          │ Cung cấp thông tin QT →
-                             │ Điền Form KS    │ Ký HĐ → Thanh toán    │ Sử dụng HT → Check-in →
-                             │                 │                         │ Ký nghiệm thu → TT
-─────────────────────────────┼─────────────────┼─────────────────────────┼──────────────────────────
-Channels     Facebook        │ Messenger       │ Zoom/Meet, Email        │ Collab Chat, Video Call
-                             │ Zalo, Email     │                         │
-─────────────────────────────┼─────────────────┼─────────────────────────┼──────────────────────────
-CRM          ─               │ Tạo Contact/    │ Update Deal Stage →     │ Tạo Collab → eSign →
-Bitrix24                     │ Company/Deal    │ Tạo Estimate → Invoice  │ Task Mgmt → Nghiệm thu
-─────────────────────────────┼─────────────────┼─────────────────────────┼──────────────────────────
-Automation   ─               │ n8n/Make        │ AI Summary Recap        │ Auto Task Nhắc TT 4h
-                             │ Form → CRM      │ Auto Email Invoice      │ MISA API Hóa đơn
-─────────────────────────────┼─────────────────┼─────────────────────────┼──────────────────────────
-Responsible  Marketing       │ P. Chuyển đổi   │ P. Chuyển đổi +        │ P. Triển khai +
-                             │                 │ P. Kế toán             │ P. Kế toán
-─────────────────────────────┼─────────────────┼─────────────────────────┼──────────────────────────
-Deal Stage   ─               │ NEW →           │ MEETING → PROPOSAL →   │ WON
-                             │ QUALIFICATION   │ QUOTATION → CONTRACT   │
-─────────────────────────────┼─────────────────┼─────────────────────────┼──────────────────────────
-Phase           CONVERSION                     │        DELIVERY        │    COLLECT FEEDBACK
-```
+| CJM Phase | SOP Step | Phụ trách |
+|-----------|----------|-----------|
+| **1. AWARENESS** (Nhận biết) | 01. Attraction | Marketing + CEO |
+| **2. INTEREST** (Quan tâm) | 02. New Opportunity | P. Chuyển đổi |
+| **3. SURVEY** (Khảo sát) | 03. Sale Qualification | P. Chuyển đổi |
+| **4. PRE-MEETING** (Tiền Meeting) | 04. Need Analysis | Chinh + P. Chuyển đổi |
+| **5. MEETING** (Họp) | 05. Proposal Development | Chinh + P. Chuyển đổi |
+| *(Bridge)* | 06. Solution Feedback | Chinh + P. Chuyển đổi |
+| **6. QUOTATION** (Báo giá) | 07. Quotation | P. Chuyển đổi |
+| **7. CONTRACT** (Hợp đồng) | 08. Contract & Closing | P. Chuyển đổi |
+| **7+11. PAYMENT** (Thanh toán) | 09. Payment | P. Chuyển đổi + Kế toán |
+| **8. KICKOFF** (Khởi động) | 10. Kick-off | P. Triển khai |
+| **9+10. IMPLEMENTATION + TRACKING** | 11. Khảo sát & Triển khai | P. Triển khai |
+| **12. CLOSING** (Kết thúc) | 12. Off-boarding | P. Triển khai + Kế toán |
 
 **Tác giả:** Đặng Đình Chinh – CEO SYNITY
 </details>
@@ -60,20 +46,20 @@ Phase           CONVERSION                     │        DELIVERY        │   
 
 ## 📋 Danh sách các bước
 
-| Pha | Bước | Tên | Phụ trách | Thời gian chuẩn | Link |
-|-----|------|-----|-----------|-----------------|------|
-| **1. Awareness** | 01 | Attraction | Marketing | Liên tục | [Xem →](buoc/01-attraction.md) |
-| **2. Consideration** | 02 | New Opportunity | P. Chuyển đổi | Trong ngày | [Xem →](buoc/02-new-opportunity.md) |
-| | 03 | Sale Qualification | P. Chuyển đổi | 1-2 ngày | [Xem →](buoc/03-sale-qualification.md) |
-| | 04 | Need Analysis | Chinh + P. Chuyển đổi | 3-4 ngày | [Xem →](buoc/04-need-analysis.md) |
-| | 05 | Proposal Development | Chinh + P. Chuyển đổi | 2-3 ngày | [Xem →](buoc/05-proposal-development.md) |
-| | 06 | Solution Feedback | Chinh + P. Chuyển đổi | 1-2 ngày | [Xem →](buoc/06-solution-feedback.md) |
-| **3. Decision** | 07 | Quotation | P. Chuyển đổi | < 7 ngày | [Xem →](buoc/07-quotation.md) |
-| | 08 | Contract & Closing | P. Chuyển đổi | < 7 ngày | [Xem →](buoc/08-contract-closing.md) |
-| | 09 | Payment | P. Chuyển đổi + Kế toán | < 7 ngày | [Xem →](buoc/09-payment.md) |
-| **4. Delivery** | 10 | Kick-off | P. Triển khai | < 5 ngày | [Xem →](buoc/10-kickoff.md) |
-| | 11 | Khảo sát & Triển khai | P. Triển khai | Theo timeline | [Xem →](buoc/11-khao-sat-trien-khai.md) |
-| | 12 | Off-boarding | P. Triển khai + Kế toán | Theo nghiệm thu | [Xem →](buoc/12-off-boarding.md) |
+| Pha | Bước | Tên | CJM Phase | Phụ trách | Link |
+|-----|------|-----|-----------|-----------|------|
+| **1. Awareness** | 01 | Attraction | AWARENESS | Marketing + CEO | [Xem →](buoc/01-attraction.md) |
+| **2. Consideration** | 02 | New Opportunity | INTEREST | P. Chuyển đổi | [Xem →](buoc/02-new-opportunity.md) |
+| | 03 | Sale Qualification | SURVEY | P. Chuyển đổi | [Xem →](buoc/03-sale-qualification.md) |
+| | 04 | Need Analysis | PRE-MEETING | Chinh + P. Chuyển đổi | [Xem →](buoc/04-need-analysis.md) |
+| | 05 | Proposal Development | MEETING | Chinh + P. Chuyển đổi | [Xem →](buoc/05-proposal-development.md) |
+| | 06 | Solution Feedback | *(Bridge)* | Chinh + P. Chuyển đổi | [Xem →](buoc/06-solution-feedback.md) |
+| **3. Decision** | 07 | Quotation | QUOTATION | P. Chuyển đổi | [Xem →](buoc/07-quotation.md) |
+| | 08 | Contract & Closing | CONTRACT | P. Chuyển đổi | [Xem →](buoc/08-contract-closing.md) |
+| | 09 | Payment | PAYMENT | P. Chuyển đổi + Kế toán | [Xem →](buoc/09-payment.md) |
+| **4. Delivery** | 10 | Kick-off | KICKOFF | P. Triển khai | [Xem →](buoc/10-kickoff.md) |
+| | 11 | Khảo sát & Triển khai | IMPLEMENTATION + TRACKING | P. Triển khai | [Xem →](buoc/11-khao-sat-trien-khai.md) |
+| | 12 | Off-boarding | CLOSING | P. Triển khai + Kế toán | [Xem →](buoc/12-off-boarding.md) |
 
 ---
 
