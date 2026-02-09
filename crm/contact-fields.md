@@ -145,14 +145,51 @@
 
 ### Dropdown: Contact Lifecycle Stage (`UF_CRM_CONTACT_LIFECYCLE_STAGE`)
 
-| ID | Giá trị | Mô tả | Khi nào chuyển |
-|----|---------|-------|---------------|
-| 44 | Subscriber | Mới biết đến, chưa tương tác | Mặc định khi tạo |
-| 46 | MQL | Marketing Qualified Lead | Sau khi điền form (Bước 02) |
-| 48 | SQL | Sales Qualified Lead | Sau meeting, đánh giá BANT (Bước 03) |
-| 50 | Opportunity | Cơ hội bán hàng | Khi convert Lead → Deal (Bước 04) |
-| 52 | Customer | Khách hàng | Khi Deal Won (Bước 09) |
-| 54 | Evangelist | KH trung thành, giới thiệu | Khi KH giới thiệu KH mới |
+| ID | Sort | Giá trị | Mô tả | Khi nào chuyển |
+|----|------|---------|-------|---------------|
+| 44 | 0 | Subscriber | Đăng ký nhận tin (Newsletter) | Contact submit form Newsletter trên website |
+| 46 | 100 | MQL | Marketing Qualified Lead | Contact vào phễu marketing automation (UChat, ManyChat, Ladiflow...) |
+| 1024 | 150 | **Unqualified** | Không đạt tiêu chuẩn | **Lead → Junk** (không đúng đối tượng, spam, sai thông tin) |
+| 48 | 200 | SQL | Sales Qualified Lead | Lead được tạo trong CRM (Bước 01-04) |
+| 50 | 300 | Opportunity | Cơ hội bán hàng | Lead convert → Deal (Bước 04) |
+| 1026 | 350 | **Closed Lost** | Mất cơ hội | **Deal → Lost** (đã qualify nhưng không chốt được) |
+| 52 | 400 | Customer | Khách hàng | Invoice paid — Deal Won (Bước 09) |
+| 54 | 500 | Evangelist | KH trung thành, giới thiệu | KH giới thiệu KH mới (tạo Lead với UF Referer) |
+
+#### Lifecycle Flow
+
+```
+Website Newsletter ──► Subscriber (44)
+                            │ (nếu vào phễu marketing)
+                            ▼
+Marketing Automation ──► MQL (46)
+                            │ (nếu tạo Lead trong CRM)
+                            ▼
+Lead (Bước 01-04) ────► SQL (48) ──────┐
+                            │          │ Lead Junk
+                            │          ▼
+                            │    Unqualified (1024)
+                            │
+                            │ Lead convert → Deal
+                            ▼
+Deal (Bước 05-08) ────► Opportunity (50) ──┐
+                            │              │ Deal Lost
+                            │              ▼
+                            │        Closed Lost (1026)
+                            │
+                            │ Invoice Paid
+                            ▼
+Deal Won (Bước 09) ───► Customer (52)
+                            │
+                            │ Giới thiệu KH mới
+                            ▼
+                        Evangelist (54)
+```
+
+> **Lưu ý cho AI/Automation:**
+> - Không phải Contact nào cũng đi qua Subscriber → MQL. Nhiều Contact bắt đầu trực tiếp từ SQL (tạo Lead trong CRM).
+> - `Unqualified` và `Closed Lost` là trạng thái kết thúc — Contact ở đây không quay lại flow trừ khi có tương tác mới.
+> - `Evangelist` chỉ set khi Contact thực sự giới thiệu KH mới (có Lead với `UF_CRM_REFERRER` trỏ về Contact này).
 
 ---
 
@@ -172,7 +209,7 @@
 | `WEB` | Nên có | Google Form / tra cứu | Tra Google |
 | `IM` | Auto | Open Channel | Auto khi KH chat |
 | `COMMENTS` | Nên có | Nhân sự bổ sung | Vai trò, ghi chú |
-| `UF_CRM_CONTACT_LIFECYCLE_STAGE` | Nên có | Theo quy trình | `44` (Subscriber) → cập nhật theo bước |
+| `UF_CRM_CONTACT_LIFECYCLE_STAGE` | **YES** | Auto theo quy trình | `48` (SQL) khi tạo từ Lead → cập nhật theo lifecycle flow |
 
 > **Lưu ý cho AI/Automation:** Contact KH auto-created khi Google Form submit (match `PHONE`). Nếu auto-create thất bại, tạo thủ công và liên kết với Lead + Company.
 
@@ -223,6 +260,14 @@ Số KH đã giới thiệu: [Số lượng]
 2. **Contact Referer:** Tạo thủ công tại Bước 01, `TYPE_ID` = `PARTNER`, dùng làm giá trị cho `UF_CRM_REFERRER`
 3. **Liên kết:** Contact luôn phải liên kết với Company (`COMPANY_ID`) và Lead/Deal
 4. **Decision Maker:** Bổ sung "Người ra quyết định" vào `COMMENTS` sau Meeting (Bước 03)
-5. **Lifecycle Stage:** Cập nhật `UF_CRM_CONTACT_LIFECYCLE_STAGE` theo tiến trình SOP
+5. **Lifecycle Stage:** Cập nhật `UF_CRM_CONTACT_LIFECYCLE_STAGE` theo lifecycle flow:
+   - Tạo Contact từ Lead → set `48` (SQL)
+   - Lead convert → Deal → set `50` (Opportunity)
+   - Lead → Junk → set `1024` (Unqualified)
+   - Deal → Lost → set `1026` (Closed Lost)
+   - Invoice Paid / Deal Won → set `52` (Customer)
+   - Contact giới thiệu KH mới (có Lead với UF_CRM_REFERRER) → set `54` (Evangelist)
+   - Contact từ marketing automation (UChat, ManyChat, Ladiflow) → set `46` (MQL)
+   - Contact subscribe Newsletter website → set `44` (Subscriber)
 6. **Multi-value fields:** `PHONE`, `EMAIL`, `WEB`, `IM` là mảng — có thể có nhiều giá trị, mỗi giá trị cần `VALUE_TYPE`
 7. **SMAX Zalo fields:** `UF_CRM_SMAX_ZALO_*` do SMAX integration tự quản lý, không cần điền thủ công
