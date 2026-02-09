@@ -49,15 +49,30 @@ PHASE 7: CONTRACT (Hợp đồng)
 
 ## ✅ Nhân sự thực hiện
 
-### A. Soạn hợp đồng
+### A. Kiểm tra Requisites trước khi tạo HĐ
 
-- [ ] Soạn **HĐ Bản quyền Bitrix24** (từ template) — luôn có
+> **⛔ Gate:** Document Template lấy dữ liệu từ Requisites. Nếu thiếu → HĐ sẽ bị lỗi/trống.
+
+- [ ] Mở Company card → tab **Details/Requisites** → kiểm tra:
+  - [ ] `RQ_COMPANY_NAME` — Tên pháp lý *(nếu thiếu: tra [masothue.com](https://masothue.com))*
+  - [ ] `RQ_VAT_ID` — Mã số thuế
+  - [ ] Address — Địa chỉ pháp lý
+- [ ] Kiểm tra Contact:
+  - [ ] Tên đầy đủ + Danh xưng (Ông/Bà) + Chức vụ
+- [ ] Kiểm tra Deal:
+  - [ ] Product Rows — đã có sản phẩm (tên gói + mô tả)
+
+> **Hướng dẫn:** Xem [Requisites — Hướng dẫn nhập](../crm/requisite-guide.md)
+
+### B. Soạn hợp đồng
+
+- [ ] Soạn **HĐ Bản quyền Bitrix24** (từ Document Template) — luôn có
 - [ ] Soạn **HĐ Dịch vụ Triển khai** (từ template) — nếu KH mua dịch vụ
-- [ ] Điền thông tin KH từ CRM (MST, địa chỉ pháp lý, người đại diện)
+- [ ] Kiểm tra tài liệu tự động: tên KH, MST, địa chỉ hiển thị đúng?
 - [ ] Đảm bảo 2 HĐ có **số HĐ riêng biệt**
 - [ ] Review nội bộ với Chinh
 
-### B. Buổi Review Hợp đồng
+### C. Buổi Review Hợp đồng
 
 - [ ] Đặt lịch meeting review HĐ **với người ra quyết định**
 - [ ] Làm rõ các điều khoản quan trọng:
@@ -68,7 +83,7 @@ PHASE 7: CONTRACT (Hợp đồng)
 - [ ] Ghi nhận feedback / yêu cầu chỉnh sửa (nếu có)
 - [ ] Chỉnh sửa HĐ theo feedback
 
-### C. Ký kết
+### D. Ký kết
 
 > **Nguyên tắc:** eSign giúp xúc tiến nhanh để tiến hành thanh toán. **HĐ ký tay đóng dấu** (bản cứng có dấu đỏ) mới là bản pháp lý chính thức.
 
@@ -81,7 +96,7 @@ PHASE 7: CONTRACT (Hợp đồng)
 - [ ] Theo dõi tiến độ ký cả 2 hình thức
 - [ ] Upload vào CRM: eSign + bản scan HĐ ký tay đóng dấu
 
-### D. Thu tiền bản quyền trước (chiến thuật giữ khách)
+### E. Thu tiền bản quyền trước (chiến thuật giữ khách)
 
 > **Chiến lược:** Thu tiền bản quyền TRƯỚC khi bắt đầu triển khai. KH đã "đầu tư" → khó bỏ giữa chừng.
 
@@ -89,14 +104,14 @@ PHASE 7: CONTRACT (Hợp đồng)
 - [ ] **KHÔNG bắt đầu triển khai** khi chưa thu đủ tiền bản quyền
 - [ ] Chi tiết quy trình thu tiền + kích hoạt: Xem [Bước 09 — Luồng Bản quyền](09-payment.md#a-luồng-bản-quyền-bitrix24)
 
-### E. Xác nhận Email & Tên miền
+### F. Xác nhận Email & Tên miền
 
 - [ ] Gửi **eSign xác nhận email & tên miền** cho KH
 - [ ] KH xác nhận email domain sẽ dùng cho Bitrix24
 - [ ] KH xác nhận tên miền (nếu dùng subdomain riêng)
 - [ ] Lưu xác nhận vào CRM trước khi mua license
 
-### F. Hoàn tất
+### G. Hoàn tất
 
 - [ ] Cập nhật Deal stage = CONTRACT
 - [ ] Bàn giao thông tin cho bước Payment (Bước 09)

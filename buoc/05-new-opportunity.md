@@ -36,7 +36,20 @@ DEAL STAGE 1: NEW OPPORTUNITY
 - [ ] Liên kết Deal ↔ Contact ↔ Company
 - [ ] Ghi chú nguồn: từ Lead #[số]
 
-### B. Phân tích nhu cầu chi tiết
+### B. Kiểm tra & bổ sung thông tin Company
+
+> **Mục đích:** Đảm bảo Company có đủ thông tin pháp lý (Requisite) cho Bước 08 — tạo HĐ tự động.
+
+- [ ] Mở Company card → tab **Details/Requisites**
+- [ ] Kiểm tra đã có Requisite chưa? Nếu chưa → tạo mới (template: Company)
+- [ ] **`RQ_COMPANY_NAME`** — Tên pháp lý (tra [masothue.com](https://masothue.com))
+- [ ] **`RQ_VAT_ID`** — Mã số thuế
+- [ ] **Address** — Địa chỉ pháp lý (từ masothue.com)
+- [ ] Kiểm tra Contact liên kết: đã có **tên + chức vụ** chưa?
+
+> **Hướng dẫn chi tiết:** Xem [Requisites — Hướng dẫn nhập thông tin pháp lý](../crm/requisite-guide.md)
+
+### C. Phân tích nhu cầu chi tiết
 
 - [ ] Review lại kết quả Google Form
 - [ ] Review meeting notes & recording từ Bước 03
@@ -45,7 +58,7 @@ DEAL STAGE 1: NEW OPPORTUNITY
 - [ ] Xác định pain points chính
 - [ ] Ghi chú tất cả vào Deal
 
-### C. Chuẩn bị brief cho Proposal
+### D. Chuẩn bị brief cho Proposal
 
 - [ ] Tóm tắt nhu cầu KH
 - [ ] Liệt kê modules đề xuất

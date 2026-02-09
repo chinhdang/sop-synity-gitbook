@@ -37,6 +37,7 @@
 * [Contact Fields](crm/contact-fields.md)
 * [Company Fields](crm/company-fields.md)
 * [Estimate Fields](crm/estimate-fields.md)
+* [Requisites Guide](crm/requisite-guide.md)
 
 ## Hệ thống & Tích hợp
 

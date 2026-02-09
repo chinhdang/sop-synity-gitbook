@@ -45,6 +45,7 @@ KHÔNG quản lý:
 | Contact Fields | Fields + Lifecycle Stage | [→ Xem](../crm/contact-fields.md) |
 | Company Fields | Fields + Requisites | [→ Xem](../crm/company-fields.md) |
 | Estimate Fields | Fields + Stages + Product Rows | [→ Xem](../crm/estimate-fields.md) |
+| Requisites Guide | Thông tin pháp lý (tên, MST, địa chỉ, bank) + Document Template | [→ Xem](../crm/requisite-guide.md) |
 
 ### Automation Rules (trong Bitrix)
 

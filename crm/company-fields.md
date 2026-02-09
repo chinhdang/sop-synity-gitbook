@@ -43,9 +43,50 @@
 
 ---
 
+---
+
+## Requisites (Thông tin pháp lý)
+
+> **Requisites KHÔNG phải field trên Company** — mà là sub-entity riêng gắn vào Company.
+> Đây là nguồn dữ liệu chính cho Document Template (HĐ, Đề nghị TT).
+
+```
+Company
+  └── Requisite (tên pháp lý, MST, người đại diện)
+        ├── Address (địa chỉ pháp lý)
+        └── Bank Detail (tài khoản ngân hàng)
+```
+
+### Trường bắt buộc trên Requisite (cho Document Template)
+
+| Requisite Field | Mô tả | Template Variable |
+|----------------|-------|-------------------|
+| `RQ_COMPANY_NAME` | Tên pháp lý | `{CompanyRequisiteRqCompanyName}` |
+| `RQ_VAT_ID` | Mã số thuế | `{CompanyRequisiteRqVatId}` |
+| Address `ADDRESS_1` | Địa chỉ pháp lý | `{CompanyAddressLegal}` |
+
+> **Hướng dẫn đầy đủ:** Xem [Requisites — Hướng dẫn nhập thông tin pháp lý](requisite-guide.md)
+
+### Lưu ý về field Company vs Requisite
+
+| Thông tin | Lưu ở Company field | Lưu ở Requisite |
+|-----------|:---:|:---:|
+| Tên thường gọi | `TITLE` ✅ | — |
+| Tên pháp lý (cho HĐ) | — | `RQ_COMPANY_NAME` ✅ |
+| MST | — | `RQ_VAT_ID` ✅ |
+| Địa chỉ pháp lý (cho HĐ) | — | Address → `ADDRESS_1` ✅ |
+| SĐT | `PHONE` ✅ | `RQ_PHONE` (tuỳ chọn) |
+| Tài khoản NH | — | Bank Detail ✅ |
+
+> `ADDRESS` và `BANKING_DETAILS` trên Company card thực tế được lưu qua Requisites, không phải trực tiếp trên Company entity.
+
+---
+
 ## Lưu ý cho AI/Automation
 
 1. **Auto-create từ Google Form:** Company tạo tự động khi form submit, liên kết với Contact + Lead
-2. **MST bắt buộc cho HĐ:** Nếu Google Form không có MST, nhân sự phải tra masothue.com và bổ sung
+2. **MST bắt buộc cho HĐ:** Nếu Google Form không có MST, nhân sự phải tra masothue.com và bổ sung vào **Requisite** (không phải Company field)
 3. **Liên kết:** Company luôn liên kết với Contact(s) và Lead/Deal
 4. **Một Company có thể có nhiều Contact:** Người liên hệ, người QĐ, kế toán...
+5. **Requisite ≠ Company field:** Tên pháp lý, MST, địa chỉ pháp lý lưu trong Requisite sub-entity. Xem [Requisite Guide](requisite-guide.md)
+6. **Trước Bước 08:** Requisite phải có đủ `RQ_COMPANY_NAME` + `RQ_VAT_ID` + Address để Document Template hoạt động
