@@ -57,6 +57,17 @@ PHASE 6: QUOTATION (Báo giá)
 - [ ] KH đồng ý → chuyển Bước 08 (Contract)
 - [ ] KH cần điều chỉnh → sửa báo giá, gửi lại
 - [ ] KH không phản hồi sau deadline → chuyển voucher bảo lưu
+- [ ] KH từ chối / Deal Lost → xem section E
+
+### E. Deal Lost (áp dụng ở bất kỳ bước nào trong Deal pipeline)
+
+- [ ] Chuyển Deal stage → **LOST**
+- [ ] Ghi chú lý do Lost vào Deal
+- [ ] **Nếu KH từ đối tác giới thiệu:** Gửi email thông báo cho đối tác (xem Deal → Lead gốc → UF Referer)
+  - Nội dung: *(Sẽ bổ sung sau)*
+- [ ] Tổng kết bài học kinh nghiệm (nội bộ)
+
+> **Lưu ý:** Deal Lost có thể xảy ra ở bất kỳ bước nào (05-09). Khi chuyển Deal → Lost, luôn kiểm tra UF Referer để thông báo đối tác.
 
 ---
 
@@ -69,6 +80,7 @@ PHASE 6: QUOTATION (Báo giá)
 | Ghi chú Deal | Ngày gửi BG, Ngày hết hạn, Ưu đãi áp dụng |
 | Tạo Activity | "Follow-up báo giá lần [1/2/3]" |
 | Email đối tác | Thông báo đã gửi báo giá cho Referer (nếu có) |
+| Deal Lost | Stage → LOST + lý do + email đối tác Referer (nếu có) |
 
 ---
 

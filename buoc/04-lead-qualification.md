@@ -69,6 +69,8 @@ PHASE 6: QUALIFICATION (Phân loại)
   - Không phản hồi (auto 14 ngày)
   - Khác (ghi chú)
 - [ ] Ghi chú bổ sung (nếu chọn "Khác")
+- [ ] **Nếu KH từ đối tác giới thiệu:** Gửi email thông báo cho đối tác (xem Lead → UF Referer)
+  - Nội dung: *(Sẽ bổ sung sau)*
 - [ ] Đóng Lead
 
 ---
@@ -92,6 +94,7 @@ PHASE 6: QUALIFICATION (Phân loại)
 | Lead stage | → JUNK LEAD |
 | Lý do Junk (required) | Chọn từ dropdown |
 | Ghi chú | Bổ sung chi tiết nếu cần |
+| Email đối tác | Thông báo Junk Lead cho Referer (nếu có) |
 
 ### Automation (SLA 14 ngày)
 
