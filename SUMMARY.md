@@ -29,6 +29,13 @@
 * [11. Implementation](buoc/11-implementation.md)
 * [12. Off-boarding](buoc/12-off-boarding.md)
 
+## CRM Fields Reference
+
+* [Lead Fields](crm/lead-fields.md)
+* [Deal Fields](crm/deal-fields.md)
+* [Contact Fields](crm/contact-fields.md)
+* [Company Fields](crm/company-fields.md)
+
 ## Templates
 
 * [Tin nhắn mẫu](templates/tin-nhan-mau.md)

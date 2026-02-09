@@ -69,23 +69,9 @@ PHASE 1-2: AWARENESS + INTEREST
 
 ### Tạo Lead thủ công
 
-| Bitrix Field | Tên hiển thị | Bắt buộc | Cách điền | Ví dụ |
-|-------------|-------------|----------|-----------|-------|
-| `TITLE` | Tiêu đề Lead | **YES** | `[Tên KH/Cty] - [Nguồn]` | "Nguyễn Văn A - Facebook" |
-| `HONORIFIC` | Danh xưng | **YES** | Anh / Chị / Mr / Mrs | "Anh" |
-| `NAME` | Tên | **YES** | Tên người liên hệ | "Văn A" |
-| `LAST_NAME` | Họ | Không | Họ người liên hệ | "Nguyễn" |
-| `POST` | Chức vụ | **YES** | Vai trò trong công ty | "Giám đốc", "Trưởng phòng IT" |
-| `PHONE` | SĐT | **YES** | SĐT chính (dùng match Google Form) | "0901234567" |
-| `COMPANY_TITLE` | Tên công ty | **YES** | Tên đầy đủ công ty | "Công ty ABC" |
-| `SOURCE_ID` | Nguồn đến | **YES** | Chọn từ danh sách | `FACEBOOK` / `RECOMMENDATION` / `WEB` / `OTHER` |
-| `SOURCE_DESCRIPTION` | Chi tiết nguồn | Nên có | Mô tả kênh cụ thể | "FB group Bitrix24 VN", "Partner: Trần B" |
-| `ASSIGNED_BY_ID` | Người phụ trách | **YES** | Chọn nhân sự P. Chuyển đổi | ID nhân viên |
-| `UF_CRM_REFERRER` | Referrer (Partner) | Nếu từ đối tác | Chọn Contact đối tác giới thiệu | Contact: "Trần Văn B" |
-| `COMMENTS` | Ghi chú | Nên có | Kênh cụ thể, context | "KH inbox qua FB cá nhân Chinh" |
-| `STATUS_ID` | Stage | **Auto** | Mặc định khi tạo mới | `NEW` (New Lead) |
+> **Chi tiết trường thông tin:** Xem [Lead Fields](../crm/lead-fields.md#bước-01--new-lead-new)
 
-> **Lưu ý cho AI/Automation:** Khi tạo Lead qua API, các field bắt buộc (YES) phải có giá trị. `PHONE` là field quan trọng nhất vì dùng để match với Google Form ở Bước 02.
+**Các field bắt buộc tại bước này:** `TITLE`, `HONORIFIC`, `NAME`, `POST`, `PHONE`, `COMPANY_TITLE`, `SOURCE_ID`, `ASSIGNED_BY_ID`. Nếu KH từ đối tác: thêm `UF_CRM_REFERRER`.
 
 ### Tạo Contact đối tác giới thiệu (nếu KH từ đối tác)
 

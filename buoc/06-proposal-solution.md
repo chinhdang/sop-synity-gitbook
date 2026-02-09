@@ -77,35 +77,13 @@ DEAL STAGE 2: PROPOSAL & SOLUTION
 
 ### Deal fields — Cập nhật tại Bước 06
 
-| Bitrix Field | Tên hiển thị | Bắt buộc | Cách điền | Ghi chú |
-|-------------|-------------|----------|-----------|---------|
-| `STAGE_ID` | Stage | **YES** | `PREPARATION` | Proposal & Solution |
-| `OPPORTUNITY` | Giá trị dự kiến | **Cập nhật** | Điều chỉnh theo scope chốt | Chính xác hơn Bước 05 |
-| `UF_CRM_SERVICE_TYPE` | Loại dịch vụ | **YES** | Chọn từ dropdown | Xác định rõ loại triển khai |
-| `COMMENTS` | Ghi chú | **Cập nhật** | Bổ sung feedback + scope chốt | Xem mẫu bên dưới |
+> **Chi tiết trường thông tin:** Xem [Deal Fields — Bước 06](../crm/deal-fields.md#bước-06--proposal--solution-preparation)
+>
+> **Mẫu ghi chú COMMENTS:** Xem [Deal Fields — Mẫu ghi chú Bước 06](../crm/deal-fields.md#mẫu-ghi-chú-comments-bước-06)
 
-#### Mẫu ghi chú COMMENTS bổ sung tại Bước 06
+**Cập nhật:** `STAGE_ID` → `PREPARATION`, `OPPORTUNITY` (điều chỉnh theo scope chốt), `UF_CRM_SERVICE_TYPE`, `COMMENTS` (feedback + scope).
 
-```
---- Proposal & Solution [DD/MM/YYYY] ---
-Modules chốt: [Danh sách modules KH đồng ý]
-Scope GĐ1: [Phạm vi giai đoạn 1]
-Scope GĐ2: [Phạm vi giai đoạn 2, nếu có]
-Số user: [Số lượng]
-Timeline: [Thời gian triển khai dự kiến]
-
-Feedback KH:
-- [Feedback 1]
-- [Feedback 2]
-
-Điều chỉnh so với đề xuất ban đầu:
-- [Thay đổi 1]
-- [Thay đổi 2]
-
-KH xác nhận phạm vi: [Có/Chưa] - [Ngày]
-```
-
-> **Lưu ý cho AI/Automation:** Sau khi KH xác nhận phạm vi, `OPPORTUNITY` phải được cập nhật chính xác theo scope chốt, vì đây là cơ sở để tạo báo giá ở Bước 07.
+**Quan trọng:** `OPPORTUNITY` phải cập nhật chính xác — đây là cơ sở tạo báo giá ở Bước 07.
 
 ---
 

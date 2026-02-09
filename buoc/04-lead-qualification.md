@@ -79,59 +79,21 @@ PHASE 6: QUALIFICATION (Phân loại)
 
 ### Khi Good Lead — Cập nhật Lead & Tạo Deal
 
-#### Lead fields:
+> **Chi tiết trường thông tin:**
+> - [Lead Fields — Bước 04](../crm/lead-fields.md#bước-04--qualification-converted--junk)
+> - [Deal Fields — Bước 05](../crm/deal-fields.md#bước-05--new-opportunity-new) (tạo Deal mới)
 
-| Bitrix Field | Tên hiển thị | Bắt buộc | Giá trị |
-|-------------|-------------|----------|---------|
-| `STATUS_ID` | Stage | **YES** | `CONVERTED` (Good Lead) |
+**Lead:** `STATUS_ID` → `CONVERTED` (Good Lead)
 
-#### Deal fields (tạo mới):
-
-| Bitrix Field | Tên hiển thị | Bắt buộc | Cách điền | Ví dụ |
-|-------------|-------------|----------|-----------|-------|
-| `TITLE` | Tiêu đề Deal | **YES** | `[Công ty] - [Nhu cầu] - [MM/YYYY]` | "ABC Corp - CRM Sales - 02/2026" |
-| `STAGE_ID` | Stage | **YES** | `NEW` | New Opportunity |
-| `COMPANY_ID` | Công ty | **YES** | Link Company từ Lead | Auto từ Lead convert |
-| `CONTACT_ID` | Liên hệ | **YES** | Link Contact từ Lead | Auto từ Lead convert |
-| `ASSIGNED_BY_ID` | Người phụ trách | **YES** | Nhân sự Deal pipeline | ID nhân viên |
-| `OPPORTUNITY` | Giá trị | Nên có | Từ Lead `OPPORTUNITY` | 50000000 |
-| `CURRENCY_ID` | Tiền tệ | Auto | `VND` | |
-| `UF_CRM_REFERRER` | Referrer | Nếu có | Copy từ Lead `UF_CRM_REFERRER` | Contact partner |
-| `COMMENTS` | Ghi chú | **YES** | Tóm tắt BANT + meeting + next actions | Xem mẫu |
-
-#### Mẫu ghi chú Deal khi tạo từ Good Lead
-
-```
---- Chuyển từ Lead #[ID] ---
-BANT:
-- Budget: [Tóm tắt]
-- Authority: [Người QĐ] - [Chức vụ]
-- Need: [Nhu cầu chính]
-- Timeline: [Thời gian triển khai]
-
-Kết quả meeting: [Tóm tắt]
-Next actions: [Danh sách]
-```
+**Tạo Deal:** `TITLE` (format: `[Công ty] - [Nhu cầu] - [MM/YYYY]`), `STAGE_ID` = `NEW`, liên kết `COMPANY_ID` + `CONTACT_ID`, copy `UF_CRM_REFERRER` nếu có.
 
 ### Khi Junk Lead — Đóng Lead
 
-| Bitrix Field | Tên hiển thị | Bắt buộc | Giá trị |
-|-------------|-------------|----------|---------|
-| `STATUS_ID` | Stage | **YES** | `JUNK` (Junk Lead) |
-| `UF_CRM_JUNK_REASON` | Lý do Junk | **YES** | Chọn từ dropdown (xem bảng dưới) |
-| `COMMENTS` | Ghi chú | Nếu "Khác" | Bổ sung chi tiết lý do |
+> **Chi tiết trường thông tin:** Xem [Lead Fields — Junk Lead](../crm/lead-fields.md#khi-junk-lead)
 
-#### Dropdown lý do Junk (`UF_CRM_JUNK_REASON`)
+**Bắt buộc:** `STATUS_ID` → `JUNK`, `UF_CRM_JUNK_REASON` (chọn dropdown). Nếu có `UF_CRM_REFERRER` → gửi email thông báo đối tác.
 
-| XML_ID | Giá trị hiển thị | Khi nào chọn |
-|--------|-----------------|-------------|
-| `NO_BUDGET` | Khong du ngan sach | KH không có ngân sách hoặc ngân sách quá thấp |
-| `NOT_DECISION_MAKER` | Khong phai nguoi quyet dinh | Không tiếp cận được người ra quyết định |
-| `NEED_NOT_FIT` | Nhu cau khong phu hop | Nhu cầu KH không phù hợp giải pháp SYNITY |
-| `NO_RESPONSE` | Khong phan hoi (auto 14 ngay) | KH không phản hồi, auto đóng sau 14 ngày |
-| `OTHER` | Khac | Lý do khác — **bắt buộc ghi chú bổ sung** |
-
-> **Lưu ý cho AI/Automation:** Khi auto Junk (SLA 14 ngày), set `UF_CRM_JUNK_REASON` = `NO_RESPONSE`. Khi có `UF_CRM_REFERRER`, phải gửi email thông báo cho đối tác trước khi đóng Lead.
+**5 lý do Junk:** Không đủ ngân sách / Không phải người QĐ / Nhu cầu không phù hợp / Không phản hồi (auto 14 ngày) / Khác (ghi chú).
 
 ### Automation (SLA 14 ngày)
 
