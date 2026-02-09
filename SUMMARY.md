@@ -7,6 +7,7 @@
 * [P. Chuyển đổi](landing/p-chuyen-doi.md)
 * [P. Triển khai](landing/p-trien-khai.md)
 * [P. Kế toán](landing/p-ke-toan.md)
+* [P. Kỹ thuật](landing/p-ky-thuat.md)
 
 ## Pha 1: Lead Qualification
 
@@ -36,6 +37,11 @@
 * [Contact Fields](crm/contact-fields.md)
 * [Company Fields](crm/company-fields.md)
 * [Estimate Fields](crm/estimate-fields.md)
+
+## Hệ thống & Tích hợp
+
+* [Tổng quan hệ thống](tech/overview.md)
+* [n8n Lead Capture](tech/n8n-lead-capture.md)
 
 ## Templates
 

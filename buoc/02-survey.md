@@ -85,6 +85,8 @@ PHASE 3: SURVEY (Khảo sát)
 | | 4. Liên kết Contact ↔ Company ↔ Lead |
 | | 5. Lead stage → `IN_PROCESS` (Submitted Form) |
 
+> 🔧 **Chi tiết kỹ thuật:** Flow thực tế đi qua Google Sheet → n8n → Bitrix API. Xem [n8n Lead Capture — Google Form](../tech/n8n-lead-capture.md#1-google-form).
+
 ### AR-2: Google Form submit → Gửi Email xác nhận
 
 | Thuộc tính | Giá trị |
