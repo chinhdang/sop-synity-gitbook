@@ -42,9 +42,9 @@ DEAL STAGE 1: NEW OPPORTUNITY
 
 - [ ] Mở Company card → tab **Details/Requisites**
 - [ ] Kiểm tra đã có Requisite chưa? Nếu chưa → tạo mới (template: "SYNITY - Doanh nghiệp VN")
-- [ ] **`RQ_COMPANY_NAME`** — Tên pháp lý (tra [masothue.com](https://masothue.com))
-- [ ] **`RQ_VAT_ID`** — Mã số thuế
-- [ ] **Address** — Địa chỉ pháp lý (theo [quy chuẩn VN](../crm/requisite-guide.md#address-gắn-vào-requisite--mapping-cho-việt-nam))
+- [ ] **`RQ_COMPANY_NAME`** — Tên pháp lý (tra MST qua [VietQR API](https://api.vietqr.io/v2/business/{MST}) hoặc [masothue.com](https://masothue.com))
+- [ ] **`RQ_VAT_ID`** — Mã số thuế (từ Company UF `UF_CRM_COMPANY_1742604428244` hoặc KH cung cấp)
+- [ ] **Address** — Địa chỉ pháp lý, tách theo [quy chuẩn VN](../crm/requisite-guide.md#address-gắn-vào-requisite--mapping-cho-việt-nam)
 - [ ] Kiểm tra Contact liên kết: đã có **tên + chức vụ** chưa?
 - [ ] Bắt đầu thu thập **5 vai trò liên hệ** (bổ sung dần, hoàn chỉnh trước Bước 08):
   - [ ] Người đại diện — `UF_CRM_REP_NAME` + `UF_CRM_REP_POSITION`

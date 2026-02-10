@@ -244,17 +244,44 @@ crm.requisite.link.register({
 3. Nếu đã có Requisite → chỉnh sửa
 4. Nếu chưa có → click **"Add"** → chọn template "Company"
 
-### Bước 2: Điền thông tin bắt buộc
+### Bước 2: Tra cứu thông tin pháp lý
 
-| Trường | Nguồn dữ liệu | Cách lấy |
-|--------|---------------|---------|
-| Company Name (tên pháp lý) | masothue.com | Tra theo MST hoặc tên công ty |
-| Tax ID / VAT ID (MST) | masothue.com | Tra theo tên công ty |
-| Address (địa chỉ pháp lý) | masothue.com | Lấy từ thông tin đăng ký |
+> Có MST (từ Company UF `UF_CRM_COMPANY_1742604428244` hoặc KH cung cấp) → tra cứu để lấy tên pháp lý + địa chỉ đăng ký.
+
+**Nguồn tra cứu:**
+
+| Nguồn | Cách dùng | Ưu điểm |
+|-------|-----------|---------|
+| **VietQR API** | `GET https://api.vietqr.io/v2/business/{MST}` | Nhanh, trả JSON, dùng cho automation |
+| [masothue.com](https://masothue.com) | Nhập MST hoặc tên công ty | Giao diện web, tra thủ công |
+
+**Ví dụ tra VietQR API:**
+
+```
+GET https://api.vietqr.io/v2/business/3703174686
+
+Response:
+{
+  "code": "00",
+  "data": {
+    "name": "CÔNG TY CỔ PHẦN GIEO MẦM XANH TOÀN CẦU - DOANH NGHIỆP XÃ HỘI",
+    "shortName": "GIEO MẦM XANH TOÀN CẦU",
+    "address": "Số 237, đường D8, Khu 1, Phường Bình Dương, TP Hồ Chí Minh"
+  }
+}
+```
+
+**Mapping kết quả → Requisite:**
+
+| VietQR field | Requisite field |
+|---|---|
+| `data.name` | `RQ_COMPANY_NAME` |
+| `{MST}` (input) | `RQ_VAT_ID` |
+| `data.address` | Tách theo quy chuẩn VN (xem Bước 3) |
 
 ### Bước 3: Nhập Address theo quy chuẩn VN
 
-Từ địa chỉ đầy đủ trên masothue.com, tách thành các field:
+Từ địa chỉ tra được (VietQR API hoặc masothue.com), tách thành các field:
 
 **Ví dụ:** `Tầng 14, Toà nhà HM Town, 412 Nguyễn Thị Minh Khai, Phường Bàn Cờ, Quận 3, TP Hồ Chí Minh`
 
@@ -288,7 +315,7 @@ Từ địa chỉ đầy đủ trên masothue.com, tách thành các field:
 - [ ] `UF_CRM_REP_NAME` + `UF_CRM_REP_POSITION` — Người đại diện?
 - [ ] Contact liên kết — đã có tên + chức vụ?
 
-> **Nguồn tra cứu:** [masothue.com](https://masothue.com) — nhập MST hoặc tên công ty để lấy đầy đủ thông tin pháp lý.
+> **Nguồn tra cứu:** [VietQR API](https://api.vietqr.io/v2/business/{MST}) (nhanh, JSON) hoặc [masothue.com](https://masothue.com) (thủ công). Xem chi tiết ở Bước 2.
 
 ---
 
@@ -323,7 +350,17 @@ Từ địa chỉ đầy đủ trên masothue.com, tách thành các field:
 | `crm.requisite.preset.field.list` | Fields trong 1 preset |
 | `crm.requisite.userfield.list` | Danh sách UF fields trên Requisite |
 
-> **Chi tiết API:** Xem [Bitrix24 REST API — Requisites](https://apidocs.bitrix24.com/api-reference/crm/requisites/)
+### API ngoài — Tra cứu MST
+
+| Method | Endpoint | Mô tả |
+|--------|----------|-------|
+| `GET` | `https://api.vietqr.io/v2/business/{MST}` | Tra cứu tên pháp lý + địa chỉ từ MST |
+
+**Response:** `data.name` (tên pháp lý), `data.shortName` (tên viết tắt), `data.address` (địa chỉ đăng ký).
+
+**Lưu ý:** Địa chỉ trả về là chuỗi text — cần tách thủ công theo quy chuẩn VN (ADDRESS_1, REGION, PROVINCE). Rate limit: 429 nếu gọi quá nhiều.
+
+> **Chi tiết API:** Xem [Bitrix24 REST API — Requisites](https://apidocs.bitrix24.com/api-reference/crm/requisites/) | [VietQR Tax ID Lookup](https://www.vietqr.io/en/danh-sach-api/tax-id-lookup)
 
 ---
 
