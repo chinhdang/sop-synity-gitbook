@@ -33,11 +33,12 @@ PHASE 3: SURVEY (Khảo sát)
 
 - [ ] Kiểm tra Lead đã tự động chuyển stage **Submitted Form** chưa
 - [ ] Xác nhận Contact + Company đã được tạo tự động trong Bitrix
-- [ ] Kiểm tra data đã cập nhật đầy đủ (xem bảng bên dưới)
-- [ ] Nếu thiếu MST → tra cứu trên masothue.com và bổ sung
-- [ ] Nếu có link Website/Facebook KH → ghi chú insight vào Lead
+- [ ] Xác nhận Requisite đã tạo tự động (nếu KH điền MST trong form) — kiểm tra `RQ_COMPANY_NAME` + `RQ_VAT_ID` + Legal Address
+- [ ] Kiểm tra timeline comment "KẾT QUẢ KHẢO SÁT NHU CẦU" đã xuất hiện trên Lead
+- [ ] **Bổ sung HONORIFIC** (Danh xưng: Anh/Chị) trên Lead + Contact — form không có field này
+- [ ] Nếu thiếu MST → tra VietQR API hoặc masothue.com → tạo Requisite thủ công
 - [ ] Xác nhận Email & ZNS xác nhận đã gửi cho KH
-- [ ] Đánh giá BANT sơ bộ từ thông tin trong form:
+- [ ] Đánh giá BANT sơ bộ từ thông tin trong form (đọc timeline comment):
   - **Budget:** KH có đề cập ngân sách không?
   - **Authority:** Ai điền form? Có phải người quyết định?
   - **Need:** Nhu cầu chính là gì? Phù hợp với giải pháp SYNITY?
@@ -73,19 +74,23 @@ PHASE 3: SURVEY (Khảo sát)
 
 > Các Automation Rule dưới đây **chạy tự động** khi điều kiện trigger được kích hoạt. Nhân sự **không cần thao tác** — chỉ cần biết để theo dõi và kiểm tra kết quả.
 
-### AR-1: Google Form submit → Cập nhật Lead
+### AR-1: Google Form submit → Đồng bộ Lead + Contact + Company + Requisite
 
 | Thuộc tính | Giá trị |
 |-----------|---------|
-| **Entity** | Lead |
-| **Trigger** | KH submit Google Form (match SĐT trong Lead) |
-| **Actions** | 1. Cập nhật Lead fields từ form data |
-| | 2. Tạo Contact (nếu chưa có) |
-| | 3. Tạo Company (nếu chưa có) |
-| | 4. Liên kết Contact ↔ Company ↔ Lead |
-| | 5. Lead stage → `IN_PROCESS` (Submitted Form) |
+| **Entity** | Lead, Contact, Company, Requisite |
+| **Trigger** | KH submit Google Form (match SĐT +84 trong Lead) |
+| **Actions** | 1. Match/Cập nhật Lead (SĐT, Email, Chức vụ, Nguồn) |
+| | 2. Match/Tạo Contact — ưu tiên: **Phone → Email** |
+| | 3. Match/Tạo Company — ưu tiên: **Phone (qua Contact) → MST (qua Requisite) → Website → Tên DN** |
+| | 4. VietQR API (MST) → Tạo Requisite + Legal Address *(bỏ qua nếu Company tìm thấy qua MST)* |
+| | 5. Liên kết Contact ↔ Company ↔ Lead |
+| | 6. Post kết quả khảo sát → Lead timeline comment (BBCode TABLE) |
+| | 7. Lead stage → `IN_PROCESS` (Submitted Form) |
 
-> 🔧 **Chi tiết kỹ thuật:** Flow thực tế đi qua Google Sheet → n8n → Bitrix API. Xem [n8n Lead Capture — Google Form](../tech/n8n-lead-capture.md#1-google-form).
+> 🔧 **Chi tiết kỹ thuật:** Google Sheet → **Google Apps Script** → Bitrix24 REST API + VietQR API. Source code: repo [`synity-gas`](https://github.com/chinhdang/synity-gas). Xem [Lead Capture — Google Form](../tech/n8n-lead-capture.md#1-google-form).
+>
+> ⚠️ **SOP gap:** `HONORIFIC` (Danh xưng) không có trong Google Form → nhân sự bổ sung thủ công trên Contact + Lead sau khi form submit.
 
 ### AR-2: Google Form submit → Gửi Email xác nhận
 
@@ -112,13 +117,16 @@ NHÂN SỰ                              AUTOMATION RULE
 ────────                              ───────────────
 Gửi Google Form cho KH ──────►
                                       KH submit form
-                                      ──► AR-1: Match SĐT → Cập nhật Lead
-                                           + Tạo Contact + Company
+                                      ──► AR-1: Match SĐT (+84) → Cập nhật Lead
+                                           + Tạo Contact (+ Facebook, Chức vụ)
+                                           + Tạo Company (+ Website)
+                                           + VietQR (MST) → Requisite + Legal Address
+                                           + Survey → Lead timeline comment (HTML)
                                            + Lead stage → Submitted Form
                                       ──► AR-2: Gửi Email xác nhận
                                       ──► AR-3: Gửi ZNS xác nhận
 Kiểm tra data đã cập nhật ◄───────────┘
-Bổ sung MST, BANT, insight ──────►
+Bổ sung HONORIFIC, BANT ──────►
 ```
 
 ---
@@ -205,10 +213,10 @@ Nếu KH vẫn từ chối → ghi chú vào Lead, chuyển sang gọi điện k
 
 **Kiểm tra:**
 1. KH có điền đúng SĐT đã tạo trong Lead không? (match SĐT)
-2. Google Form có đang kết nối Bitrix automation không?
-3. Kiểm tra Bitrix Automation Rules có đang bật không
+2. Google Apps Script trigger có đang hoạt động không? (GAS editor → Triggers)
+3. Kiểm tra GAS execution log (`clasp logs`) hoặc tab "Error Log" trong Sheet
 
-**Nếu vẫn lỗi:** Cập nhật thủ công và báo IT kiểm tra automation.
+**Nếu vẫn lỗi:** Cập nhật thủ công và báo IT kiểm tra GAS script (repo `synity-gas`).
 </details>
 
 ---

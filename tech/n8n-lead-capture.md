@@ -45,6 +45,8 @@
 
 ## 1. Google Form
 
+> ⚡ **Lưu ý kiến trúc (02/2025):** Source này dùng **Google Apps Script (GAS) gọi trực tiếp Bitrix24 API**, không đi qua n8n. Code và hướng dẫn setup nằm trong repo riêng: [`synity-gas`](https://github.com/chinhdang/synity-gas).
+
 ### Flow chi tiết
 
 ```
@@ -53,12 +55,13 @@ KH điền Google Form
        ▼
 Google Sheet (Form Responses)
        │
-       ▼ (n8n: Google Sheets trigger / webhook)
+       ▼ (GAS installable trigger: onFormSubmit)
 ┌──────────────────────────────┐
-│  n8n Workflow: [tên]         │
+│  Google Apps Script           │
+│  (repo: synity-gas)          │
 │                              │
-│  1. Trigger: New row in      │
-│     Google Sheet             │
+│  1. Trigger: onFormSubmit    │
+│     (installable trigger)    │
 │  2. Validate: SĐT required  │
 │  3. Match Lead by SĐT       │
 │     (crm.lead.list)          │
@@ -66,52 +69,75 @@ Google Sheet (Form Responses)
 │     (crm.lead.update)        │
 │     IF no match → Add Lead   │
 │     (crm.lead.add)           │
-│  5. Add Contact              │
-│     (crm.contact.add)        │
-│  6. Add Company              │
-│     (crm.company.add)        │
-│  7. Link Contact ↔ Company   │
+│  5. Match/Add Contact        │
+│     (+ Facebook, Chức vụ)    │
+│  6. Match/Add Company        │
+│     (+ Website)              │
+│  7. VietQR API (MST) →      │
+│     Requisite + Legal Addr   │
+│  8. Link Contact ↔ Company   │
 │     ↔ Lead                   │
-│  8. Update Lead stage →      │
-│     IN_PROCESS               │
+│  9. Survey → HTML comment    │
+│     (crm.timeline.comment)   │
+│ 10. Lead stage = IN_PROCESS  │
 └──────────────────────────────┘
 ```
 
-### Field Mapping
+### Field Mapping (36 cột Google Form)
 
-| Google Form field | Bitrix Lead field | Bắt buộc | Ghi chú |
-|-------------------|-------------------|----------|---------|
-| *(Họ tên)* | `NAME` + `LAST_NAME` | YES | Tách Họ / Tên |
-| *(SĐT)* | `PHONE` | YES | Dùng để match Lead |
-| *(Email)* | `EMAIL` | YES | |
-| *(Tên công ty)* | `COMPANY_TITLE` | YES | |
-| *(Chức vụ)* | `POST` | Nên có | |
-| *(Nhu cầu)* | `COMMENTS` | Nên có | Append vào ghi chú |
-| *(Quy mô)* | `UF_CRM_...` | Nên có | *(Xác nhận UF field)* |
-| *(Nguồn)* | `SOURCE_ID` | Auto | Set = `WEB` hoặc source tương ứng |
+**Nhóm A: Thông tin người liên hệ → Contact**
 
-> **Lưu ý:** Field mapping chi tiết phụ thuộc vào cấu trúc Google Form hiện tại. P. Kỹ thuật cập nhật bảng này khi form thay đổi.
+| Cột | Google Form field | Bitrix entity | Bitrix field | Ghi chú |
+|-----|-------------------|---------------|-------------|---------|
+| 1 | Họ tên | Contact + Lead | `NAME` + `LAST_NAME` | VN: từ đầu = Họ |
+| 2 | Email | Contact + Lead | `EMAIL` | `VALUE_TYPE: WORK` |
+| 3 | Phone | Contact + Lead | `PHONE` | **+84xxxxxxxxx** (bắt buộc). Dùng match Lead |
+| 4 | Facebook cá nhân | Contact | `WEB` | `VALUE_TYPE: FACEBOOK` |
+| 5 | Vai trò | Contact + Lead | `POST` | Chức vụ KH |
+
+**Nhóm B: Thông tin doanh nghiệp → Company + Requisite**
+
+| Cột | Google Form field | Bitrix entity | Bitrix field | Ghi chú |
+|-----|-------------------|---------------|-------------|---------|
+| 6 | Biết đến SYNITY từ đâu | Lead | `SOURCE_ID` + `SOURCE_DESCRIPTION` | Map → RECOMMENDATION / WEB / OTHER |
+| 7 | Tên doanh nghiệp | Company + Lead | `TITLE` / `COMPANY_TITLE` | Match exact → tạo mới nếu chưa có |
+| 8 | Mã số thuế | Requisite | `RQ_VAT_ID` | → VietQR API → `RQ_COMPANY_NAME` + Legal Address |
+| 9 | Website công ty | Company | `WEB` | `VALUE_TYPE: WORK` |
+
+**Nhóm C: Khảo sát (cột 10-35) → Lead timeline comment (HTML)**
+
+| Cột | Nội dung | Section trong comment |
+|-----|----------|---------------------|
+| 10-12 | Nhân sự, Ngành nghề, Doanh thu | Thông tin doanh nghiệp |
+| 13-17 | Khó khăn, Công cụ hiện tại | Thực trạng & Khó khăn |
+| 18-22 | Mong muốn, Giải pháp, Bộ phận | Nhu cầu & Kỳ vọng |
+| 23-26 | Quy trình, Sẵn sàng, Mục tiêu | Mức độ sẵn sàng |
+| 27-30 | CRM, Sales team | CRM & Sales |
+| 31-35 | Giao việc, QLCV | Quản lý công việc |
+
+> **Column mapping chi tiết:** `src/config.js` (repo synity-gas). Cập nhật khi form thay đổi.
+>
+> **SOP gap:** `HONORIFIC` (Danh xưng) không có trong form → nhân sự bổ sung thủ công trên Contact + Lead.
 
 ### Configuration
 
-| Cấu hình | Giá trị | Ghi chú |
+| Cấu hình | Nơi lưu | Ghi chú |
 |-----------|---------|---------|
-| Google Sheet ID | *(điền)* | Sheet chứa form responses |
-| Sheet name / Tab | *(điền)* | Tab cụ thể |
-| n8n Workflow ID | *(điền)* | |
-| n8n Workflow name | *(điền)* | |
-| Bitrix Webhook URL | `https://tamgiac.bitrix24.com/rest/1/xxxxx/` | *(không lưu key thật trong SOP)* |
-| Trigger type | Google Sheets trigger / Polling | |
-| Polling interval | *(điền)* | Nếu dùng polling |
+| Google Sheet ID | GAS Script Properties: `FORM_SHEET_ID` | Sheet chứa form responses |
+| Bitrix Webhook URL | GAS Script Properties: `BITRIX_WEBHOOK` | *(không lưu key trong code/SOP)* |
+| Default assignee | GAS Script Properties: `DEFAULT_ASSIGNED` | User ID nhân sự phụ trách |
+| Error log sheet | GAS Script Properties: `ERROR_LOG_SHEET` | (Optional) Sheet ID cho error log |
+| Source code | Repo: `synity-gas` | Deploy qua `clasp push` |
 
 ### Troubleshooting
 
 | Triệu chứng | Nguyên nhân có thể | Cách xử lý |
 |-------------|-------------------|-------------|
 | KH điền form nhưng Lead không cập nhật | SĐT trong form khác SĐT trong Lead | Kiểm tra format SĐT (0xxx vs +84xxx) |
-| Lead tạo mới thay vì update Lead có sẵn | Match SĐT không tìm thấy | Kiểm tra n8n node match logic |
-| Contact/Company không tạo | API error từ Bitrix | Kiểm tra n8n execution log |
-| Workflow không trigger | Google Sheet trigger bị disconnect | Reconnect trigger trong n8n |
+| Lead tạo mới thay vì update Lead có sẵn | Match SĐT không tìm thấy | Kiểm tra GAS execution log (`clasp logs`) |
+| Contact/Company không tạo | API error từ Bitrix | Kiểm tra GAS execution log + tab "Error Log" |
+| Trigger không chạy | Installable trigger bị disconnect | Mở GAS editor → Triggers → kiểm tra / tạo lại |
+| Lỗi 403 từ Bitrix | Webhook token hết hạn hoặc sai | Kiểm tra Script Properties → BITRIX_WEBHOOK |
 
 ---
 
@@ -247,13 +273,18 @@ KH điền form trên Website (Wix)
 
 ## Quy tắc chung cho mọi Lead Capture workflow
 
-1. **SĐT là key match** — mọi workflow phải match Lead bằng SĐT trước khi tạo mới.
-2. **Format SĐT:** Chuẩn hóa về dạng `0xxxxxxxxx` (10 số, bỏ +84, bỏ dấu cách).
+1. **Thứ tự ưu tiên tìm trùng (duplicate detection):**
+   - **Contact:** Phone → Email
+   - **Company:** Phone (qua Contact linked) → Email → MST (qua Requisite `RQ_VAT_ID`) → Website (`WEB`) → Tên công ty (`TITLE`)
+   - Nếu tìm thấy ở bước ưu tiên cao → dừng, không tìm tiếp.
+   - Nếu Company tìm thấy qua MST → **không tạo Requisite mới** (đã tồn tại).
+2. **Format SĐT:** Chuẩn hóa về dạng `+84xxxxxxxxx` (bắt buộc có +84).
 3. **Không tạo Lead trùng** — nếu SĐT đã có trong Bitrix → update, không add mới.
 4. **SOURCE_ID** — mỗi source có `SOURCE_ID` riêng để tracking nguồn Lead.
 5. **Error notification** — mọi workflow phải gửi alert (Telegram/Email) khi fail.
 6. **Lead stage** — sau khi push thành công, Lead stage = `IN_PROCESS` (Submitted Form).
 7. **Version control** — mọi workflow phải lưu trong Git repo qua n8n-atom. Xem [Workflow Management](n8n-workflow-management.md).
+8. **Timeline comment format:** BBCode (không dùng HTML). Bitrix timeline hỗ trợ `[TABLE]`, `[B]`, `[COLOR]`, `[I]`.
 
 ---
 

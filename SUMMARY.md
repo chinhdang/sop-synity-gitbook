@@ -42,6 +42,7 @@
 ## Hệ thống & Tích hợp
 
 * [Tổng quan hệ thống](tech/overview.md)
+* [GAS — Đồng bộ khảo sát Google Form](tech/gas-dong-bo-khao-sat.md)
 * [n8n Workflow Management](tech/n8n-workflow-management.md)
 * [n8n Lead Capture](tech/n8n-lead-capture.md)
 
